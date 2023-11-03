@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SQLConnection {
-    private static Connection connection;
+    private Connection connection;
     private String url;
     private String user;
     private String password;
@@ -74,7 +74,7 @@ public class SQLConnection {
      *
      * @since 1.0
      */
-    public static ResultSet getDataQuery(String query) {
+    public ResultSet getDataQuery(String query) {
 
         ResultSet resultSet = null;
         Statement statement;

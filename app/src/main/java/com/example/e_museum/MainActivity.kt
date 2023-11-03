@@ -1,6 +1,7 @@
 package com.example.e_museum
 
 import android.Manifest
+import android.R
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,6 +9,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
+import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +22,10 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.e_museum.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
+import java.util.ArrayList
 import java.util.Locale
 import java.util.concurrent.ExecutorService
+
 
 typealias LumaListener = (luma: Double) -> Unit
 
@@ -86,13 +91,12 @@ class MainActivity : AppCompatActivity() {
             val password = "4XxtC2Ky5Dzz2AEEoC60"
 
             sqlConnection = SQLConnection(url, username, password)
-
             sqlConnection.connectServer()
+
             runOnUiThread {
                 Toast.makeText(applicationContext, "Connection established", Toast.LENGTH_SHORT)
                     .show();
             }
-            Log.i("Database", "Connection established")
         }.start()
     }
 

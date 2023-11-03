@@ -47,21 +47,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp" />
 
-    <ScrollView
+    <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/museum_list"
+            android:paddingLeft="30dp"
+            android:paddingRight="30sp"
+            android:dividerHeight="10sp" />
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/museum_list_box">
-
-            <RelativeLayout
-                    android:id="@+id/inclusionlayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-        </LinearLayout>
-    </ScrollView>
+    <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/progress_bar" />
 
 </LinearLayout>
