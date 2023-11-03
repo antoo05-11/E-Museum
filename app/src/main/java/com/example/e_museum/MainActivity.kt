@@ -85,11 +85,12 @@ class MainActivity : AppCompatActivity() {
             val username = "unxmdvotjktefgp8"
             val password = "4XxtC2Ky5Dzz2AEEoC60"
 
-            val sqlConnection = SQLConnection(url, username, password)
+            sqlConnection = SQLConnection(url, username, password)
 
             sqlConnection.connectServer()
             runOnUiThread {
-                Toast.makeText(applicationContext, "Connection established", Toast.LENGTH_SHORT).show();
+                Toast.makeText(applicationContext, "Connection established", Toast.LENGTH_SHORT)
+                    .show();
             }
             Log.i("Database", "Connection established")
         }.start()
@@ -191,6 +192,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        lateinit var sqlConnection: SQLConnection
         private const val TAG = "CameraXApp"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private val REQUIRED_PERMISSIONS =

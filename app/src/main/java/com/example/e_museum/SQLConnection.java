@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SQLConnection {
-    private Connection connection;
+    private static Connection connection;
     private String url;
     private String user;
     private String password;
@@ -45,6 +45,7 @@ public class SQLConnection {
         reconnecting = true;
     }
 
+
     /**
      * You need url to database server, username and password to log in database server.
      *
@@ -73,7 +74,7 @@ public class SQLConnection {
      *
      * @since 1.0
      */
-    public ResultSet getDataQuery(String query) {
+    public static ResultSet getDataQuery(String query) {
 
         ResultSet resultSet = null;
         Statement statement;

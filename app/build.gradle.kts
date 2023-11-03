@@ -68,6 +68,7 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation(files("libs/mysql-connector-java-5.1.4-bin.jar"))
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -88,4 +89,7 @@ dependencies {
     implementation("androidx.camera:camera-view:${camerax_version}")
     implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
     implementation("androidx.camera:camera-extensions:${camerax_version}")
+
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }
