@@ -9,58 +9,33 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SQLConnection {
-    private Connection connection;
-    private String url;
-    private String user;
-    private String password;
-    private boolean reconnectingNotification;
+    public Connection connection;
     private boolean reconnecting;
+    private static SQLConnection sqlConnection;
 
-    int userID;
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public static SQLConnection getSqlConnection() {
+        if (sqlConnection == null) {
+            sqlConnection = new SQLConnection();
+        }
+        return sqlConnection;
     }
 
     public boolean isReconnecting() {
-        return reconnectingNotification;
+        return reconnecting;
     }
-
-    public void setReconnecting(boolean reconnectingNotification) {
-        this.reconnectingNotification = reconnectingNotification;
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
-    public SQLConnection(String url, String user, String password) {
-        this.url = url;
-        this.user = user;
-        this.password = password;
+    public SQLConnection() {
         reconnecting = true;
     }
 
-
-    /**
-     * You need url to database server, username and password to log in database server.
-     *
-     * @see Connection
-     * @since 1.0
-     */
-    public void connectServer() {
+    public void connectServer(String url, String username, String password) {
         while (connection == null) {
             try {
                 Log.i("Database", "Connecting");
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection(url, user, password);
+                connection = DriverManager.getConnection(url, username, password);
+                reconnecting = false;
             } catch (SQLException e) {
                 Log.i("Database", "Connection failed");
-                reconnectingNotification = true;
                 reconnecting = true;
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
@@ -69,13 +44,7 @@ public class SQLConnection {
 
     }
 
-    /**
-     * Get result set of a SQL query.
-     *
-     * @since 1.0
-     */
     public ResultSet getDataQuery(String query) {
-
         ResultSet resultSet = null;
         Statement statement;
         try {
@@ -85,7 +54,6 @@ public class SQLConnection {
             System.out.println(query);
             e.printStackTrace();
         }
-
         return resultSet;
     }
 
@@ -101,11 +69,6 @@ public class SQLConnection {
         return rowsAffected;
     }
 
-    /**
-     * Close connection to SQL Server.
-     *
-     * @since 1.0
-     */
     public void addClosingWork() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {

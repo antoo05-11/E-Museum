@@ -1,7 +1,6 @@
 package com.example.e_museum
 
 import android.Manifest
-import android.R
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,8 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import android.view.View
-import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +19,6 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.e_museum.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
-import java.util.ArrayList
 import java.util.Locale
 import java.util.concurrent.ExecutorService
 
@@ -32,6 +28,10 @@ typealias LumaListener = (luma: Double) -> Unit
 const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
 
 class MainActivity : AppCompatActivity() {
+    val url =
+        "jdbc:mysql://b8fu1r5tflhnrnqjztht-mysql.services.clever-cloud.com:3306/b8fu1r5tflhnrnqjztht"
+    val username = "unxmdvotjktefgp8"
+    val password = "4XxtC2Ky5Dzz2AEEoC60"
     private lateinit var viewBinding: ActivityMainBinding
 
     private var imageCapture: ImageCapture? = null
@@ -78,25 +78,18 @@ class MainActivity : AppCompatActivity() {
 //        cameraExecutor = Executors.newSingleThreadExecutor()
 
         viewBinding.button.setOnClickListener {
-            val intent = Intent(this, MuseumChoosingActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, "hello")
+            if (!sqlConnection.isReconnecting) {
+                val intent = Intent(this, MuseumChoosingActivity::class.java).apply {
+                    putExtra(EXTRA_MESSAGE, "hello")
+                }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent)
             }
-            startActivity(intent)
         }
 
         Thread {
-            val url =
-                "jdbc:mysql://b8fu1r5tflhnrnqjztht-mysql.services.clever-cloud.com:3306/b8fu1r5tflhnrnqjztht"
-            val username = "unxmdvotjktefgp8"
-            val password = "4XxtC2Ky5Dzz2AEEoC60"
-
-            sqlConnection = SQLConnection(url, username, password)
-            sqlConnection.connectServer()
-
-            runOnUiThread {
-                Toast.makeText(applicationContext, "Connection established", Toast.LENGTH_SHORT)
-                    .show();
-            }
+            sqlConnection = SQLConnection.getSqlConnection()
+            sqlConnection.connectServer(url, username, password)
         }.start()
     }
 
@@ -192,7 +185,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        cameraExecutor.shutdown()
+        //cameraExecutor.shutdown()
     }
 
     companion object {
