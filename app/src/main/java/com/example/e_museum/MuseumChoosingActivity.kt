@@ -12,7 +12,6 @@ import com.example.e_museum.adapters.MuseumListAdapter
 import com.example.e_museum.databinding.MuseumChoosingViewBinding
 import com.example.e_museum.entities.Museum
 
-
 class MuseumChoosingActivity : AppCompatActivity() {
     private lateinit var viewBinding: MuseumChoosingViewBinding
 
@@ -50,6 +49,7 @@ class MuseumChoosingActivity : AppCompatActivity() {
                         it
                     )
                 }
+
                 viewBinding.rcvMuseums.addItemDecoration(dividerItemDecoration)
 
                 viewBinding.searchView.setOnQueryTextListener(object :
@@ -67,7 +67,6 @@ class MuseumChoosingActivity : AppCompatActivity() {
             }
         }.start()
     }
-
 }
 
 

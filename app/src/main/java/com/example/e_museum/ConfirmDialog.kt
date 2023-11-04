@@ -3,6 +3,7 @@ package com.example.e_museum
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 
@@ -11,13 +12,21 @@ class ConfirmDialog : DialogFragment() {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
             builder.setMessage(R.string.dialog_choose_museum)
-                    .setPositiveButton(R.string.go_to_museum
-                    ) { dialog, id ->
+                .setPositiveButton(
+                    R.string.go_to_museum
+                ) { dialog, id ->
+                    val intent = Intent(this.activity?.applicationContext, InsideMuseum::class.java).apply {
+                        putExtra(EXTRA_MESSAGE, "hello")
                     }
-                .setNegativeButton(R.string.go_back
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent)
+                }
+                .setNegativeButton(
+                    R.string.go_back
                 ) { dialog, id ->
                 }
             builder.create()
+
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
-    
+
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -21,6 +21,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat"
             tools:targetApi="31">
+        <activity
+                android:name=".InsideMuseum"
+                android:exported="false"
+                android:label="@string/title_activity_inside_museum" />
         <activity
                 android:name=".MuseumChoosingActivity"
                 android:parentActivityName=".MainActivity">

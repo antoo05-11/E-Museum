@@ -61,6 +61,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
     private void confirmMuseum() {
         DialogFragment newFragment = new ConfirmDialog();
         newFragment.show(((AppCompatActivity)activity).getSupportFragmentManager(), "confirm museum chose");
+
     }
 
     @Override

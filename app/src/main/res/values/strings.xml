@@ -8,4 +8,8 @@
     <string name="dialog_choose_museum">Đi tới bảo tàng đã chọn</string>
     <string name="go_to_museum">"Xác nhận"</string>
     <string name="go_back">Quay lại</string>
+    <string name="title_activity_inside_museum">InsideMuseum</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
