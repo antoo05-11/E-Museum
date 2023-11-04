@@ -91,4 +91,7 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("io.coil-kt:coil-compose:2.5.0")
+
+    implementation("com.airbnb.android:lottie:3.4.0")
+    implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
 }
