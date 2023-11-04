@@ -26,7 +26,9 @@
             android:text="Đang tìm kiếm bảo tàng gần nhất"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView"
-            android:textStyle="bold" />
+            app:layout_constraintTop_toBottomOf="@id/lottieAnimationView"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

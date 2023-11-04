@@ -2,7 +2,6 @@ package com.example.e_museum
 
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
@@ -15,7 +14,7 @@ class ConfirmDialog : DialogFragment() {
                 .setPositiveButton(
                     R.string.go_to_museum
                 ) { dialog, id ->
-                    val intent = Intent(this.activity?.applicationContext, InsideMuseum::class.java).apply {
+                    val intent = Intent(this.activity?.applicationContext, InsideMuseumActivity::class.java).apply {
                         putExtra(EXTRA_MESSAGE, "hello")
                     }
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

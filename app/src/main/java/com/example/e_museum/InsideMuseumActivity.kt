@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.e_museum.databinding.ActivityInsideMuseumBinding
 
-class InsideMuseum : AppCompatActivity() {
+class InsideMuseumActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInsideMuseumBinding
 
@@ -26,7 +26,7 @@ class InsideMuseum : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_map, R.id.navigation_thing_finding, R.id.navigation_notifications
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
