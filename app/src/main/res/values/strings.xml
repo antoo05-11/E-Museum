@@ -5,4 +5,7 @@
     <string name="stop_capture">Stop Capture</string>
     <string name="title_activity_museum_choosing">MuseumChoosingActivit</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="dialog_choose_museum">Đi tới bảo tàng đã chọn</string>
+    <string name="go_to_museum">"Xác nhận"</string>
+    <string name="go_back">Quay lại</string>
 </resources>
