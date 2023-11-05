@@ -99,4 +99,5 @@ dependencies {
 
     implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
+    implementation("com.google.android.material:material:1.10.0")
 }

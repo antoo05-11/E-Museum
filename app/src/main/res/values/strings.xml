@@ -15,4 +15,5 @@
     <string name="title_search_code">Search</string>
     <string name="title_map">Map</string>
     <string name="notification_image">Notification Image</string>
+    <string name="hello">Hello</string>
 </resources>
