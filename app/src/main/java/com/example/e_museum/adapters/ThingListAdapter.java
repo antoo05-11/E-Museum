@@ -1,6 +1,8 @@
 package com.example.e_museum.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
@@ -12,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.entities.Museum;
 import com.example.e_museum.entities.Thing;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -41,12 +45,27 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
     @NonNull
     @Override
     public ThingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.thing_preview_box, parent, false);
+        view.setOnClickListener((v) -> {
+
+        });
+        return new ThingViewHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull ThingViewHolder holder, int position) {
-
+        Thing thing = things.get(position);
+        if (thing == null) {
+            return;
+        }
+        holder.thingNameTextView.setText(thing.getName());
+        holder.thingShortTextView.setText(thing.getShortText());
+        Picasso.get()
+                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/thing_%d_%d_preview_image.png", thing.getMuseumID(), thing.getThingID()))
+                .fit()
+                .centerInside()
+                .into((ImageView) holder.thingImageView);
     }
 
     @Override

@@ -8,7 +8,26 @@ public class Thing {
     int thingID;
     int images;
     int videos;
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     String description;
+    String shortText;
+
+    public String getShortText() {
+        return shortText;
+    }
+
+    public void setShortText(String shortText) {
+        this.shortText = shortText;
+    }
 
     public Thing(int museumID, int thingID, int images, int videos, String description) {
         this.museumID = museumID;

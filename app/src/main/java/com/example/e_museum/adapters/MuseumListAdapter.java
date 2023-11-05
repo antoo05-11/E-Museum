@@ -1,5 +1,6 @@
 package com.example.e_museum.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,9 +62,9 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
     private void confirmMuseum() {
         DialogFragment newFragment = new ConfirmDialog();
         newFragment.show(((AppCompatActivity)activity).getSupportFragmentManager(), "confirm museum chose");
-
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull MuseumViewHolder holder, int position) {
         Museum museum = museums.get(position);

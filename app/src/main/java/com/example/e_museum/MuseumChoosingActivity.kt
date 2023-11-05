@@ -33,10 +33,6 @@ class MuseumChoosingActivity : AppCompatActivity() {
                 viewBinding.rcvMuseums.layoutManager = LinearLayoutManager(this)
                 viewBinding.rcvMuseums.adapter = museumListAdapter
 
-                val itemDecoration: RecyclerView.ItemDecoration =
-                    DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-                viewBinding.rcvMuseums.addItemDecoration(itemDecoration)
-
                 val dividerItemDecoration = DividerItemDecoration(
                     viewBinding.rcvMuseums.context,
                     (viewBinding.rcvMuseums.layoutManager as LinearLayoutManager).orientation
@@ -49,7 +45,6 @@ class MuseumChoosingActivity : AppCompatActivity() {
                         it
                     )
                 }
-
                 viewBinding.rcvMuseums.addItemDecoration(dividerItemDecoration)
 
                 viewBinding.searchView.setOnQueryTextListener(object :
