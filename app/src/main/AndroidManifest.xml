@@ -22,11 +22,15 @@
             android:theme="@style/Theme.AppCompat"
             tools:targetApi="31">
         <activity
-                android:name=".InsideMuseumActivity"
+                android:name=".intents.InsideMuseumActivity"
                 android:exported="false"
                 android:label="@string/title_activity_inside_museum" />
         <activity
-                android:name=".MuseumChoosingActivity"
+                android:name=".intents.NotificationViewActivity"
+                android:exported="false"
+              />
+        <activity
+                android:name=".intents.MuseumChoosingActivity"
                 android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->

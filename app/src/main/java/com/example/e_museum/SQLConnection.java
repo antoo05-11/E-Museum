@@ -44,15 +44,15 @@ public class SQLConnection {
 
     }
 
-    public ResultSet getDataQuery(String query) {
+    public ResultSet getDataQuery(String query) throws SQLException {
         ResultSet resultSet = null;
         Statement statement;
         try {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
-            System.out.println(query);
-            e.printStackTrace();
+            Log.d("getDataQuery: ", query);
+            throw e;
         }
         return resultSet;
     }

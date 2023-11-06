@@ -1,24 +1,22 @@
-package com.example.e_museum.ui
+package com.example.e_museum.inside_museum_fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.e_museum.R
 import com.example.e_museum.SQLConnection
 import com.example.e_museum.adapters.NotificationListAdapter
-import com.example.e_museum.adapters.ThingListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
-import com.example.e_museum.entities.Museum
 import com.example.e_museum.entities.Notification
 
 class NotificationsFragment : Fragment() {
@@ -32,7 +30,7 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val notifications = ArrayList<Notification>()
-        val adapter = NotificationListAdapter(requireActivity(), notifications)
+        val adapter = NotificationListAdapter(requireActivity(), notifications, this)
         binding.rvcNotifications.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvcNotifications.adapter = adapter
 
@@ -49,6 +47,7 @@ class NotificationsFragment : Fragment() {
             )
         }
         binding.rvcNotifications.addItemDecoration(dividerItemDecoration)
+
         Thread {
             val resultSet =
                 SQLConnection.getSqlConnection().getDataQuery("select * from notifications")
@@ -56,9 +55,6 @@ class NotificationsFragment : Fragment() {
                 notifications.add(Notification(resultSet))
             }
             requireActivity().runOnUiThread {
-                Toast.makeText(requireActivity(), notifications.size.toString(), Toast.LENGTH_SHORT)
-                    .show()
-
                 adapter.notifyDataSetChanged()
             }
 
@@ -72,11 +68,20 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+         setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

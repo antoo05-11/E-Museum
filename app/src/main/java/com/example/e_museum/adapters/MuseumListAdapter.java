@@ -45,7 +45,6 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
             museumImageView = itemView.findViewById(R.id.thing_image);
             museumAddressTextView = itemView.findViewById(R.id.thing_short);
             museumNameTextView = itemView.findViewById(R.id.thing_name);
-
         }
     }
 
@@ -93,7 +92,6 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
 
     @Override
     public Filter getFilter() {
-
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
@@ -114,6 +112,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
                 return filterResults;
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 museums = (List<Museum>) results.values;

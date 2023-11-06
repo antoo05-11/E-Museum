@@ -1,13 +1,11 @@
 package com.example.e_museum
 
 import android.Manifest
-import android.R
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.Log
@@ -18,6 +16,7 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.core.content.ContextCompat
 import com.example.e_museum.databinding.FindMuseumBinding
+import com.example.e_museum.intents.MuseumChoosingActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService

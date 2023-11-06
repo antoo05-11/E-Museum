@@ -26,13 +26,29 @@
 
     </SearchView>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_museums"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/loading_museums_progress_bar"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_museums"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                tools:layout_editor_absoluteY="643dp"
+                android:visibility="invisible"
+                tools:visibility="invisible">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

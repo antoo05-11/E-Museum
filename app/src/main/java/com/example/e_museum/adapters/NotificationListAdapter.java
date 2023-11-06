@@ -2,6 +2,7 @@ package com.example.e_museum.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +12,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
 import com.example.e_museum.entities.Notification;
+import com.example.e_museum.intents.NotificationViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.NotificationViewHolder> implements Filterable {
     List<Notification> notifications;
     Activity activity;
 
-    public NotificationListAdapter(Activity activity, List<Notification> notifications) {
+    Fragment containerFragment;
+
+    public NotificationListAdapter(Activity activity, List<Notification> notifications, Fragment containerFragment) {
         this.notifications = notifications;
         this.activity = activity;
+        this.containerFragment = containerFragment;
     }
 
     @Override
@@ -37,10 +44,23 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     @Override
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_preview_box, parent, false);
+        NotificationViewHolder viewHolder = new NotificationViewHolder(view);
+
         view.setOnClickListener((v) -> {
+            int position = notifications.indexOf(v.getTag());
+            if (position != -1) {
+                Notification notification = notifications.get(position);
+                if (notification != null) {
+                    Intent intent = new Intent(containerFragment.getActivity(), NotificationViewActivity.class);
+                    intent.putExtra("notification_id", notification.getNotificationID());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    containerFragment.startActivity(intent);
+                }
+            }
         });
-        return new NotificationListAdapter.NotificationViewHolder(view);
+        return viewHolder;
     }
+
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -52,11 +72,13 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         holder.notificationNameTextView.setText(notification.getName());
         holder.notificationShortTextView.setText(notification.getShortText());
         Picasso.get()
-                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/notification_%d_preview_image.png", notification.getNotificationID()))
+                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_%d_preview_image.png", notification.getNotificationID()))
                 .fit()
                 .centerInside()
-                .into((ImageView) holder.notificationImageView);
+                .into(holder.notificationImageView);
+        holder.itemView.setTag(notification); // Gắn thông báo vào LinearLayout
     }
+
 
     @Override
     public int getItemCount() {

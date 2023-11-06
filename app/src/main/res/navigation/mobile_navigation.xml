@@ -7,19 +7,19 @@
 
     <fragment
             android:id="@+id/navigation_map"
-            android:name="com.example.e_museum.ui.MapFragment"
+            android:name="com.example.e_museum.inside_museum_fragments.MapFragment"
             android:label="@string/title_map"
             tools:layout="@layout/fragment_map" />
 
     <fragment
             android:id="@+id/navigation_thing_finding"
-            android:name="com.example.e_museum.ui.ThingFindingFragment"
+            android:name="com.example.e_museum.inside_museum_fragments.ThingFindingFragment"
             android:label="@string/title_dashboard"
             tools:layout="@layout/fragment_thing_finding" />
 
     <fragment
             android:id="@+id/navigation_notifications"
-            android:name="com.example.e_museum.ui.NotificationsFragment"
+            android:name="com.example.e_museum.inside_museum_fragments.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.e_museum.ui.theme
+package com.example.e_museum.inside_museum_fragments.theme
 
 import androidx.compose.ui.graphics.Color
 

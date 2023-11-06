@@ -1,13 +1,15 @@
-package com.example.e_museum
+package com.example.e_museum.intents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.e_museum.MainActivity
+import com.example.e_museum.R
 import com.example.e_museum.adapters.MuseumListAdapter
 import com.example.e_museum.databinding.MuseumChoosingViewBinding
 import com.example.e_museum.entities.Museum
@@ -20,6 +22,10 @@ class MuseumChoosingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = MuseumChoosingViewBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
+        viewBinding.loadingMuseumsProgressBar.isVisible = true
+        viewBinding.rcvMuseums.isVisible = false
+
         (this as AppCompatActivity).supportActionBar!!.title = "Chọn bảo tàng"
 
         val museums = ArrayList<Museum>()
@@ -29,6 +35,8 @@ class MuseumChoosingActivity : AppCompatActivity() {
                 museums.add(Museum(resultSet))
             }
             runOnUiThread {
+                viewBinding.loadingMuseumsProgressBar.isVisible = false
+                viewBinding.rcvMuseums.isVisible = true
                 val museumListAdapter = MuseumListAdapter(this, museums)
                 viewBinding.rcvMuseums.layoutManager = LinearLayoutManager(this)
                 viewBinding.rcvMuseums.adapter = museumListAdapter

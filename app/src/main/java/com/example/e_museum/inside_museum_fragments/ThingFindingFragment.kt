@@ -1,22 +1,19 @@
-package com.example.e_museum.ui
+package com.example.e_museum.inside_museum_fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
-import com.example.e_museum.EXTRA_MESSAGE
-import com.example.e_museum.MuseumChoosingActivity
 import com.example.e_museum.databinding.FragmentThingFindingBinding
-import com.example.e_museum.databinding.MuseumChoosingViewBinding
 
 class ThingFindingFragment : Fragment() {
 
@@ -81,13 +78,17 @@ class ThingFindingFragment : Fragment() {
 
         Thread {
             SystemClock.sleep(2000)
-            //haizzzz
-            val intent = Intent(context, MuseumChoosingActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, "hello")
-            }
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent)
+//            val intent = Intent(context, MuseumChoosingActivity::class.java).apply {
+//                putExtra(EXTRA_MESSAGE, "hello")
+//            }
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent)
         }.start()
+
+        setHasOptionsMenu(true)
+        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         return root
     }
 
