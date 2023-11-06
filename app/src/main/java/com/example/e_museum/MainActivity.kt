@@ -67,9 +67,9 @@ class MainActivity : AppCompatActivity() {
         Thread {
             sqlConnection = SQLConnection.getSqlConnection()
             sqlConnection.connectServer(url, username, password)
-            SystemClock.sleep(5000)
+            SystemClock.sleep(1000)
             if (!sqlConnection.isReconnecting) {
-                val intent = Intent(this, MuseumChoosingActivity::class.java).apply {
+                val intent = Intent(this, ViewTing::class.java).apply {
                     putExtra(EXTRA_MESSAGE, "hello")
                 }
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
