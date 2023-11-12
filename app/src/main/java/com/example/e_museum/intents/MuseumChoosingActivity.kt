@@ -2,6 +2,7 @@ package com.example.e_museum.intents
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -24,37 +25,43 @@ class MuseumChoosingActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.searchView.queryHint = "Search";
-        viewBinding.loadingMuseumsProgressBar.isVisible = true
-        viewBinding.rcvMuseums.isVisible = false
 
         (this as AppCompatActivity).supportActionBar!!.title = "Chọn bảo tàng"
 
         val museums = ArrayList<Museum>()
+        museums.add(Museum())
+        museums.add(Museum())
+        museums.add(Museum())
+        museums.add(Museum())
+        val tmpMuseumListAdapter = MuseumListAdapter(this, museums)
+        viewBinding.rcvMuseums.layoutManager = LinearLayoutManager(this)
+        viewBinding.rcvMuseums.adapter = tmpMuseumListAdapter
+
+         val dividerItemDecoration = DividerItemDecoration(
+            viewBinding.rcvMuseums.context,
+            (viewBinding.rcvMuseums.layoutManager as LinearLayoutManager).orientation
+        )
+        ContextCompat.getDrawable(
+            applicationContext,
+            R.drawable.divider_shape
+        )?.let {
+            dividerItemDecoration.setDrawable(
+                it
+            )
+        }
+        viewBinding.rcvMuseums.addItemDecoration(dividerItemDecoration)
+
         Thread {
+            SystemClock.sleep(2000)
             val resultSet = MainActivity.sqlConnection.getDataQuery("select * from museums");
+            museums.clear()
             while (resultSet.next()) {
                 museums.add(Museum(resultSet))
             }
             runOnUiThread {
-                viewBinding.loadingMuseumsProgressBar.isVisible = false
-                viewBinding.rcvMuseums.isVisible = true
                 val museumListAdapter = MuseumListAdapter(this, museums)
                 viewBinding.rcvMuseums.layoutManager = LinearLayoutManager(this)
                 viewBinding.rcvMuseums.adapter = museumListAdapter
-
-                val dividerItemDecoration = DividerItemDecoration(
-                    viewBinding.rcvMuseums.context,
-                    (viewBinding.rcvMuseums.layoutManager as LinearLayoutManager).orientation
-                )
-                ContextCompat.getDrawable(
-                    applicationContext,
-                    R.drawable.divider_shape
-                )?.let {
-                    dividerItemDecoration.setDrawable(
-                        it
-                    )
-                }
-                viewBinding.rcvMuseums.addItemDecoration(dividerItemDecoration)
 
                 viewBinding.searchView.setOnQueryTextListener(object :
                     SearchView.OnQueryTextListener {

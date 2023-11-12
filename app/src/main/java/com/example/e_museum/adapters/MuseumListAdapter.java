@@ -9,6 +9,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_museum.ConfirmDialog;
 import com.example.e_museum.R;
 import com.example.e_museum.entities.Museum;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,12 +41,14 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
         private final TextView museumNameTextView;
         private final TextView museumAddressTextView;
         private final ImageView museumImageView;
+        private final ShimmerFrameLayout shimmerFrameLayout;
 
         public MuseumViewHolder(@NonNull View itemView) {
             super(itemView);
             museumImageView = itemView.findViewById(R.id.thing_image);
             museumAddressTextView = itemView.findViewById(R.id.thing_short);
             museumNameTextView = itemView.findViewById(R.id.thing_name);
+            shimmerFrameLayout = itemView.findViewById(R.id.shimmer_view_container);
         }
     }
 
@@ -59,7 +64,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
 
     private void confirmMuseum() {
         DialogFragment newFragment = new ConfirmDialog();
-        newFragment.show(((AppCompatActivity)activity).getSupportFragmentManager(), "confirm museum chose");
+        newFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), "confirm museum chose");
     }
 
     @SuppressLint("DefaultLocale")
@@ -69,13 +74,30 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
         if (museum == null) {
             return;
         }
-        holder.museumNameTextView.setText(museum.getName());
-        holder.museumAddressTextView.setText(museum.getAddress());
-        Picasso.get()
-                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", museum.getMuseumID()))
-                .fit()
-                .centerInside()
-                .into((ImageView) holder.museumImageView);
+        if (museum.getMuseumID() == -1) {
+            holder.shimmerFrameLayout.startShimmer();
+
+        } else {
+            holder.shimmerFrameLayout.startShimmer();
+            holder.museumNameTextView.setText(museum.getName());
+            holder.museumAddressTextView.setText(museum.getAddress());
+            Picasso.get()
+                    .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", museum.getMuseumID()))
+                    .fit()
+                    .centerInside()
+                    .into(holder.museumImageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.shimmerFrameLayout.hideShimmer();
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
+        }
+
     }
 
     @Override

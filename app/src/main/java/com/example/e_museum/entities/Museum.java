@@ -20,6 +20,10 @@ public class Museum {
         this.description = description;
     }
 
+    public Museum() {
+        museumID = -1;
+    }
+
     public Museum(ResultSet resultSet) throws SQLException {
         this.museumID = resultSet.getInt("museumID");
         this.name = resultSet.getString("name");
