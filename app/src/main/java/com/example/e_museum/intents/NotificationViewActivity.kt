@@ -9,16 +9,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.e_museum.SQLConnection
-import com.example.e_museum.databinding.NotificationViewBinding
+import com.example.e_museum.databinding.ActivityViewNotificationBinding
 import com.squareup.picasso.Picasso
 
 class NotificationViewActivity : AppCompatActivity() {
-    private lateinit var binding: NotificationViewBinding;
+    private lateinit var binding: ActivityViewNotificationBinding;
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = NotificationViewBinding.inflate(layoutInflater)
+        binding = ActivityViewNotificationBinding.inflate(layoutInflater)
 
         binding.loadingNotificationProgressBar.isVisible = true
         binding.notificationGeneralBox.isVisible = false
@@ -36,17 +36,14 @@ class NotificationViewActivity : AppCompatActivity() {
             runOnUiThread {
                 binding.loadingNotificationProgressBar.isVisible = false
                 binding.notificationGeneralBox.isVisible = true
+
                 if (resultSet.next()) {
-                    Toast.makeText(
-                        applicationContext,
-                        intent.getIntExtra("notification_id", 1).toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    binding.notIcationNameTv.text = resultSet.getString("name")
+                    binding.notificationNameTv.text = resultSet.getString("name")
                     binding.notificationConditionTv.text = resultSet.getString("condition")
-                    binding.notificationContentTv.text = resultSet.getString("content")
-                    binding.eventDateTv.text = resultSet.getDate("dateStart")
-                        .toString() + " đến " + resultSet.getDate("dateEnd").toString()
+                    binding.notIcationContentTv.text = resultSet.getString("content")
+                    binding.eventDateTv.text = normalizeDate(
+                        resultSet.getDate("dateStart").toString()
+                    ) + " đến " + normalizeDate(resultSet.getDate("dateEnd").toString())
                     Picasso.get()
                         .load(
                             String.format(
@@ -71,5 +68,10 @@ class NotificationViewActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun normalizeDate(dateGot: String): String {
+        val dates = dateGot.split('-')
+        return dates[2] + "/" + dates[1] + "/" + dates[0]
     }
 }

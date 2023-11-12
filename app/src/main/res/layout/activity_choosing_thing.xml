@@ -24,7 +24,7 @@
                 android:id="@+id/search_view"
                 app:iconifiedByDefault="false"
                 app:queryBackground="@null"
-                android:background="@drawable/shapebgsearch"
+                android:background="@drawable/search_box"
                 app:icon="@android:drawable/ic_menu_search"
                 android:icon="@android:drawable/ic_menu_search"
                 app:showAsAction="never|ifRoom|collapseActionView|withText"
@@ -45,9 +45,7 @@
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_things"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:layout_height="match_parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 

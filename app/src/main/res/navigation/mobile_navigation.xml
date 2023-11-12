@@ -12,10 +12,10 @@
             tools:layout="@layout/fragment_map" />
 
     <fragment
-            android:id="@+id/navigation_thing_finding"
+            android:id="@+id/fragment_finding_thing"
             android:name="com.example.e_museum.inside_museum_fragments.ThingFindingFragment"
             android:label="@string/title_dashboard"
-            tools:layout="@layout/fragment_thing_finding" />
+            tools:layout="@layout/fragment_finding_thing" />
 
     <fragment
             android:id="@+id/navigation_notifications"

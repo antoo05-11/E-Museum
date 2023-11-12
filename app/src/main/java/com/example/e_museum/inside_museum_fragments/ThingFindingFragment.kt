@@ -1,80 +1,32 @@
 package com.example.e_museum.inside_museum_fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.budiyev.android.codescanner.AutoFocusMode
-import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.DecodeCallback
-import com.budiyev.android.codescanner.ErrorCallback
-import com.budiyev.android.codescanner.ScanMode
-import com.example.e_museum.databinding.FragmentThingFindingBinding
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.example.e_museum.R
+import com.example.e_museum.databinding.FragmentFindingThingBinding
 
 class ThingFindingFragment : Fragment() {
 
-    private var _binding: FragmentThingFindingBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentFindingThingBinding? = null
     private val binding get() = _binding!!
-    private lateinit var codeScanner: CodeScanner
 
+    @SuppressLint("SetTextI18n")
     override
     fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentThingFindingBinding.inflate(inflater, container, false)
+        _binding = FragmentFindingThingBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val scannerView = binding.scannerView
-
-        codeScanner = CodeScanner(requireContext(), scannerView)
-
-        codeScanner.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
-        codeScanner.formats = CodeScanner.ALL_FORMATS // list of type BarcodeFormat,
-        // ex. listOf(BarcodeFormat.QR_CODE)
-        codeScanner.autoFocusMode = AutoFocusMode.SAFE // or CONTINUOUS
-        codeScanner.scanMode = ScanMode.SINGLE // or CONTINUOUS or PREVIEW
-        codeScanner.isAutoFocusEnabled = true // Whether to enable auto focus or not
-        codeScanner.isFlashEnabled = false // Whether to enable flash or not
-
-        codeScanner.decodeCallback = DecodeCallback {
-            activity?.runOnUiThread {
-                Toast.makeText(
-                    activity?.applicationContext,
-                    "Scan result: ${it.text}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
-            activity?.runOnUiThread {
-                Toast.makeText(
-                    activity?.applicationContext, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
-
-        scannerView.setOnClickListener {
-            codeScanner.startPreview()
-        }
-
-        binding.qrScanButton.setOnClickListener {
-            binding.qrScannerView.visibility = View.VISIBLE
-            binding.idInputView.visibility = View.INVISIBLE
-        }
-        binding.idButton.setOnClickListener {
-            binding.qrScannerView.visibility = View.INVISIBLE
-            binding.idInputView.visibility = View.VISIBLE
-        }
 
         Thread {
             SystemClock.sleep(2000)
@@ -89,21 +41,16 @@ class ThingFindingFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val navView: NavHostFragment =
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment_thing_finding) as NavHostFragment
+        val navController = navView.navController
+        NavigationUI.setupWithNavController(binding.thingFindingNavView, navController)
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onResume() {
-        super.onResume()
-        codeScanner.startPreview()
-    }
-
-    override fun onPause() {
-        codeScanner.releaseResources()
-        super.onPause()
     }
 }

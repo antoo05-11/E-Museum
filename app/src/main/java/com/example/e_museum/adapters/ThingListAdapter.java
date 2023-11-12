@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
-import com.example.e_museum.entities.Museum;
 import com.example.e_museum.entities.Thing;
 import com.squareup.picasso.Picasso;
 
@@ -45,7 +44,7 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
     @NonNull
     @Override
     public ThingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.thing_preview_box, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_thing, parent, false);
         view.setOnClickListener((v) -> {
 
         });

@@ -11,18 +11,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.MainActivity
 import com.example.e_museum.R
 import com.example.e_museum.adapters.MuseumListAdapter
-import com.example.e_museum.databinding.MuseumChoosingViewBinding
+import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
 import com.example.e_museum.entities.Museum
 
 class MuseumChoosingActivity : AppCompatActivity() {
-    private lateinit var viewBinding: MuseumChoosingViewBinding
+    private lateinit var viewBinding: ActivityChoosingMuseumBinding
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = MuseumChoosingViewBinding.inflate(layoutInflater)
+        viewBinding = ActivityChoosingMuseumBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
+        viewBinding.searchView.queryHint = "Search";
         viewBinding.loadingMuseumsProgressBar.isVisible = true
         viewBinding.rcvMuseums.isVisible = false
 

@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:layout_marginTop="20dp">
+        android:background="@color/theme_color">
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"
@@ -17,7 +17,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/searching" />
+            app:lottie_rawRes="@raw/searching"
+            android:layout_marginTop="-90dp" />
 
     <TextView
             android:id="@+id/textView5"
@@ -28,7 +29,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lottieAnimationView"
             android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="15dp" />
+            android:textSize="17sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

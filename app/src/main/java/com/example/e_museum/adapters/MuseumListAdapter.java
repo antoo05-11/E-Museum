@@ -9,7 +9,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +50,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
     @NonNull
     @Override
     public MuseumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.museum_preview_box, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_museum, parent, false);
         view.setOnClickListener((v) -> {
             confirmMuseum();
         });

@@ -13,16 +13,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/search_view"
             app:iconifiedByDefault="false"
-            app:queryBackground="@null"
-            android:background="@drawable/shapebgsearch"
-            app:icon="@android:drawable/ic_menu_search"
-            android:icon="@android:drawable/ic_menu_search"
-            app:showAsAction="never|ifRoom|collapseActionView|withText"
-            android:voiceIcon="@drawable/voice_search"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="20dp">
+
+            style="@style/search_box">
 
     </SearchView>
 

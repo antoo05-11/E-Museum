@@ -21,7 +21,6 @@ import com.example.e_museum.intents.NotificationViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Objects;
 
 public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.NotificationViewHolder> implements Filterable {
     List<Notification> notifications;
@@ -43,7 +42,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
     @NonNull
     @Override
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_preview_box, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_notification, parent, false);
         NotificationViewHolder viewHolder = new NotificationViewHolder(view);
 
         view.setOnClickListener((v) -> {

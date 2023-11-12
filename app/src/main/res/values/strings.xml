@@ -16,4 +16,8 @@
     <string name="title_map">Map</string>
     <string name="notification_image">Notification Image</string>
     <string name="hello">Hello</string>
+    <string name="title_find_by_id">Nhập mã số</string>
+    <string name="title_find_by_scanning">"Quét mã"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

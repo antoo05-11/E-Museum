@@ -2,16 +2,13 @@ package com.example.e_museum.inside_museum_fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.e_museum.R
 import com.example.e_museum.databinding.FragmentMapBinding
+import com.github.chrisbanes.photoview.PhotoView;
 
 class MapFragment : Fragment() {
 
@@ -27,9 +24,11 @@ class MapFragment : Fragment() {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
         setHasOptionsMenu(true)
-        Toast.makeText(context, (activity is AppCompatActivity).toString(), Toast.LENGTH_SHORT).show()
         (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val photoView = binding.photoView;
+        photoView.setImageResource(R.drawable.hcm_museum_map);
         return root
     }
 
