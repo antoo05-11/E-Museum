@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             sqlConnection.connectServer(url, username, password)
             SystemClock.sleep(1000)
             if (!sqlConnection.isReconnecting) {
-                val intent = Intent(this, MuseumChoosingActivity::class.java).apply {
+                val intent = Intent(this, ViewThing::class.java).apply {
                     putExtra(EXTRA_MESSAGE, "hello")
                 }
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -1,5 +1,6 @@
 package com.example.e_museum
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -7,8 +8,9 @@ import android.widget.ViewFlipper
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class ViewTing : AppCompatActivity() {
+class ViewThing : AppCompatActivity() {
     lateinit var v_flipper: ViewFlipper
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.thing_view)
@@ -24,6 +26,7 @@ class ViewTing : AppCompatActivity() {
             peekHeight = 250
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+
     }
 
     fun fliperImage(imageResource: Int) {
