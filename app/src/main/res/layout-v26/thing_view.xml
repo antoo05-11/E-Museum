@@ -59,7 +59,7 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Button 1" />
@@ -97,6 +97,8 @@
                 android:layout_width="395dp"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
+                app:fontWeight="700"
+                android:textSize="25sp"
                 android:text="GIỚI THIỆU" />
 
             <TextView
@@ -104,20 +106,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
-                android:text="Chất liệu: Đồng"
-                tools:targetApi="o" />
+                android:textSize="18sp"
+                android:text="Chất liệu: Đồng" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
+                android:textSize="18sp"
+
                 android:text="Kích thước: Dài: 58,5 cm; Rộng: 74 cm; Đường kính mặt: 89,5 cm; Trọng lượng: 72 kg" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:textSize="16sp"
                 android:text="Trống đồng Cổ Loa được phát hiện năm 1982 tại cánh đồng Mả Tre, xã Cổ Loa, huyện Đông Anh. Trống chôn ngửa, trong lòng chứa hơn 200 hiện vật đồng, hoa văn trang trí phong phú, phản ánh đời sống cư dân văn hóa Đông Sơn. Giữa mặt trống là ngôi sao 14 cánh, từ trong ra ngoài có 15 vành hoa văn, xung quanh là những dải trang trí hình lông công, hoạt cảnh đời thường, chim. Tang và thân trống trang trí hình người, hình thuyền. Chân trống để trơn. Trong lòng trống có khắc dòng chữ Hán. Trống đồng Cổ Loa thuộc loại trống đồng Heger I và là một trong những trống đẹp nhất tương đương các trống Ngọc Lũ và Hoàng Hạ. Kỹ thuật đúc trống tinh xảo. Trống được công nhận là Bảo vật Quốc gia theo Quyết định số 2382/QĐ-TTg ngày 25/12/2015 của Thủ tướng Chính phủ. Trống đồng Cổ Loa được phát hiện năm 1982 tại cánh đồng Mả Tre, xã Cổ Loa, huyện Đông Anh. Trống chôn ngửa, trong lòng chứa hơn 200 hiện vật đồng, hoa văn trang trí phong phú, phản ánh đời sống cư dân văn hóa Đông Sơn. Giữa mặt trống là ngôi sao 14 cánh, từ trong ra ngoài có 15 vành hoa văn, xung quanh là những dải trang trí hình lông công, hoạt cảnh đời thường, chim. Tang và thân trống trang trí hình người, hình thuyền. Chân trống để trơn. Trong lòng trống có khắc dòng chữ Hán. Trống đồng Cổ Loa thuộc loại trống đồng Heger I và là một trong những trống đẹp nhất tương đương các trống Ngọc Lũ và Hoàng Hạ. Kỹ thuật đúc trống tinh xảo. Trống được công nhận là Bảo vật Quốc gia theo Quyết định số 2382/QĐ-TTg ngày 25/12/2015 của Thủ tướng Chính phủ." />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
