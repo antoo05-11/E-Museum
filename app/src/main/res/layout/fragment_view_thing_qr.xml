@@ -9,12 +9,13 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="409dp"
-            android:layout_height="628dp"
+            android:layout_height="500dp"
             tools:layout_editor_absoluteX="1dp"
             android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="MissingConstraints">
+            tools:ignore="MissingConstraints"
+            android:background="#FFFFFF">
 
         <ImageView
                 android:layout_width="277dp"
@@ -29,7 +30,8 @@
                 android:id="@+id/id_text_view"
                 android:gravity="center"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#000000" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

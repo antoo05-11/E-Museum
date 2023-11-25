@@ -59,7 +59,7 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
             return;
         }
         holder.thingNameTextView.setText(thing.getName());
-        holder.thingShortTextView.setText(thing.getShortText());
+       // holder.thingShortTextView.setText(thing.getShortText());
         Picasso.get()
                 .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/thing_%d_%d_preview_image.png", thing.getMuseumID(), thing.getThingID()))
                 .fit()

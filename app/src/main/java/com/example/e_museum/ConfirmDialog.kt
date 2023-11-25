@@ -15,9 +15,8 @@ class ConfirmDialog : DialogFragment() {
                 .setPositiveButton(
                     R.string.go_to_museum
                 ) { dialog, id ->
-                    val intent = Intent(this.activity?.applicationContext, InsideMuseumActivity::class.java).apply {
-                        putExtra(EXTRA_MESSAGE, "hello")
-                    }
+                    val intent =
+                        Intent(this.activity?.applicationContext, InsideMuseumActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent)
                 }

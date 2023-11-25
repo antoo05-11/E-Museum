@@ -2,9 +2,11 @@ package com.example.e_museum.fragments_thing_finding
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,6 +15,7 @@ import com.example.e_museum.R
 import com.example.e_museum.activities.MuseumChoosingActivity
 import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByIdBinding
+import com.example.e_museum.entities.Thing
 
 class FindingThingByIDFragment : Fragment() {
 
@@ -56,21 +59,25 @@ class FindingThingByIDFragment : Fragment() {
             }
         }
 
-        val mainNavHostFragment =
-            activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment_activity_inside_museum) as NavHostFragment
-        val mainNavController = mainNavHostFragment.navController
         binding.searchThingButton.setOnClickListener {
             Thread {
-                MainActivity.sqlConnection.getDataQuery(
-                    String.format(
-                        "select * from things where thingID = %s",
-                        binding.thingIdTv
-                    )
+                val queryString = String.format(
+                    "select * from things where thingID = %s", binding.thingIdTv.text
                 )
-                requireActivity().runOnUiThread {
-                    val intent = Intent(requireContext(), ViewThingActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
+                val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
+                if (resultSet == null) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), "Wrong ID", Toast.LENGTH_SHORT).show()
+                    }
+                    return@Thread
+                }
+                if (resultSet.next()) {
+                    requireActivity().runOnUiThread {
+                        val intent = Intent(requireContext(), ViewThingActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        intent.putExtra("thing", Thing(resultSet))
+                        startActivity(intent)
+                    }
                 }
             }.start()
         }

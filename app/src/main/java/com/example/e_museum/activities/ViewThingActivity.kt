@@ -1,6 +1,7 @@
 package com.example.e_museum.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,11 +17,11 @@ import com.example.e_museum.PagerMarginItemDecoration
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImageListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
+import com.example.e_museum.entities.Thing
 import kotlin.math.abs
 
 class ViewThingActivity : AppCompatActivity() {
-    private lateinit var viewPager: ViewPager2
-    private lateinit var myAdapter: ThingImageListAdapter
+
     private lateinit var exoPlayer: ExoPlayer
 
     private lateinit var binding: ActivityViewThingBinding
@@ -31,28 +32,12 @@ class ViewThingActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val thingID = intent.getIntExtra("thingID", -1)
         val navController = findNavController(R.id.view_thing_fragment)
         NavigationUI.setupWithNavController(binding.viewThingBottomNavView, navController)
 
-        Thread {
-            val resultSet = MainActivity.sqlConnection.getDataQuery(
-                String.format(
-                    "select * from things where thingID = %d",
-                    thingID
-                )
-            )
-            if (resultSet.next()) {
+        val thing = intent.getSerializableExtra("thing") as Thing
 
-            }
-        }.start()
-
-//        viewPager = binding.viewPager
-//        myAdapter = ThingImageListAdapter(
-//            this,
-//            listOf("abc.com", "bcd.com", "bcd.com", "bcd.com", "bcd.com")
-//        )
-//        createCardHolder()
+        supportActionBar?.title = thing.name
 
         exoPlayer = ExoPlayer.Builder(this.applicationContext).build()
         binding.videoView.player = exoPlayer
@@ -62,28 +47,6 @@ class ViewThingActivity : AppCompatActivity() {
             )
         )
         exoPlayer.prepare()
-    }
-
-    private fun createCardHolder() {
-
-        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        viewPager.adapter = myAdapter
-        viewPager.offscreenPageLimit = 1
-
-        val nextItemVisibleWidth = resources.getDimension(R.dimen.next_item_visible_width)
-        val currentItemMargin =
-            resources.getDimension(R.dimen.viewpager_horizontal_margin)
-        val pageTranslation = nextItemVisibleWidth + currentItemMargin
-        viewPager.setPageTransformer { page: View, position: Float ->
-            page.translationX = -pageTranslation * position
-            page.scaleY = 1 - (0.25f * abs(position))
-            page.alpha = 0.25f + (1 - abs(position))
-        }
-        val itemDecoration = PagerMarginItemDecoration(
-            applicationContext,
-            R.dimen.viewpager_horizontal_margin
-        )
-        viewPager.addItemDecoration(itemDecoration)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
