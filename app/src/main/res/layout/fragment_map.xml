@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".inside_museum_fragments.MapFragment"
+        tools:context=".fragments_inside_museum.MapFragment"
         android:orientation="vertical">
 
     <com.github.chrisbanes.photoview.PhotoView

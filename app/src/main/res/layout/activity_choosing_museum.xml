@@ -8,15 +8,16 @@
         android:background="#292929"
         android:orientation="vertical">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/search_view"
             app:iconifiedByDefault="false"
-
-            style="@style/search_box">
-
-    </SearchView>
+            android:queryHint="Search"
+            android:queryBackground="@android:color/transparent"
+            style="@style/search_box"
+            android:focusable="false">
+    </androidx.appcompat.widget.SearchView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

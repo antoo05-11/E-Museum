@@ -61,4 +61,10 @@
     <style name="justify_text">
         <item name="android:justificationMode" tools:targetApi="o">inter_word</item>
     </style>
+
+    <style name="custom_alert_dialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">#D2D2D2</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

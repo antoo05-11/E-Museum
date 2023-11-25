@@ -1,4 +1,4 @@
-package com.example.e_museum.inside_museum_fragments
+package com.example.e_museum.fragments_inside_museum
 
 import android.annotation.SuppressLint
 import android.os.Bundle

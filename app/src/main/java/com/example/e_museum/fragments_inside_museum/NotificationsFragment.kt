@@ -1,11 +1,8 @@
-package com.example.e_museum.inside_museum_fragments
+package com.example.e_museum.fragments_inside_museum
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -56,8 +53,6 @@ class NotificationsFragment : Fragment() {
             val resultSet =
                 SQLConnection.getSqlConnection().getDataQuery("select * from notifications")
             while (resultSet.next()) {
-                notifications.add(Notification(resultSet))
-                notifications.add(Notification(resultSet))
                 notifications.add(Notification(resultSet))
             }
             requireActivity().runOnUiThread {

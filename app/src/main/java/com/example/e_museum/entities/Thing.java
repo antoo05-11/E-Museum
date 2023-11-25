@@ -9,6 +9,8 @@ public class Thing {
     int images;
     int videos;
     String name;
+    String description;
+    String shortText;
 
     public String getName() {
         return name;
@@ -17,9 +19,6 @@ public class Thing {
     public void setName(String name) {
         this.name = name;
     }
-
-    String description;
-    String shortText;
 
     public String getShortText() {
         return shortText;

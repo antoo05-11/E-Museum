@@ -37,7 +37,7 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
             super(itemView);
             thingImageView = itemView.findViewById(R.id.thing_image);
             thingShortTextView = itemView.findViewById(R.id.thing_short);
-            thingNameTextView = itemView.findViewById(R.id.thing_name);
+            thingNameTextView = itemView.findViewById(R.id.thing_name_tv);
         }
     }
 

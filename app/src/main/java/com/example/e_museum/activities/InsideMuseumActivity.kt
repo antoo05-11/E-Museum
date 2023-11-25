@@ -1,12 +1,11 @@
-package com.example.e_museum.intents
+package com.example.e_museum.activities
 
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityInsideMuseumBinding
@@ -20,17 +19,8 @@ class InsideMuseumActivity : AppCompatActivity() {
         binding = ActivityInsideMuseumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_inside_museum)
-
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_map, R.id.navigation_thing_finding, R.id.navigation_notifications
-//            )
-//        )
-     //   setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         supportActionBar?.title = "Museum A"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

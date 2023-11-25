@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".inside_museum_fragments.ThingFindingFragment">
+        tools:context=".fragments_inside_museum.ThingFindingFragment">
 
     <fragment
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -21,7 +21,7 @@
             android:id="@+id/thing_finding_nav_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment_thing_finding"
-            app:menu="@menu/thing_finding_bottom_nav_menu" >
+            app:menu="@menu/thing_finding_menu" >
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

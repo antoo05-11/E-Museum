@@ -4,16 +4,21 @@
 
     <uses-feature android:name="android.hardware.camera.any" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-permission
             android:name="android.permission.WRITE_EXTERNAL_STORAGE"
             android:maxSdkVersion="28" />
 
     <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false"/>
+            android:name="android.hardware.camera"
+            android:required="false" />
 
     <application
             android:allowBackup="true"
@@ -26,18 +31,17 @@
             android:theme="@style/Theme.AppCompat"
             tools:targetApi="31">
         <activity
-                android:name=".intents.InsideMuseumActivity"
+                android:name=".activities.InsideMuseumActivity"
                 android:exported="false"
                 android:label="@string/title_activity_inside_museum" />
         <activity
-                android:name=".intents.NotificationViewActivity"
-                android:exported="false"
-              />
+                android:name=".activities.NotificationViewActivity"
+                android:exported="false" />
         <activity
-                android:name=".intents.MuseumChoosingActivity"
-                android:parentActivityName=".MainActivity">
+                android:name=".activities.MuseumChoosingActivity"
+                android:parentActivityName=".MainActivity"
+                android:windowSoftInputMode="adjustPan|stateHidden">
 
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".MainActivity" />
@@ -54,10 +58,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ViewThing">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+         <activity
+                android:name=".activities.ViewThingActivity"
+                android:exported="true"
+                android:label="ViewThingActivity"
+                android:theme="@style/Theme.AppCompat">
         </activity>
     </application>
 
