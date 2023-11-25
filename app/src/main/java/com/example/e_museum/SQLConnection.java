@@ -48,6 +48,7 @@ public class SQLConnection {
 
             if (e instanceof com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException
                     || e instanceof com.mysql.jdbc.exceptions.jdbc4.CommunicationsException) {
+                connection = null;
                 connectServer();
                 return getDataQuery(query);
             }

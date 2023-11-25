@@ -103,4 +103,16 @@ dependencies {
 
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //exoplayer
+    implementation("androidx.media3:media3-exoplayer:1.2.0")
+    implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
+    implementation("androidx.media3:media3-ui:1.2.0")
+    implementation("androidx.media3:media3-exoplayer-hls:1.2.0")
+
+    implementation("com.google.android.material:material:<version>")
+
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }

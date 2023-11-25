@@ -5,12 +5,12 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
-import com.example.e_museum.intents.InsideMuseumActivity
+import com.example.e_museum.activities.InsideMuseumActivity
 
 class ConfirmDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(it, R.style.custom_alert_dialog)
             builder.setMessage(R.string.dialog_choose_museum)
                 .setPositiveButton(
                     R.string.go_to_museum
