@@ -10,6 +10,7 @@ import com.example.e_museum.PagerMarginItemDecoration
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImageListAdapter
 import com.example.e_museum.databinding.FragmentViewThingImagesBinding
+import com.example.e_museum.entities.Thing
 import kotlin.math.abs
 
 class ViewThingImagesFragment : Fragment() {
@@ -25,9 +26,21 @@ class ViewThingImagesFragment : Fragment() {
         binding = FragmentViewThingImagesBinding.inflate(inflater, container, false)
 
         viewPager = binding.viewPager
+
+        val thing = requireActivity().intent.getSerializableExtra("thing") as Thing
+        val thingURLLists = ArrayList<String>()
+        for (i in 1..thing.images) {
+            thingURLLists.add(
+                String.format(
+                    "https://muzik-files-server.000webhostapp.com/emuseum/thing_images/%d_%d.png",
+                    thing.thingID,
+                    i
+                )
+            )
+        }
         myAdapter = ThingImageListAdapter(
             requireActivity(),
-            listOf("abc.com", "bcd.com", "bcd.com", "bcd.com", "bcd.com")
+            thingURLLists
         )
         createCardHolder()
 

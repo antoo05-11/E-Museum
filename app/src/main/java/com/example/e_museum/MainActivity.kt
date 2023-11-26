@@ -13,8 +13,6 @@ import com.example.e_museum.databinding.ActivityFindingMuseumBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
-const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
-
 class MainActivity : AppCompatActivity() {
     private val url =
         "jdbc:mysql://b8fu1r5tflhnrnqjztht-mysql.services.clever-cloud.com:3306/b8fu1r5tflhnrnqjztht"

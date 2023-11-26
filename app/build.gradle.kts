@@ -112,6 +112,9 @@ dependencies {
     implementation("androidx.media3:media3-ui:1.2.0")
     implementation("androidx.media3:media3-exoplayer-hls:1.2.0")
 
+    //Palette
+    implementation("androidx.palette:palette-ktx:1.0.0")
+
     implementation("com.google.android.material:material:<version>")
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
