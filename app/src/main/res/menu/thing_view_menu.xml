@@ -2,18 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:title="Images"
-            android:id="@+id/viewThingImagesFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    <item
             android:title="Information"
             android:id="@+id/viewThingDescriptionFragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_text_snippet_24" />
+    <item
+            android:title="Images"
+            android:id="@+id/viewThingImagesFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_remove_red_eye_24" />
     <item
             android:title="QR Code"
             android:id="@+id/viewThingQRFragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:icon="@drawable/baseline_qr_code_24" />
 </menu>

@@ -1,15 +1,22 @@
 package com.example.e_museum.adapters;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.model.content.GradientColor;
+import com.example.e_museum.PaletteUtils;
 import com.example.e_museum.R;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,14 +41,33 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
     @Override
     public void onBindViewHolder(@NonNull ThingImageViewHolder holder, int position) {
         String imageURL = imageURLs.get(position);
+
         if (imageURL == null) {
             return;
         }
+
         Picasso.get()
-                .load("https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_1_preview_image.png")
+                .load(imageURL)
                 .fit()
                 .centerInside()
-                .into(holder.imageView);
+                .into(holder.imageView, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Bitmap imageBitmap = ((BitmapDrawable) holder.imageView.getDrawable()).getBitmap();
+                        GradientDrawable backgroundDominantColor =
+                                new PaletteUtils().getDominantGradient(
+                                        imageBitmap,
+                                        15.0f,
+                                        GradientDrawable.Orientation.TOP_BOTTOM, null
+                                );
+                        holder.container.setBackground(backgroundDominantColor);
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
     }
 
     @Override
@@ -52,9 +78,11 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
 
     public static class ThingImageViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
+        private final ImageView container;
 
         public ThingImageViewHolder(@NonNull View itemView) {
             super(itemView);
+            container = itemView.findViewById(R.id.thing_image_inside_bg_image_view);
             imageView = itemView.findViewById(R.id.thing_image_inside);
         }
     }
