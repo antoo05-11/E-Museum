@@ -4,9 +4,9 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.intents.InsideMuseumActivity
-
 class ConfirmDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -23,7 +23,8 @@ class ConfirmDialog : DialogFragment() {
                 }
                 .setNegativeButton(
                     R.string.go_back
-                ) { dialog, id ->
+                ) {
+                        dialog, id ->
                 }
             builder.create()
 
