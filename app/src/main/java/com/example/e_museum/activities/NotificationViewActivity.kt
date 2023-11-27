@@ -1,11 +1,9 @@
-package com.example.e_museum.intents
+package com.example.e_museum.activities
 
 //noinspection SuspiciousImport
 import android.R
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.e_museum.SQLConnection
@@ -15,7 +13,6 @@ import com.squareup.picasso.Picasso
 class NotificationViewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityViewNotificationBinding;
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewNotificationBinding.inflate(layoutInflater)
@@ -42,8 +39,10 @@ class NotificationViewActivity : AppCompatActivity() {
                     binding.notificationConditionTv.text = resultSet.getString("condition")
                     binding.notIcationContentTv.text = resultSet.getString("content")
                     binding.eventDateTv.text = normalizeDate(
-                        resultSet.getDate("dateStart").toString()
-                    ) + " đến " + normalizeDate(resultSet.getDate("dateEnd").toString())
+                        String.format(
+                            resultSet.getDate("dateStart").toString()
+                        ) + " đến " + normalizeDate(resultSet.getDate("dateEnd").toString())
+                    )
                     Picasso.get()
                         .load(
                             String.format(

@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
 import com.example.e_museum.entities.Notification;
-import com.example.e_museum.intents.NotificationViewActivity;
+import com.example.e_museum.activities.NotificationViewActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -68,6 +68,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         if (notification == null) {
             return;
         }
+        holder.notificationNameTextView.setSelected(true);
         holder.notificationNameTextView.setText(notification.getName());
         holder.notificationShortTextView.setText(notification.getShortText());
         Picasso.get()
@@ -75,7 +76,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
                 .fit()
                 .centerInside()
                 .into(holder.notificationImageView);
-        holder.itemView.setTag(notification); // Gắn thông báo vào LinearLayout
+        holder.itemView.setTag(notification);
     }
 
 

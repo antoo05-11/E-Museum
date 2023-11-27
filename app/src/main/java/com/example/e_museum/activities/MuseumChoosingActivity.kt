@@ -1,12 +1,13 @@
-package com.example.e_museum.intents
+package com.example.e_museum.activities
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.os.SystemClock
-import android.widget.SearchView
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.MainActivity
@@ -14,6 +15,7 @@ import com.example.e_museum.R
 import com.example.e_museum.adapters.MuseumListAdapter
 import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
 import com.example.e_museum.entities.Museum
+
 
 class MuseumChoosingActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityChoosingMuseumBinding
@@ -24,11 +26,10 @@ class MuseumChoosingActivity : AppCompatActivity() {
         viewBinding = ActivityChoosingMuseumBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.searchView.queryHint = "Search";
-
         (this as AppCompatActivity).supportActionBar!!.title = "Chọn bảo tàng"
 
         val museums = ArrayList<Museum>()
+        museums.add(Museum())
         museums.add(Museum())
         museums.add(Museum())
         museums.add(Museum())
@@ -37,7 +38,7 @@ class MuseumChoosingActivity : AppCompatActivity() {
         viewBinding.rcvMuseums.layoutManager = LinearLayoutManager(this)
         viewBinding.rcvMuseums.adapter = tmpMuseumListAdapter
 
-         val dividerItemDecoration = DividerItemDecoration(
+        val dividerItemDecoration = DividerItemDecoration(
             viewBinding.rcvMuseums.context,
             (viewBinding.rcvMuseums.layoutManager as LinearLayoutManager).orientation
         )
@@ -50,6 +51,9 @@ class MuseumChoosingActivity : AppCompatActivity() {
             )
         }
         viewBinding.rcvMuseums.addItemDecoration(dividerItemDecoration)
+
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(viewBinding.searchView.windowToken, 0)
 
         Thread {
             SystemClock.sleep(2000)

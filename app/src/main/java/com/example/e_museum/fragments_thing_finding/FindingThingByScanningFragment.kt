@@ -1,4 +1,4 @@
-package com.example.e_museum.thing_finding_fragments
+package com.example.e_museum.fragments_thing_finding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.example.e_museum.MainActivity
 import com.example.e_museum.databinding.FragmentFindingThingByScanningBinding
 
 class FindingThingByScanningFragment : Fragment() {
@@ -40,12 +41,24 @@ class FindingThingByScanningFragment : Fragment() {
         codeScanner.isFlashEnabled = false
 
         codeScanner.decodeCallback = DecodeCallback {
-            activity?.runOnUiThread {
+            requireActivity().runOnUiThread {
                 Toast.makeText(
                     activity?.applicationContext,
                     "Scan result: ${it.text}",
                     Toast.LENGTH_LONG
                 ).show()
+
+                Thread {
+                    MainActivity.sqlConnection.getDataQuery(
+                        String.format(
+                            "select * from things where thingID = %s",
+                            it.text
+                        )
+                    )
+                    requireActivity().runOnUiThread{
+                        // TODO: Change to view thing fragment.
+                    }
+                }.start()
             }
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS

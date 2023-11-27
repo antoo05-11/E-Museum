@@ -7,12 +7,12 @@
 
     <fragment
             android:id="@+id/findingThingByIDFragment"
-            android:name="com.example.e_museum.thing_finding_fragments.FindingThingByIDFragment"
+            android:name="com.example.e_museum.fragments_thing_finding.FindingThingByIDFragment"
             android:label="FindingThingByIDFragment"
             tools:layout="@layout/fragment_finding_thing_by_id" />
     <fragment
             android:id="@+id/findingThingByScanningFragment"
-            android:name="com.example.e_museum.thing_finding_fragments.FindingThingByScanningFragment"
+            android:name="com.example.e_museum.fragments_thing_finding.FindingThingByScanningFragment"
             android:label="FindingThingByScanningFragment"
             tools:layout="@layout/fragment_finding_thing_by_scanning" />
 </navigation>

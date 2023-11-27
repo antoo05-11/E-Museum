@@ -2,6 +2,7 @@ package com.example.e_museum.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.MuseumViewHolder> implements Filterable {
-    private Activity activity;
+    private final Activity activity;
     private List<Museum> museums;
-    private List<Museum> museumsOld;
+    private final List<Museum> museumsOld;
 
     public MuseumListAdapter(Activity activity, List<Museum> museums) {
         this.activity = activity;
@@ -42,13 +42,17 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
         private final TextView museumAddressTextView;
         private final ImageView museumImageView;
         private final ShimmerFrameLayout shimmerFrameLayout;
+        private final ShimmerFrameLayout shimmerMuseumNameTextView;
+        private final ShimmerFrameLayout shimmerMuseumShortTextView;
 
         public MuseumViewHolder(@NonNull View itemView) {
             super(itemView);
             museumImageView = itemView.findViewById(R.id.thing_image);
-            museumAddressTextView = itemView.findViewById(R.id.thing_short);
-            museumNameTextView = itemView.findViewById(R.id.thing_name);
+            museumAddressTextView = itemView.findViewById(R.id.museum_short_tv);
+            museumNameTextView = itemView.findViewById(R.id.museum_name_tv);
             shimmerFrameLayout = itemView.findViewById(R.id.shimmer_view_container);
+            shimmerMuseumNameTextView = itemView.findViewById(R.id.shimmer_museum_name_tv);
+            shimmerMuseumShortTextView = itemView.findViewById(R.id.shimmer_museum_short_tv);
         }
     }
 
@@ -56,9 +60,6 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
     @Override
     public MuseumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_museum, parent, false);
-        view.setOnClickListener((v) -> {
-            confirmMuseum();
-        });
         return new MuseumViewHolder(view);
     }
 
@@ -75,12 +76,29 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
             return;
         }
         if (museum.getMuseumID() == -1) {
-            holder.shimmerFrameLayout.startShimmer();
 
+            holder.shimmerFrameLayout.startShimmer();
+            holder.shimmerMuseumNameTextView.startShimmer();
+            holder.shimmerMuseumShortTextView.startShimmer();
+
+            holder.museumNameTextView.setText("");
+            holder.museumAddressTextView.setText("");
         } else {
             holder.shimmerFrameLayout.startShimmer();
+
+            holder.shimmerMuseumNameTextView.hideShimmer();
+            holder.shimmerMuseumShortTextView.hideShimmer();
+
+            holder.museumNameTextView.setBackgroundColor(Color.TRANSPARENT);
+            holder.museumAddressTextView.setBackgroundColor(Color.TRANSPARENT);
+
             holder.museumNameTextView.setText(museum.getName());
             holder.museumAddressTextView.setText(museum.getAddress());
+
+            holder.itemView.setOnClickListener((v) -> {
+                confirmMuseum();
+            });
+
             Picasso.get()
                     .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", museum.getMuseumID()))
                     .fit()

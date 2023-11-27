@@ -1,15 +1,17 @@
 package com.example.e_museum
 
-import android.content.Context
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
-import android.os.SystemClock
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.example.e_museum.activities.MuseumChoosingActivity
 import com.example.e_museum.databinding.ActivityFindingMuseumBinding
-import com.example.e_museum.intents.MuseumChoosingActivity
-
-const val EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE"
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {
     private val url =
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityFindingMuseumBinding
 
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityFindingMuseumBinding.inflate(layoutInflater)
@@ -27,22 +31,40 @@ class MainActivity : AppCompatActivity() {
         Thread {
             sqlConnection = SQLConnection.getSqlConnection()
             sqlConnection.connectServer(url, username, password)
-            SystemClock.sleep(1000)
             if (!sqlConnection.isReconnecting) {
-                val intent = Intent(this, ViewThing::class.java).apply {
-                    putExtra(EXTRA_MESSAGE, "hello")
-                }
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                val intent = Intent(this, MuseumChoosingActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
         }.start()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getLastLocation()
+    }
+
+    private fun getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    val latitude = location.latitude
+                    val longitude = location.longitude
+                    Log.i("longitude", longitude.toString())
+                    Log.i("latitude", latitude.toString())
+                }
+            }
     }
 
     companion object {
         lateinit var sqlConnection: SQLConnection
-
-        fun showNotification(context: Context, content: String) {
-            Toast.makeText(context, content, Toast.LENGTH_SHORT).show()
-        }
     }
 }
