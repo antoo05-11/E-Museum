@@ -1,5 +1,6 @@
 package com.example.e_museum.fragments_thing_finding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.e_museum.MainActivity
+import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByScanningBinding
+import com.example.e_museum.entities.Thing
 
 class FindingThingByScanningFragment : Fragment() {
 
@@ -48,20 +51,29 @@ class FindingThingByScanningFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
 
-                Thread {
-                    MainActivity.sqlConnection.getDataQuery(
-                        String.format(
-                            "select * from things where thingID = %s",
-                            it.text
-                        )
-                    )
-                    requireActivity().runOnUiThread{
-                        // TODO: Change to view thing fragment.
+               Thread {
+                val queryString = String.format(
+                    "select * from things where thingID = %s", it.text
+                )
+                val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
+                if (resultSet == null) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), "Wrong ID", Toast.LENGTH_SHORT).show()
                     }
-                }.start()
+                    return@Thread
+                }
+                if (resultSet.next()) {
+                    requireActivity().runOnUiThread {
+                        val intent = Intent(requireContext(), ViewThingActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        intent.putExtra("thing", Thing(resultSet))
+                        startActivity(intent)
+                    }
+                }
+            }.start()
             }
         }
-        codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
+        codeScanner.errorCallback = ErrorCallback {
             activity?.runOnUiThread {
                 Toast.makeText(
                     activity?.applicationContext, "Camera initialization error: ${it.message}",
