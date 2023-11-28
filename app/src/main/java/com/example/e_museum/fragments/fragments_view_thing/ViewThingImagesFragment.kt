@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_view_thing
+package com.example.e_museum.fragments.fragments_view_thing
 
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.GradientDrawable

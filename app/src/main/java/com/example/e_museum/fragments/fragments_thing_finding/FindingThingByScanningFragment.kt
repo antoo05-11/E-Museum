@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_thing_finding
+package com.example.e_museum.fragments.fragments_thing_finding
 
 import android.content.Intent
 import android.os.Bundle
@@ -45,26 +45,28 @@ class FindingThingByScanningFragment : Fragment() {
 
         codeScanner.decodeCallback = DecodeCallback {
             requireActivity().runOnUiThread {
-               Thread {
-                val queryString = String.format(
-                    "select * from things where thingID = %s", it.text
-                )
-                val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
-                if (resultSet == null) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), "Wrong ID", Toast.LENGTH_SHORT).show()
+                Thread {
+                    val queryString = String.format(
+                        "select * from things where thingID = %s", it.text
+                    )
+                    val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
+                    if (resultSet == null) {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(requireContext(), "Wrong ID", Toast.LENGTH_SHORT).show()
+                        }
+                        return@Thread
                     }
-                    return@Thread
-                }
-                if (resultSet.next()) {
-                    requireActivity().runOnUiThread {
-                        val intent = Intent(requireContext(), ViewThingActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        intent.putExtra("thing", Thing(resultSet))
-                        startActivity(intent)
+                    if (resultSet.next()) {
+                        requireActivity().runOnUiThread {
+                            val intent =
+                                Intent(requireContext(), ViewThingActivity::class.java).apply {
+                                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    putExtra("thing", Thing(resultSet))
+                                }
+                            startActivity(intent)
+                        }
                     }
-                }
-            }.start()
+                }.start()
             }
         }
         codeScanner.errorCallback = ErrorCallback {

@@ -4,22 +4,21 @@
     <string name="start_capture">Start Capture</string>
     <string name="stop_capture">Stop Capture</string>
     <string name="title_activity_museum_choosing">MuseumChoosingActivit</string>
-    <string name="title_activity_main2">MainActivity2</string>
     <string name="dialog_choose_museum">Đi tới bảo tàng đã chọn</string>
     <string name="go_to_museum">"Xác nhận"</string>
     <string name="go_back">Quay lại</string>
     <string name="title_activity_inside_museum">InsideMuseum</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_search_code">Search</string>
-    <string name="title_map">Map</string>
+    <string name="title_notifications">Thông báo</string>
+    <string name="title_search_code">Tìm kiếm</string>
+    <string name="title_map">Bản đồ</string>
     <string name="notification_image">Notification Image</string>
     <string name="hello">Hello</string>
     <string name="title_find_by_id">Nhập mã số</string>
     <string name="title_find_by_scanning">"Quét mã"</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="textview">TextView</string>
     <string name="e_museum">E-MUSEUM</string>
+    <string name="go_to_museum_chose">Đi đến bảo tàng đã chọn?</string>
+    <string name="confirm">Xác nhận</string>
 </resources>

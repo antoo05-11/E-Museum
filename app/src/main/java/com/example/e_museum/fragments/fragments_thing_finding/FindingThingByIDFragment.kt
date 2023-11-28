@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_thing_finding
+package com.example.e_museum.fragments.fragments_thing_finding
 
 import android.content.Context
 import android.content.Intent

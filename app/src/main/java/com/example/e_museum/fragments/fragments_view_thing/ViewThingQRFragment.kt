@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_view_thing
+package com.example.e_museum.fragments.fragments_view_thing
 
 import android.os.Bundle
 import android.view.LayoutInflater

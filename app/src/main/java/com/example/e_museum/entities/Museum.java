@@ -3,7 +3,7 @@ package com.example.e_museum.entities;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Museum {
+public class Museum implements MuseumEntity {
     int museumID;
     String name;
     String website;
