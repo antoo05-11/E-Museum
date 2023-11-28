@@ -45,9 +45,9 @@ class MapFragment : Fragment() {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setHasOptionsMenu(true)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewPager = binding.viewPager
 

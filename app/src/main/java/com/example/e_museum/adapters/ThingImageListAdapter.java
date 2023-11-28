@@ -2,6 +2,7 @@ package com.example.e_museum.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -19,6 +20,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.airbnb.lottie.model.content.GradientColor;
 import com.example.e_museum.PaletteUtils;
 import com.example.e_museum.R;
+import com.example.e_museum.activities.ViewImagesActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -67,6 +69,12 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
                         if (viewPager.getCurrentItem() == position) {
                             activity.findViewById(R.id.frameLayout).setBackground(backgroundDominantColor);
                         }
+
+                        holder.imageView.setOnClickListener((v) -> {
+                            Intent intent = new Intent(activity.getApplicationContext(), ViewImagesActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            activity.startActivity(intent);
+                        });
                     }
 
                     @Override

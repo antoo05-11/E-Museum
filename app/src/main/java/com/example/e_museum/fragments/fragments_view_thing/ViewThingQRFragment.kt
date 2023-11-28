@@ -10,7 +10,6 @@ import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso
 
 class ViewThingQRFragment : Fragment() {
-
     private lateinit var binding: FragmentViewThingQrBinding
 
     override fun onCreateView(
@@ -30,6 +29,7 @@ class ViewThingQRFragment : Fragment() {
             .centerInside()
             .into(binding.qrImage)
         binding.idTextView.text = thing.thingID.toString()
+        binding.thingNameTv.text = thing.name
         return binding.root
     }
 }

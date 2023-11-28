@@ -35,9 +35,9 @@ class ThingFindingFragment : Fragment() {
 //            startActivity(intent)
         }.start()
 
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setHasOptionsMenu(true)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val navView: NavHostFragment =
             childFragmentManager.findFragmentById(R.id.nav_host_fragment_thing_finding) as NavHostFragment

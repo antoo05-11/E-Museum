@@ -55,7 +55,7 @@ class NotificationsFragment : Fragment() {
             while (resultSet.next()) {
                 notifications.add(Notification(resultSet))
             }
-            requireActivity().runOnUiThread {
+            activity?.runOnUiThread {
                 adapter.notifyDataSetChanged()
                 binding.loadingNotificationsProgressBar.isVisible = false
                 binding.rvcNotifications.isVisible = true
@@ -71,19 +71,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
     }
 
     override fun onDestroyView() {

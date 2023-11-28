@@ -33,6 +33,7 @@ class ViewThingImagesFragment : Fragment() {
         viewPager = binding.viewPager
 
         val thing = requireActivity().intent.getSerializableExtra("thing") as Thing
+
         val thingURLLists = ArrayList<String>()
         for (i in 1..thing.images) {
             thingURLLists.add(
