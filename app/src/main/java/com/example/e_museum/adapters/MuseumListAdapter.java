@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.ConfirmDialog;
 import com.example.e_museum.R;
+import com.example.e_museum.activities.CustomConfirmDialog;
 import com.example.e_museum.entities.Museum;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
@@ -64,7 +65,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
     }
 
     private void confirmMuseum() {
-        DialogFragment newFragment = new ConfirmDialog();
+        DialogFragment newFragment = new CustomConfirmDialog(activity);
         newFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), "confirm museum chose");
     }
 

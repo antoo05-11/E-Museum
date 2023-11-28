@@ -7,7 +7,6 @@
         tools:context=".fragments_view_thing.ViewThingImagesFragment"
         android:id="@+id/frameLayout">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="0dp"
