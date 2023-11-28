@@ -45,12 +45,6 @@ class FindingThingByScanningFragment : Fragment() {
 
         codeScanner.decodeCallback = DecodeCallback {
             requireActivity().runOnUiThread {
-                Toast.makeText(
-                    activity?.applicationContext,
-                    "Scan result: ${it.text}",
-                    Toast.LENGTH_LONG
-                ).show()
-
                Thread {
                 val queryString = String.format(
                     "select * from things where thingID = %s", it.text

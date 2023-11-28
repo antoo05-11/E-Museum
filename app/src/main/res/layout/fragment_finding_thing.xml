@@ -13,15 +13,22 @@
             android:id="@+id/nav_host_fragment_thing_finding"
             app:layout_constraintBottom_toTopOf="@id/thing_finding_nav_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/thing_finding_navigation" />
+            app:navGraph="@navigation/thing_finding_navigation"
+            android:layout_marginBottom="30dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:id="@+id/thing_finding_nav_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment_thing_finding"
-            app:menu="@menu/thing_finding_menu" >
+            app:menu="@menu/thing_finding_menu"
+            android:background="@drawable/bot_nav_view_finding_thing_shape"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="50dp">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

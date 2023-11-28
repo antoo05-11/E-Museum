@@ -1,6 +1,5 @@
 package com.example.e_museum.fragments_inside_museum
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
@@ -18,7 +17,6 @@ class ThingFindingFragment : Fragment() {
     private var _binding: FragmentFindingThingBinding? = null
     private val binding get() = _binding!!
 
-    @SuppressLint("SetTextI18n")
     override
     fun onCreateView(
         inflater: LayoutInflater,

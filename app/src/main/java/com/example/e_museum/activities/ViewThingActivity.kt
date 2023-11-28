@@ -43,15 +43,24 @@ class ViewThingActivity : AppCompatActivity() {
         binding.videoView.player = exoPlayer
         exoPlayer.setMediaItem(
             MediaItem.fromUri(
-                "https://muzik-server-uet-i4e7.onrender.com/api/song/2/c01c0607e90d03d70f65muzikUETK668f4e24bbc98ed8a8d2b63942bb864188muzikUETK66e1d2777ce45efbc9225e109bef1ecc68329acdc605db7e29ab81522efd145248.m3u8"
+                String.format(
+                    "https://muzik-files-server.000webhostapp.com/emuseum/museum_sound/%d.mp3",
+                    thing.thingID
+                )
             )
         )
+
         exoPlayer.prepare()
+        exoPlayer.play()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        exoPlayer.release()
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            onBackPressed()
+            finish()
             return true
         }
         return super.onOptionsItemSelected(item)

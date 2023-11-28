@@ -12,11 +12,14 @@
             android:text="Nhập số được gắn trên bảng mô tả hiện vật"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
+            android:id="@+id/findThingByIDTextView"
             android:textColor="@color/white"
             android:layout_marginBottom="15dp"
             android:textSize="20sp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:singleLine="false"
+            android:maxLines="2"
+            android:gravity="center" />
 
     <TextView
             android:text="435739"

@@ -53,12 +53,15 @@ class ViewThingImagesFragment : Fragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                val imageView = ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(position) as ThingImageListAdapter.ThingImageViewHolder).imageView
-                if(imageView.drawable != null) {
+                val imageView =
+                    ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
+                        position
+                    ) as ThingImageListAdapter.ThingImageViewHolder).imageView
+                if (imageView.drawable != null) {
                     val imageBitmap = imageView.drawable.toBitmap()
                     val backgroundDominantColor = PaletteUtils().getDominantGradient(
                         imageBitmap,
-                        15.0f,
+                        0f,
                         GradientDrawable.Orientation.TOP_BOTTOM, null
                     )
                     binding.frameLayout.background = backgroundDominantColor
