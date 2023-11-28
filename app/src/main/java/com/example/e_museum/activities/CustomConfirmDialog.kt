@@ -11,11 +11,11 @@ import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.R
 
-class CustomConfirmDialog(private val _context: Context): DialogFragment() {
-    private val activity: Activity = _context as Activity
+class CustomConfirmDialog(private val _activity: Activity): DialogFragment() {
+    private val activity: Activity = _activity
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val builder = AlertDialog.Builder(_context)
+        val builder = AlertDialog.Builder(activity)
 
         val inflater = activity.layoutInflater
         val dialogView = inflater.inflate(R.layout.custom_dialog, null)

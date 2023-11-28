@@ -46,28 +46,33 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/cancel_button"
-                android:text="Quay lại"
-                android:textSize="14sp"
-                android:background="@drawable/bg_gray_corner_10"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                android:alpha="0.5"
-                tools:ignore="Suspicious0dp" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/cancel_button"
+                    android:text="Quay lại"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_gray_corner_10"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:alpha="0.5"
+                    tools:ignore="Suspicious0dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/zoom_out_animator" />
+
             <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/confirm_button"
-                android:layout_weight="1"
-                android:text="Xác nhận"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                android:background="@drawable/bg_yellow_corner_10"
-                tools:ignore="Suspicious0dp" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/confirm_button"
+                    android:layout_weight="1"
+                    android:text="Xác nhận"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/bg_yellow_corner_10"
+                    tools:ignore="Suspicious0dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/zoom_out_animator" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -60,7 +60,6 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
                                         15.0f,
                                         GradientDrawable.Orientation.TOP_BOTTOM, null
                                 );
-                        holder.container.setBackground(backgroundDominantColor);
                     }
 
                     @Override
@@ -75,15 +74,16 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
         return imageURLs.size();
     }
 
-
     public static class ThingImageViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
-        private final ImageView container;
 
         public ThingImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            container = itemView.findViewById(R.id.thing_image_inside_bg_image_view);
             imageView = itemView.findViewById(R.id.thing_image_inside);
+        }
+
+        public ImageView getImageView() {
+            return imageView;
         }
     }
 }
