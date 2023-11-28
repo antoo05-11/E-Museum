@@ -37,4 +37,3 @@ class CustomConfirmDialog(private val _context: Context): DialogFragment() {
         return builder.create()
     }
 }
-
