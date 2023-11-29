@@ -16,27 +16,58 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.entities.Museum;
 import com.example.e_museum.entities.Notification;
 import com.example.e_museum.activities.NotificationViewActivity;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.NotificationViewHolder> implements Filterable {
-    List<Notification> notifications;
-    Activity activity;
+    private List<Notification> notifications;
+    private List<Notification> oldNotifications;
 
-    Fragment containerFragment;
+    private final Activity activity;
+
+    private Fragment containerFragment;
 
     public NotificationListAdapter(Activity activity, List<Notification> notifications, Fragment containerFragment) {
         this.notifications = notifications;
         this.activity = activity;
         this.containerFragment = containerFragment;
+        this.oldNotifications = notifications;
     }
 
     @Override
     public Filter getFilter() {
-        return null;
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String input = constraint.toString().toLowerCase();
+                if (input.isEmpty()) {
+                    notifications = oldNotifications;
+                } else {
+                    List<Notification> list = new ArrayList<>();
+                    for (Notification noti : oldNotifications) {
+                        if (noti.getName().toLowerCase().contains(input)) {
+                            list.add(noti);
+                        }
+                    }
+                    notifications = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = notifications;
+                return filterResults;
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                notifications = (List<Notification>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     @NonNull
@@ -97,4 +128,6 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             notificationNameTextView = itemView.findViewById(R.id.notification_name);
         }
     }
+
+
 }

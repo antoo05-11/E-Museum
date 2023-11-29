@@ -72,6 +72,7 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
 
                         holder.imageView.setOnClickListener((v) -> {
                             Intent intent = new Intent(activity.getApplicationContext(), ViewImagesActivity.class);
+                            intent.putExtra("imageURL", imageURL);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             activity.startActivity(intent);
                         });
