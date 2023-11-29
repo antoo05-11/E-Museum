@@ -4,21 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Museum implements MuseumEntity {
-    int museumID;
-    String name;
-    String website;
-    String address;
-    String phoneNumber;
-    String description;
-
-    public Museum(int museumID, String name, String website, String address, String phoneNumber, String description) {
-        this.museumID = museumID;
-        this.name = name;
-        this.website = website;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.description = description;
-    }
+    private int museumID;
+    private String name;
+    private String website;
+    private String address;
+    private String phoneNumber;
+    private String description;
+    private float pos_longitude;
+    private float pos_latitude;
 
     public Museum() {
         museumID = -1;
@@ -31,6 +24,8 @@ public class Museum implements MuseumEntity {
         this.address = resultSet.getString("address");
         this.phoneNumber = resultSet.getString("phoneNumber");
         this.description = resultSet.getString("description");
+        this.pos_latitude = resultSet.getFloat("pos_latitude");
+        this.pos_longitude = resultSet.getFloat("pos_longitude");
     }
 
     public int getMuseumID() {
@@ -79,5 +74,21 @@ public class Museum implements MuseumEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public float getPos_longitude() {
+        return pos_longitude;
+    }
+
+    public void setPos_longitude(float pos_longitude) {
+        this.pos_longitude = pos_longitude;
+    }
+
+    public float getPos_latitude() {
+        return pos_latitude;
+    }
+
+    public void setPos_latitude(float pos_latitude) {
+        this.pos_latitude = pos_latitude;
     }
 }

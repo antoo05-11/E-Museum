@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.MainActivity
-import com.example.e_museum.PagerMarginItemDecoration
+import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.R
 import com.example.e_museum.adapters.MapGuideListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding

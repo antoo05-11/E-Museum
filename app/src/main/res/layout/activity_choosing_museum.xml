@@ -16,8 +16,29 @@
             android:queryHint="Search"
             android:queryBackground="@android:color/transparent"
             style="@style/search_box"
-            android:focusable="false">
-    </androidx.appcompat.widget.SearchView>
+            android:focusable="false" />
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingHorizontal="35dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp">
+
+        <TextView
+                android:text="@string/find_museum_with_gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/findWithGPSTextView"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="end"
+                android:clickable="true"
+                android:stateListAnimator="@animator/zoom_out_animator"
+                android:focusable="true" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

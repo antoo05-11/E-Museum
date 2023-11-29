@@ -1,24 +1,15 @@
 package com.example.e_museum.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.MainActivity
-import com.example.e_museum.PagerMarginItemDecoration
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingImageListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
 import com.example.e_museum.entities.Thing
-import kotlin.math.abs
 
 class ViewThingActivity : AppCompatActivity() {
 

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.e_museum.SQLConnection
+import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.databinding.ActivityViewNotificationBinding
 import com.squareup.picasso.Picasso
 
