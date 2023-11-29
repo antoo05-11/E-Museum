@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Thing implements Serializable {
+public class Thing implements MuseumEntity {
     private int museumID;
     private int thingID;
     private int images;

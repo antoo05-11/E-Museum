@@ -15,7 +15,9 @@
             app:layout_constraintBottom_toTopOf="@id/videoView"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:navGraph="@navigation/thing_view_navigation" />
+            app:navGraph="@navigation/thing_view_navigation"
+            tools:ignore="FragmentTagUsage" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="0dp"

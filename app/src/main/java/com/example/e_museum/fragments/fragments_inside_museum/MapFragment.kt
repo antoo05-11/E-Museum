@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_inside_museum
+package com.example.e_museum.fragments.fragments_inside_museum
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -45,9 +45,9 @@ class MapFragment : Fragment() {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setHasOptionsMenu(true)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewPager = binding.viewPager
 

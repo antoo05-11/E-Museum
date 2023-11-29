@@ -6,17 +6,17 @@
         app:startDestination="@id/viewThingImagesFragment">
     <fragment
             android:id="@+id/viewThingDescriptionFragment"
-            android:name="com.example.e_museum.fragments_view_thing.ViewThingDescriptionFragment"
+            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingDescriptionFragment"
             android:label="ViewThingDescriptionFragment"
             tools:layout="@layout/fragment_view_thing_description" />
     <fragment
             android:id="@+id/viewThingQRFragment"
-            android:name="com.example.e_museum.fragments_view_thing.ViewThingQRFragment"
+            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingQRFragment"
             android:label="ViewThingQRFragment"
             tools:layout="@layout/fragment_view_thing_qr" />
      <fragment
             android:id="@+id/viewThingImagesFragment"
-            android:name="com.example.e_museum.fragments_view_thing.ViewThingImagesFragment"
+            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingImagesFragment"
             android:label="ViewThingImagesFragment"
             tools:layout="@layout/fragment_view_thing_images" />
 </navigation>

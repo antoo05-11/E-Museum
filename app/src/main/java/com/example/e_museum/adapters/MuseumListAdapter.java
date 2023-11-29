@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.e_museum.ConfirmDialog;
 import com.example.e_museum.R;
+import com.example.e_museum.fragments.MuseumConfirmDialogFragment;
 import com.example.e_museum.entities.Museum;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
@@ -63,8 +63,8 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
         return new MuseumViewHolder(view);
     }
 
-    private void confirmMuseum() {
-        DialogFragment newFragment = new ConfirmDialog();
+    private void confirmMuseum(Museum museum) {
+        DialogFragment newFragment = new MuseumConfirmDialogFragment(activity, museum);
         newFragment.show(((AppCompatActivity) activity).getSupportFragmentManager(), "confirm museum chose");
     }
 
@@ -96,7 +96,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
             holder.museumAddressTextView.setText(museum.getAddress());
 
             holder.itemView.setOnClickListener((v) -> {
-                confirmMuseum();
+                confirmMuseum(museum);
             });
 
             Picasso.get()

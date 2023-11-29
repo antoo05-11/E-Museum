@@ -1,12 +1,17 @@
-package com.example.e_museum.fragments_view_thing
+package com.example.e_museum.fragments.fragments_view_thing
 
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.PagerMarginItemDecoration
+import com.example.e_museum.PaletteUtils
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImageListAdapter
 import com.example.e_museum.databinding.FragmentViewThingImagesBinding
@@ -28,6 +33,7 @@ class ViewThingImagesFragment : Fragment() {
         viewPager = binding.viewPager
 
         val thing = requireActivity().intent.getSerializableExtra("thing") as Thing
+
         val thingURLLists = ArrayList<String>()
         for (i in 1..thing.images) {
             thingURLLists.add(
@@ -42,13 +48,32 @@ class ViewThingImagesFragment : Fragment() {
             requireActivity(),
             thingURLLists
         )
+
         createCardHolder()
+        viewPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                val imageView =
+                    ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
+                        position
+                    ) as ThingImageListAdapter.ThingImageViewHolder).imageView
+                if (imageView.drawable != null) {
+                    val imageBitmap = imageView.drawable.toBitmap()
+                    val backgroundDominantColor = PaletteUtils().getDominantGradient(
+                        imageBitmap,
+                        0f,
+                        GradientDrawable.Orientation.TOP_BOTTOM, null
+                    )
+                    binding.frameLayout.background = backgroundDominantColor
+                }
+            }
+        })
 
         return binding.root
     }
 
     private fun createCardHolder() {
-
         viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewPager.adapter = myAdapter
         viewPager.offscreenPageLimit = 1
