@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/successConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_black_corner_16"
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gray_corner_16_top_left_top_right"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/e_museum"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+        <TextView
+                android:id="@+id/confirm_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/go_to_museum_chose"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        <Button
+                android:layout_width="152dp"
+                android:layout_height="0dp"
+                android:paddingHorizontal="12dp"
+                android:id="@+id/confirm_button"
+                android:layout_weight="1"
+                android:text="@string/confirm"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_red_corner_10"
+                tools:ignore="ButtonStyle,Suspicious0dp"
+                android:clickable="true"
+                android:stateListAnimator="@animator/zoom_out_animator"
+                android:focusable="true"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="ExtraText"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cancel_button"
+                    android:text="@string/continue_finding"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_gray_corner_10"
+                    android:textColor="@color/background_color"
+                    android:layout_marginEnd="5dp"
+                    tools:ignore="ButtonStyle,Suspicious0dp"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/zoom_out_animator"
+                    android:focusable="true"
+                    android:layout_weight="1" />
+
+            <Button
+                    android:text="@string/manual_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_gray_corner_10"
+                    android:id="@+id/manualSearchButton"
+                    android:clickable="true"
+                    android:stateListAnimator="@animator/zoom_out_animator"
+                    android:focusable="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

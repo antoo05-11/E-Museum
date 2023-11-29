@@ -12,7 +12,7 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
-import com.example.e_museum.MainActivity
+import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByScanningBinding
 import com.example.e_museum.entities.Thing

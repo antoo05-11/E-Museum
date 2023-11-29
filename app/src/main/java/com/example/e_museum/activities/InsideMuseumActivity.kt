@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityInsideMuseumBinding
 import com.example.e_museum.entities.Museum
-import java.io.File
 
 class InsideMuseumActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInsideMuseumBinding

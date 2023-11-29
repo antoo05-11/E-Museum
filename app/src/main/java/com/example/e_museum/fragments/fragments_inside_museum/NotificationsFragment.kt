@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.SQLConnection
+import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.adapters.NotificationListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification

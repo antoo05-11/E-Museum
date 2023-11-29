@@ -12,11 +12,14 @@
     <string name="title_find_by_scanning">"Quét mã"</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="e_museum">E-MUSEUM</string>
-    <string name="go_to_museum_chose">Đi đến bảo tàng đã chọn?</string>
+    <string name="go_to_museum_chose">Đi đến</string>
     <string name="confirm">Xác nhận</string>
     <string name="thing_id">Mã cổ vật</string>
     <string name="thing">Cổ vật</string>
     <string name="sample_thing_name">Sample Thing Name</string>
     <string name="title_activity_view_images">ViewImagesActivity</string>
     <string name="finding_nearest_museum">Đang tìm kiếm bảo tàng gần nhất</string>
+    <string name="find_museum_with_gps">Find museum with GPS</string>
+    <string name="manual_search">TÌM KIẾM THỦ CÔNG</string>
+    <string name="continue_finding">Tiếp tục tìm kiếm</string>
 </resources>
