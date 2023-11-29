@@ -19,78 +19,114 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:padding="10dp">
 
             <TextView
-                    android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                app:fontWeight="700"
+                android:textStyle="bold"
+                android:text="Tên gọi"
+                android:textSize="30sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:id="@+id/thing_name_text_view"/>
+
+            <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tâng 3"
+                    android:text="Tầng 3"
+                    android:gravity="center"
                     android:id="@+id/thing_position_text_view" />
 
-            <TextView
-                    android:layout_width="395dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
-                    app:fontWeight="700"
-                    android:text="Tên gọi"
-                    android:textSize="18sp" />
-
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/thing_name_text_view" />
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
+                    android:text="Nguồn gốc: "
                     android:textSize="18sp"
-                    android:text="Nguồn gốc" />
+                    android:textStyle="bold"/>
 
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/thing_origin_text_view"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/thing_origin_text_view" />
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_orange_light"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Niên đại: " />
+
+                <TextView
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/thing_age_text_view"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/holo_orange_light"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                        android:text="Kích thước: "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView9"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                <TextView
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/thing_size_text_view"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/holo_orange_light"/>
+            </LinearLayout>
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
-                    android:textSize="18sp"
-
-                    android:text="Niên đại" />
-
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/thing_age_text_view" />
+                android:textSize="18sp"
+                android:textStyle="bold"
+                    android:text="Mô tả" />
 
             <TextView
-                    android:text="Kích thước"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView9" />
-
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/thing_size_text_view" />
-
-            <TextView
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:justificationMode="inter_word"
                     android:textSize="16sp"
-                    android:text="Mô tả" />
-
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/thing_description_text_view" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
