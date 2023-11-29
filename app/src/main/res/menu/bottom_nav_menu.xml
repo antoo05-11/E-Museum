@@ -6,10 +6,14 @@
             android:icon="@android:drawable/ic_dialog_map"
             android:title="@string/title_map" />
 
+<!--    <item-->
+<!--            android:id="@+id/fragment_finding_thing"-->
+<!--            android:icon="@android:drawable/ic_menu_search"-->
+<!--            android:title="@string/title_search_code" />-->
+
     <item
-            android:id="@+id/fragment_finding_thing"
-            android:icon="@android:drawable/ic_menu_search"
-            android:title="@string/title_search_code" />
+        android:title=""
+        android:enabled="false"/>
 
     <item
             android:id="@+id/navigation_notifications"

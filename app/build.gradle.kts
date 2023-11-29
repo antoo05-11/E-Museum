@@ -60,7 +60,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -99,13 +98,14 @@ dependencies {
 
     implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
-    implementation("com.google.android.material:material:1.10.0")
+
 
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
 
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
+    implementation("com.google.android.material:material:1.7.0")
     //exoplayer
     implementation("androidx.media3:media3-exoplayer:1.2.0")
     implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
@@ -115,7 +115,7 @@ dependencies {
     //Palette
     implementation("androidx.palette:palette-ktx:1.0.0")
 
-    implementation("com.google.android.material:material:<version>")
+
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
 }
