@@ -11,9 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import com.example.e_museum.MainActivity
+import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.R
 import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByIdBinding

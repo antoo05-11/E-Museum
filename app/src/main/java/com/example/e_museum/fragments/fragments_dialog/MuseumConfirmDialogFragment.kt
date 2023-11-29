@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments
+package com.example.e_museum.fragments.fragments_dialog
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -9,23 +9,21 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.R
 import com.example.e_museum.activities.InsideMuseumActivity
 import com.example.e_museum.entities.Museum
 
-class MuseumConfirmDialogFragment(private val _activity: Activity, private val _museum: Museum) :
+class MuseumConfirmDialogFragment(private val activity: Activity, private val museum: Museum) :
     DialogFragment() {
-    private val activity: Activity = _activity
-    private val museum: Museum = _museum
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val builder = AlertDialog.Builder(activity)
 
         val inflater = activity.layoutInflater
-        val dialogView = inflater.inflate(R.layout.custom_dialog, null)
+        val dialogView = inflater.inflate(R.layout.dialog_museum_confirm, null)
         builder.setView(dialogView)
 
 
@@ -34,6 +32,10 @@ class MuseumConfirmDialogFragment(private val _activity: Activity, private val _
         cancelButton.setOnClickListener {
             dialog!!.dismiss()
         }
+
+        val confirmTextView = dialogView.findViewById<TextView>(R.id.confirm_text_view);
+        confirmTextView.text =
+            String.format(confirmTextView.text.toString() + " " + museum.name + " chứ?")
 
         confirmButton.setOnClickListener {
             val intent =

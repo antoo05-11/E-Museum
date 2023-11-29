@@ -1,6 +1,5 @@
 package com.example.e_museum.fragments.fragments_view_thing
 
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +9,8 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.PagerMarginItemDecoration
-import com.example.e_museum.PaletteUtils
+import com.example.e_museum.utils.PagerMarginItemDecoration
+import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImageListAdapter
 import com.example.e_museum.databinding.FragmentViewThingImagesBinding

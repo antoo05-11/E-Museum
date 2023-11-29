@@ -1,28 +1,17 @@
 package com.example.e_museum.fragments.fragments_inside_museum
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.MainActivity
-import com.example.e_museum.PagerMarginItemDecoration
+import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.R
-import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.adapters.MapGuideListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding
-import com.example.e_museum.entities.Thing
-import com.google.common.collect.Lists
 import kotlin.math.abs
 
 
@@ -32,9 +21,9 @@ class MapFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private lateinit var viewPager: ViewPager2;
+    private lateinit var viewPager: ViewPager2
 
-    private lateinit var adapter: MapGuideListAdapter;
+    private lateinit var adapter: MapGuideListAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -45,28 +34,21 @@ class MapFragment : Fragment() {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        setHasOptionsMenu(true)
-//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         viewPager = binding.viewPager
 
         val titles: MutableList<String> = mutableListOf()
         val contents: MutableList<String> = mutableListOf()
         val urls = listOf("abc", "abc", "abc")
-       // val url: MutableList<String> = mutableListOf()
+        // val url: MutableList<String> = mutableListOf()
 
-        Thread{
+        Thread {
             val queryString = String.format(
                 "select * from maps where mapID = 1"
             )
             val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
-            if (resultSet == null) {
-                requireActivity().runOnUiThread {
-                    Toast.makeText(requireContext(), "Wrong map", Toast.LENGTH_SHORT).show()
-                }
+            if (resultSet == null || !resultSet.isBeforeFirst) {
                 return@Thread
-            }else{
+            } else {
                 while (resultSet.next()) {
                     val title = resultSet.getString("title")
                     val content = resultSet.getString("content")
@@ -75,8 +57,8 @@ class MapFragment : Fragment() {
                     contents.add(content)
 
                 }
-                requireActivity().runOnUiThread{
-                    adapter = MapGuideListAdapter(requireActivity(), titles, contents, urls)
+                activity?.runOnUiThread {
+                    adapter = MapGuideListAdapter(activity, titles, contents, urls)
                     createCardHolder()
                 }
             }
@@ -93,8 +75,7 @@ class MapFragment : Fragment() {
 //            options
 //        )
 //        val imageRealWidth = bd.width.toFloat()
-
-       // val scaleRate = bitmap.width / imageRealWidth;
+//        val scaleRate = bitmap.width / imageRealWidth;
 
 //        val demoBut = binding.button2
 //
@@ -115,8 +96,8 @@ class MapFragment : Fragment() {
 //            photoView.attacher.setScale(targetScale, focalX, focalY, false)
 //        }
 
-        val photoView = binding.photoView;
-        photoView.setImageResource(R.drawable.demomap);
+        val photoView = binding.photoView
+        photoView.setImageResource(R.drawable.demomap)
 
         return root
     }

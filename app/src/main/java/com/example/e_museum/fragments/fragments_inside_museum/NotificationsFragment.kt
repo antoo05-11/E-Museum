@@ -5,19 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.SQLConnection
+import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.adapters.NotificationListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification
-
 
 class NotificationsFragment : Fragment() {
 
@@ -61,20 +58,6 @@ class NotificationsFragment : Fragment() {
                 adapter.notifyDataSetChanged()
                 binding.loadingNotificationsProgressBar.isVisible = false
                 binding.rvcNotifications.isVisible = true
-
-
-                binding.notiSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        adapter.filter.filter(query)
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        adapter.filter.filter(newText)
-                        return true
-                    }
-                })
-
             }
 
         }.start()

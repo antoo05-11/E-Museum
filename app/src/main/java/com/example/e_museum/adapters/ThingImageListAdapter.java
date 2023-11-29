@@ -6,19 +6,16 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.airbnb.lottie.model.content.GradientColor;
-import com.example.e_museum.PaletteUtils;
+import com.example.e_museum.utils.PaletteUtils;
 import com.example.e_museum.R;
 import com.example.e_museum.activities.ViewImagesActivity;
 import com.squareup.picasso.Callback;
