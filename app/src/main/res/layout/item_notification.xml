@@ -19,6 +19,7 @@
                 android:layout_height="100dp"
                 android:id="@+id/notification_image"
                 android:contentDescription="@string/notification_image"
+                android:background="@drawable/grey_round_corner"
                 android:scaleType="centerCrop" />
         </com.facebook.shimmer.ShimmerFrameLayout>
     </androidx.cardview.widget.CardView>

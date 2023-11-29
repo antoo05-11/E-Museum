@@ -147,6 +147,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             notificationImageView = itemView.findViewById(R.id.notification_image);
             notificationShortTextView = itemView.findViewById(R.id.notification_short);
             notificationNameTextView = itemView.findViewById(R.id.notification_name);
+
             shimmerFrameLayout = itemView.findViewById(R.id.notification_shimmer_view_container);
             shimmerNotificationNameTextView = itemView.findViewById(R.id.shimmer_notification_name);
             shimmerNotificationShortTextView = itemView.findViewById(R.id.shimmer_notification_short);
