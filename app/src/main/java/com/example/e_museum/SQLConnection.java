@@ -45,7 +45,6 @@ public class SQLConnection {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
-
             if (e instanceof com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException
                     || e instanceof com.mysql.jdbc.exceptions.jdbc4.CommunicationsException) {
                 connection = null;

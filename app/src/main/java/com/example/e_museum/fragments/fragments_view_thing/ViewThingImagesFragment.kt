@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments_view_thing
+package com.example.e_museum.fragments.fragments_view_thing
 
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.GradientDrawable
@@ -33,6 +33,7 @@ class ViewThingImagesFragment : Fragment() {
         viewPager = binding.viewPager
 
         val thing = requireActivity().intent.getSerializableExtra("thing") as Thing
+
         val thingURLLists = ArrayList<String>()
         for (i in 1..thing.images) {
             thingURLLists.add(
@@ -53,12 +54,15 @@ class ViewThingImagesFragment : Fragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                val imageView = ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(position) as ThingImageListAdapter.ThingImageViewHolder).imageView
-                if(imageView.drawable != null) {
+                val imageView =
+                    ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
+                        position
+                    ) as ThingImageListAdapter.ThingImageViewHolder).imageView
+                if (imageView.drawable != null) {
                     val imageBitmap = imageView.drawable.toBitmap()
                     val backgroundDominantColor = PaletteUtils().getDominantGradient(
                         imageBitmap,
-                        15.0f,
+                        0f,
                         GradientDrawable.Orientation.TOP_BOTTOM, null
                     )
                     binding.frameLayout.background = backgroundDominantColor

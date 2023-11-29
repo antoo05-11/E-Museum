@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Notification {
+public class Notification implements MuseumEntity{
     int museumID;
     int notificationID;
     String content;

@@ -1,6 +1,5 @@
-package com.example.e_museum.fragments_inside_museum
+package com.example.e_museum.fragments.fragments_inside_museum
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.LayoutInflater
@@ -18,7 +17,6 @@ class ThingFindingFragment : Fragment() {
     private var _binding: FragmentFindingThingBinding? = null
     private val binding get() = _binding!!
 
-    @SuppressLint("SetTextI18n")
     override
     fun onCreateView(
         inflater: LayoutInflater,
@@ -37,9 +35,9 @@ class ThingFindingFragment : Fragment() {
 //            startActivity(intent)
         }.start()
 
-        setHasOptionsMenu(true)
-        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        setHasOptionsMenu(true)
+//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
+//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val navView: NavHostFragment =
             childFragmentManager.findFragmentById(R.id.nav_host_fragment_thing_finding) as NavHostFragment

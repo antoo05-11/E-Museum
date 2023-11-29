@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="Base.Theme.AppCompat" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.AppCompat" parent="Base.Theme.AppCompat" />
 </resources>

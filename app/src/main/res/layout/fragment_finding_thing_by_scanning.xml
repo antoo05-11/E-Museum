@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments_thing_finding.FindingThingByScanningFragment">
+        tools:context=".fragments.fragments_thing_finding.FindingThingByScanningFragment">
 
     <com.budiyev.android.codescanner.CodeScannerView
             android:id="@+id/scanner_view"

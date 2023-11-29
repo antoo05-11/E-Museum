@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments_inside_museum.MapFragment"
+    tools:context=".fragments.fragments_inside_museum.MapFragment"
     android:orientation="vertical">
 
 
