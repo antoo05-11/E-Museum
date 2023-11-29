@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -58,6 +60,18 @@ class NotificationsFragment : Fragment() {
                 adapter.notifyDataSetChanged()
                 binding.loadingNotificationsProgressBar.isVisible = false
                 binding.rvcNotifications.isVisible = true
+
+                binding.notiSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        adapter.filter.filter(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        adapter.filter.filter(newText)
+                        return true
+                    }
+                })
             }
 
         }.start()
