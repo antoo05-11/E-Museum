@@ -26,22 +26,6 @@ class ThingFindingFragment : Fragment() {
         _binding = FragmentFindingThingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        Thread {
-            SystemClock.sleep(2000)
-//            val intent = Intent(context, MuseumChoosingActivity::class.java).apply {
-//                putExtra(EXTRA_MESSAGE, "hello")
-//            }
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent)
-        }.start()
-
-//        setHasOptionsMenu(true)
-//        (activity as AppCompatActivity).supportActionBar?.title = "Museum A"
-//        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val thing_finding_nav_view = binding.thingFindingNavView
-        thing_finding_nav_view.background = null
-
         val navView: NavHostFragment =
             childFragmentManager.findFragmentById(R.id.nav_host_fragment_thing_finding) as NavHostFragment
         val navController = navView.navController

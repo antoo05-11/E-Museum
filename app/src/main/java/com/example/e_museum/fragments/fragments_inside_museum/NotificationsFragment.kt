@@ -6,17 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.adapters.NotificationListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification
+import com.example.e_museum.utils.SQLConnection
 
 class NotificationsFragment : Fragment() {
 
@@ -33,8 +31,11 @@ class NotificationsFragment : Fragment() {
         binding.rvcNotifications.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvcNotifications.adapter = adapter
 
-        binding.loadingNotificationsProgressBar.isVisible = true
-        binding.rvcNotifications.isVisible = false
+        notifications.add(Notification())
+        notifications.add(Notification())
+        notifications.add(Notification())
+        notifications.add(Notification())
+        notifications.add(Notification())
 
         val dividerItemDecoration = DividerItemDecoration(
             binding.rvcNotifications.context,
@@ -53,28 +54,26 @@ class NotificationsFragment : Fragment() {
         Thread {
             val resultSet =
                 SQLConnection.getSqlConnection().getDataQuery("select * from notifications")
+            notifications.clear()
             while (resultSet.next()) {
                 notifications.add(Notification(resultSet))
             }
             activity?.runOnUiThread {
                 adapter.notifyDataSetChanged()
-                binding.loadingNotificationsProgressBar.isVisible = false
-                binding.rvcNotifications.isVisible = true
+            }
+        }.start()
 
-                binding.notiSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        adapter.filter.filter(query)
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        adapter.filter.filter(newText)
-                        return true
-                    }
-                })
+        binding.notiSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                adapter.filter.filter(query)
+                return true
             }
 
-        }.start()
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
     }
 
     @SuppressLint("NotifyDataSetChanged")

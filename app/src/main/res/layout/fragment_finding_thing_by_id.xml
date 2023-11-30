@@ -108,15 +108,16 @@
                 style="@style/number_button" />
 
         <ImageButton
-                android:src="@android:drawable/ic_menu_search"
+                android:src="@drawable/baseline_search_24"
                 app:layout_row="3"
                 app:layout_column="2"
+                android:padding="20dp"
+                android:scaleType="centerCrop"
                 android:id="@+id/search_thing_button"
                 style="@style/search_button" />
 
         <ImageButton
                 android:src="@drawable/delete"
-
                 android:id="@+id/delete_num_button"
                 app:layout_row="3"
                 app:layout_column="0"

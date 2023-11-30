@@ -24,17 +24,17 @@
                 android:padding="10dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:justificationMode="inter_word"
-                app:fontWeight="700"
-                android:textStyle="bold"
-                android:text="Tên gọi"
-                android:textSize="30sp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:id="@+id/thing_name_text_view"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
+                    app:fontWeight="700"
+                    android:textStyle="bold"
+                    android:text="Tên gọi"
+                    android:textSize="30sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:id="@+id/thing_name_text_view" />
 
             <TextView
                     android:layout_width="match_parent"

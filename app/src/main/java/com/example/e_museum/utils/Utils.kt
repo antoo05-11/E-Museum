@@ -12,5 +12,5 @@ fun getDistance(pointA: Point, pointB: Point): Float {
 }
 
 fun <T: Serializable> printLogcat(string: T) {
-    Log.d("debug", (string as Serializable).toString())
+    Log.d("app-debug", (string as Serializable).toString())
 }

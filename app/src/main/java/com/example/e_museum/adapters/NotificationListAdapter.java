@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
-import com.example.e_museum.entities.Museum;
 import com.example.e_museum.entities.Notification;
 import com.example.e_museum.activities.NotificationViewActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -108,7 +107,6 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             return;
         }
         if (notification.getNotificationID() == -1) {
-
             holder.shimmerFrameLayout.startShimmer();
             holder.shimmerNotificationNameTextView.startShimmer();
             holder.shimmerNotificationShortTextView.startShimmer();
@@ -118,45 +116,34 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         } else {
             holder.shimmerFrameLayout.startShimmer();
 
-            new CountDownTimer(3000,1000) {
+            holder.shimmerNotificationNameTextView.hideShimmer();
+            holder.shimmerNotificationShortTextView.hideShimmer();
 
-                @Override
-                public void onTick(long millisUntilFinished) {
+            holder.notificationNameTextView.setSelected(true);
+            holder.notificationNameTextView.setBackgroundColor(Color.TRANSPARENT);
+            holder.notificationShortTextView.setBackgroundColor(Color.TRANSPARENT);
 
-                }
-
-                @Override
-                public void onFinish() {
-                    holder.shimmerNotificationNameTextView.hideShimmer();
-                    holder.shimmerNotificationShortTextView.hideShimmer();
-
-                    holder.notificationNameTextView.setSelected(true);
-                    holder.notificationNameTextView.setBackgroundColor(Color.TRANSPARENT);
-                    holder.notificationShortTextView.setBackgroundColor(Color.TRANSPARENT);
-
-                    holder.notificationNameTextView.setText(notification.getName());
-                    holder.notificationShortTextView.setText(notification.getShortText());
+            holder.notificationNameTextView.setText(notification.getName());
+            holder.notificationShortTextView.setText(notification.getShortText());
 
 
-                    Picasso.get()
-                            .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_%d_preview_image.png", notification.getNotificationID()))
-                            .fit()
-                            .centerInside()
-                            .into(holder.notificationImageView, new Callback() {
+            Picasso.get()
+                    .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_%d_preview_image.png", notification.getNotificationID()))
+                    .fit()
+                    .centerInside()
+                    .into(holder.notificationImageView, new Callback() {
 
-                                @Override
-                                public void onSuccess() {
-                                    holder.shimmerFrameLayout.hideShimmer();
-                                }
+                        @Override
+                        public void onSuccess() {
+                            holder.shimmerFrameLayout.hideShimmer();
+                        }
 
-                                @Override
-                                public void onError(Exception e) {
+                        @Override
+                        public void onError(Exception e) {
 
-                                }
-                            });
-                    holder.itemView.setTag(notification);
-                }
-            }.start();
+                        }
+                    });
+            holder.itemView.setTag(notification);
         }
     }
 
@@ -173,6 +160,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
         private final ShimmerFrameLayout shimmerFrameLayout;
         private final ShimmerFrameLayout shimmerNotificationNameTextView;
         private final ShimmerFrameLayout shimmerNotificationShortTextView;
+
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
             notificationImageView = itemView.findViewById(R.id.notification_image);
@@ -184,6 +172,4 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
             shimmerNotificationShortTextView = itemView.findViewById(R.id.shimmer_notification_short);
         }
     }
-
-
 }

@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         ) {
             return
         }
-        SystemClock.sleep(5000)
+
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {

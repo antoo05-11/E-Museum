@@ -15,22 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.entities.MapGuide;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapter.MapGuideHolder> {
-    Activity activity;
-    List<String> title = new ArrayList<>();
-    List<String> contents = new ArrayList<>();
-    List<String> urlList = new ArrayList<>();
+    private final Activity activity;
 
-    public MapGuideListAdapter(Activity activity, List<String> title, List<String> contents, List<String> urlList) {
+    private final List<MapGuide> mapGuides;
+
+    public MapGuideListAdapter(Activity activity, List<MapGuide> mapGuides) {
         this.activity = activity;
-        this.title = title;
-        this.contents = contents;
-        this.urlList = urlList;
+        this.mapGuides = mapGuides;
     }
 
     @NonNull
@@ -42,12 +39,13 @@ public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull MapGuideHolder holder, int position) {
-        if (title.size() > 0 && position < title.size()) {
+        MapGuide mapGuide = mapGuides.get(position);
+        if (!mapGuide.getContent().isEmpty()) {
             LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params1.setMargins(20,0,20,0);
+            params1.setMargins(20, 0, 20, 0);
 
             TextView titleTextView = new TextView(activity.getApplicationContext());
-            titleTextView.setText(title.get(position));
+            titleTextView.setText(mapGuide.getTitle());
             titleTextView.setTextSize(18f);
             titleTextView.setTypeface(null, Typeface.BOLD);
             titleTextView.setTextColor(Color.BLACK);
@@ -55,10 +53,10 @@ public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapte
             titleTextView.setLayoutParams(params1);
 
             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params2.setMargins(20,0,20,0);
+            params2.setMargins(20, 0, 20, 0);
 
             TextView contentTextView = new TextView(activity.getApplicationContext());
-            contentTextView.setText(contents.get(position));
+            contentTextView.setText(mapGuide.getContent());
             contentTextView.setTextSize(16f);
             contentTextView.setTextColor(Color.argb(204, 0, 0, 0));
             contentTextView.setGravity(Gravity.CENTER);
@@ -66,9 +64,9 @@ public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapte
 
             holder.container.addView(titleTextView);
             holder.container.addView(contentTextView);
-        }else {
+        } else {
             ImageView imageView = new ImageView(activity.getApplicationContext());
-            Picasso.get().load(urlList.get(position - title.size())).fit().into(imageView);
+            Picasso.get().load(mapGuide.getImageURL()).fit().into(imageView);
 
             holder.container.addView(imageView);
         }
@@ -76,15 +74,19 @@ public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapte
 
     @Override
     public int getItemCount() {
-        return title.size() + urlList.size();
+        return mapGuides.size();
     }
 
-    public class MapGuideHolder extends RecyclerView.ViewHolder{
+    public static class MapGuideHolder extends RecyclerView.ViewHolder {
         LinearLayout container;
 
         public MapGuideHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
         }
+    }
+
+    public List<MapGuide> getMapGuides() {
+        return mapGuides;
     }
 }

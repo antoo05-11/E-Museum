@@ -4,15 +4,15 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Notification implements MuseumEntity{
-    int museumID;
-    int notificationID;
-    String content;
-    Date dateStart;
-    Date dateEnd;
-    String condition;
-    String name;
-    String shortText;
+public class Notification implements MuseumEntity {
+    private int museumID;
+    private int notificationID;
+    private String content;
+    private Date dateStart;
+    private Date dateEnd;
+    private String condition;
+    private String name;
+    private String shortText;
 
     public String getName() {
         return name;
@@ -78,6 +78,9 @@ public class Notification implements MuseumEntity{
         this.condition = condition;
     }
 
+    public Notification() {
+        notificationID = -1;
+    }
 
     public Notification(ResultSet resultSet) throws SQLException {
         this.museumID = resultSet.getInt("museumID");

@@ -1,26 +1,26 @@
 package com.example.e_museum.activities
 
-//noinspection SuspiciousImport
-import android.R
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.e_museum.R
 import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.databinding.ActivityViewNotificationBinding
 import com.squareup.picasso.Picasso
 
 class NotificationViewActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityViewNotificationBinding;
+    private lateinit var binding: ActivityViewNotificationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewNotificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.loadingNotificationProgressBar.isVisible = true
         binding.notificationGeneralBox.isVisible = false
 
-        supportActionBar?.title = "Thông báo sự kiện"
+        supportActionBar?.title = getString(R.string.event_notification)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         Thread {
@@ -38,10 +38,10 @@ class NotificationViewActivity : AppCompatActivity() {
                     binding.notificationNameTv.text = resultSet.getString("name")
                     binding.notificationConditionTv.text = resultSet.getString("condition")
                     binding.notIcationContentTv.text = resultSet.getString("content")
-                    binding.eventDateTv.text = normalizeDate(
-                        String.format(
-                            resultSet.getDate("dateStart").toString()
-                        ) + " đến " + normalizeDate(resultSet.getDate("dateEnd").toString())
+                    binding.eventDateTv.text = String.format(
+                        "%s đến %s",
+                        normalizeDate(resultSet.getDate("dateStart").toString()),
+                        normalizeDate(resultSet.getDate("dateEnd").toString())
                     )
                     Picasso.get()
                         .load(
@@ -54,16 +54,13 @@ class NotificationViewActivity : AppCompatActivity() {
                         .centerInside()
                         .into(binding.notificationMainImage)
                 }
-
             }
         }.start()
-
-        setContentView(binding.root)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.home) {
-            onBackPressed()
+        if (item.itemId == android.R.id.home) {
+            finish()
             return true
         }
         return super.onOptionsItemSelected(item)

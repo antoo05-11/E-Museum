@@ -17,7 +17,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_gray_corner_10" />
+            android:background="@drawable/bg_gray_corner_10"
+            android:stateListAnimator="@animator/zoom_out_animator"/>
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView"
