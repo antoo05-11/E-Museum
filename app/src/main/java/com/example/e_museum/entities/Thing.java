@@ -14,18 +14,7 @@ public class Thing implements MuseumEntity {
     private String origin;
     private String age;
     private String size;
-
-    public Thing(int museumID, int thingID, int images, int videos, String name, String description, String origin, String age, String size) {
-        this.museumID = museumID;
-        this.thingID = thingID;
-        this.images = images;
-        this.videos = videos;
-        this.name = name;
-        this.description = description;
-        this.origin = origin;
-        this.age = age;
-        this.size = size;
-    }
+    private int collectionID;
 
     public Thing(ResultSet resultSet) throws SQLException {
         this.museumID = resultSet.getInt("museumID");
@@ -37,6 +26,7 @@ public class Thing implements MuseumEntity {
         this.origin = resultSet.getString("origin");
         this.age = resultSet.getString("age");
         this.size = resultSet.getString("size");
+        this.collectionID = resultSet.getInt("collectionID");
     }
 
     public int getMuseumID() {

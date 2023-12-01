@@ -36,9 +36,14 @@
                 android:label="@string/title_activity_view_images"
                 android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
+                android:name=".activities.ViewCollectionActivity"
+                android:exported="false"
+                android:label="@string/title_activity_view_collection"
+                android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
                 android:name=".activities.InsideMuseumActivity"
                 android:exported="false"
-                android:theme="@style/Theme.AppCompat.NoActionBar"/>
+                android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
                 android:name=".activities.NotificationViewActivity"
                 android:exported="false" />

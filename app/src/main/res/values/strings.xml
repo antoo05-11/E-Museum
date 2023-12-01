@@ -25,4 +25,6 @@
     <string name="event_notification">Thông báo sự kiện</string>
     <string name="title_collection">Collection</string>
     <string name="list_collection">Danh sách cổ vật</string>
+    <string name="something">Something</string>
+    <string name="title_activity_view_collection">ViewCollectionActivity</string>
 </resources>

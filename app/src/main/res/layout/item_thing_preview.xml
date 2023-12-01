@@ -5,7 +5,8 @@
         style="@style/item_rounded_corner"
         android:orientation="vertical"
         android:clickable="true"
-        android:stateListAnimator="@animator/zoom_out_animator">
+        android:stateListAnimator="@animator/zoom_out_animator"
+        android:focusable="true">
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -28,27 +29,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
-                    1
+
 
                     <ImageView
                             android:layout_width="100dp"
                             android:layout_height="200dp"
-                            android:id="@+id/thing_image_"
+                            android:id="@+id/thing_image_1"
                             android:background="#7BE4E4E4"
                             android:scaleType="centerCrop"
                             tools:ignore="ContentDescription" />
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
                 <com.facebook.shimmer.ShimmerFrameLayout
-                        android:id="@+id/thing_shimmer_view_container"
+                        android:id="@+id/thing_shimmer_view_container_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center" />
             </LinearLayout>
-            2
+
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/thing_shimmer_view_container"
+                    android:id="@+id/thing_shimmer_view_container_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center">
@@ -56,7 +57,7 @@
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:id="@+id/thing_image_"
+                        android:id="@+id/thing_image_2"
                         android:background="#7BE4E4E4"
                         android:scaleType="centerCrop"
                         tools:ignore="ContentDescription" />

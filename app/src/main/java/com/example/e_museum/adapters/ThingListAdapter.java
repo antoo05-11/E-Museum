@@ -20,8 +20,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.ThingViewHolder> implements Filterable {
-    private Activity activity;
-    private ArrayList<Thing> things;
+    private final Activity activity;
+    private final ArrayList<Thing> things;
 
     public ThingListAdapter(Activity activity, ArrayList<Thing> things) {
         this.activity = activity;
@@ -30,13 +30,11 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
 
     public static class ThingViewHolder extends RecyclerView.ViewHolder {
         private final TextView thingNameTextView;
-        private final TextView thingShortTextView;
         private final ImageView thingImageView;
 
         public ThingViewHolder(@NonNull View itemView) {
             super(itemView);
             thingImageView = itemView.findViewById(R.id.thing_image);
-            thingShortTextView = itemView.findViewById(R.id.thing_short);
             thingNameTextView = itemView.findViewById(R.id.thing_name_tv);
         }
     }
@@ -64,7 +62,7 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
                 .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/thing_%d_%d_preview_image.png", thing.getMuseumID(), thing.getThingID()))
                 .fit()
                 .centerInside()
-                .into((ImageView) holder.thingImageView);
+                .into(holder.thingImageView);
     }
 
     @Override

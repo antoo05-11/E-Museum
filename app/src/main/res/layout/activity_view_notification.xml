@@ -27,8 +27,7 @@
                     android:scaleType="centerCrop"
                     android:background="@drawable/rectangle_shape"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="10dp"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+                    android:layout_marginVertical="10dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

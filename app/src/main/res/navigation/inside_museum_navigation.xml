@@ -24,7 +24,7 @@
 
     <fragment
             android:id="@+id/navigation_collection"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.ThingsListFragment"
+            android:name="com.example.e_museum.fragments.fragments_inside_museum.CollectionsListFragment"
             android:label="@string/title_collection"
             tools:layout="@layout/fragment_map" />
 

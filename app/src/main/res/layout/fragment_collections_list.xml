@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.fragments_inside_museum.ThingsListFragment"
+        tools:context=".fragments.fragments_inside_museum.CollectionsListFragment"
         android:paddingTop="50dp">
 
     <LinearLayout
