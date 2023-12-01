@@ -8,7 +8,7 @@
         android:background="@color/theme_color"
         tools:context=".activities.InsideMuseumActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/frame_layout">
@@ -16,12 +16,46 @@
         <fragment
                 android:id="@+id/nav_host_fragment_activity_inside_museum"
                 android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 app:defaultNavHost="true"
                 app:navGraph="@navigation/inside_museum_navigation"
-                android:layout_marginBottom="60dp" />
-    </FrameLayout>
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginBottom="55dp"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp">
+
+            <ImageButton
+                    android:src="@drawable/baseline_arrow_back_ios_24"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/back_inside_museum_button"
+                    android:background="@drawable/circle_back_button"
+                    android:scaleType="centerInside"
+                    android:paddingLeft="5dp"
+                    android:stateListAnimator="@animator/zoom_out_animator" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/top_bar_text_view"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.google.android.material.bottomappbar.BottomAppBar

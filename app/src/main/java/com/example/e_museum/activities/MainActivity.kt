@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.graphics.Point
 import android.location.Location
 import android.os.Bundle
-import android.os.SystemClock
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -112,5 +111,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         lateinit var sqlConnection: SQLConnection
+        const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
     }
 }

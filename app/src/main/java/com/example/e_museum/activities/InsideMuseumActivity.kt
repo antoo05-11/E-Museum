@@ -1,7 +1,6 @@
 package com.example.e_museum.activities
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -26,8 +25,21 @@ class InsideMuseumActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_inside_museum)
         binding.bottomNavigationView.setupWithNavController(navController)
 
-        val search = binding.fab
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.navigation_notifications -> {
+                    binding.topBarTextView.text = getString(R.string.event_notification)
+                }
 
+                else -> {
+                    binding.topBarTextView.text = ""
+                }
+            }
+            navController.navigate(menuItem.itemId)
+            true
+        }
+
+        val search = binding.fab
         search.setOnClickListener {
             navController.popBackStack()
 
@@ -44,15 +56,22 @@ class InsideMuseumActivity : AppCompatActivity() {
         Glide.with(this).load(R.drawable.qr_scanner)
             .into(binding.fab)
 
-        supportActionBar?.title = museum.name
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.backInsideMuseumButton.setOnClickListener {
+            onBackPressed()
+        }
+
+//        supportActionBar?.title = museum.name
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
+    //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == android.R.id.home) {
+//            finish()
+//            return true
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+    override fun finish() {
+        super.finish()
     }
 }

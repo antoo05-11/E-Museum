@@ -23,4 +23,5 @@
     <string name="manual_search">TÌM KIẾM THỦ CÔNG</string>
     <string name="continue_finding">Tiếp tục tìm kiếm</string>
     <string name="event_notification">Thông báo sự kiện</string>
+    <string name="title_collection">Collection</string>
 </resources>

@@ -3,7 +3,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@+id/navigation_map">
+        app:startDestination="@+id/navigation_home">
+    <fragment
+            android:id="@+id/navigation_home"
+            android:name="com.example.e_museum.fragments.fragments_inside_museum.MuseumInfoFragment"
+            android:label="@string/title_home"
+            tools:layout="@layout/fragment_museum_info" />
 
     <fragment
             android:id="@+id/navigation_map"
@@ -16,6 +21,12 @@
             android:name="com.example.e_museum.fragments.fragments_inside_museum.ThingFindingFragment"
             android:label="@string/title_search_code"
             tools:layout="@layout/fragment_finding_thing" />
+
+    <fragment
+            android:id="@+id/navigation_collection"
+            android:name="com.example.e_museum.fragments.fragments_inside_museum.ThingsListFragment"
+            android:label="@string/title_collection"
+            tools:layout="@layout/fragment_map" />
 
     <fragment
             android:id="@+id/navigation_notifications"

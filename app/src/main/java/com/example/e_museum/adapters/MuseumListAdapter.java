@@ -76,7 +76,6 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
             return;
         }
         if (museum.getMuseumID() == -1) {
-
             holder.shimmerFrameLayout.startShimmer();
             holder.shimmerMuseumNameTextView.startShimmer();
             holder.shimmerMuseumShortTextView.startShimmer();

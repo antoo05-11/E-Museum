@@ -37,7 +37,8 @@
                 android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
                 android:name=".activities.InsideMuseumActivity"
-                android:exported="false" />
+                android:exported="false"
+                android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity
                 android:name=".activities.NotificationViewActivity"
                 android:exported="false" />

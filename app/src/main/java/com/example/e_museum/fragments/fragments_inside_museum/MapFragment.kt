@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -20,8 +22,10 @@ import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.github.chrisbanes.photoview.PhotoView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import java.lang.Exception
 import kotlin.math.abs
+
+
+private const val DEFAULT_FLOOR_INDEX = 1
 
 class MapFragment : Fragment() {
     private var _binding: FragmentMapBinding? = null
@@ -49,14 +53,20 @@ class MapFragment : Fragment() {
         val mapGuides: MutableList<MapGuide> = mutableListOf()
 
         val museum = activity?.intent?.getSerializableExtra("museum") as Museum
+
+        val dropdown: Spinner = binding.spinner1
+        val items = listOf("Tầng 1", "Tầng 2", "Tầng 3")
+        val floorsListAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, items)
+        dropdown.adapter = floorsListAdapter
+
         Picasso.get().load(
             String.format(
-                "https://muzik-files-server.000webhostapp.com/emuseum/map_images/%d_%d.png",
-                museum.museumID, 1
+                MainActivity.fileServerURL + "map_images/%d_%d.png",
+                museum.museumID, DEFAULT_FLOOR_INDEX
             )
         ).into(photoView, object : Callback {
             override fun onSuccess() {
-
                 bitmap = photoView.drawable.toBitmap()
                 photoView.setImageBitmap(bitmap)
                 scaleRate = bitmap.width.toFloat().div(photoView.drawable.intrinsicWidth)
@@ -68,23 +78,17 @@ class MapFragment : Fragment() {
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
 
-                        photoView.attacher.setScale(
-                            1f,
-                            true
-                        )
-
                         val mapGuide = mapGuides[position]
                         val x = mapGuide.posX.toFloat() * scaleRate
                         val y = mapGuide.posY.toFloat() * scaleRate
 
                         val focalX: Float = (x * photoView.right) / bitmap.width
                         val focalY: Float = (y * photoView.bottom) / bitmap.height
-
                         photoView.attacher.setScale(
-                            2f,
+                            3f,
                             focalX,
                             focalY,
-                            true
+                            false
                         )
                     }
                 })

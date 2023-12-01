@@ -7,18 +7,20 @@
         tools:context=".fragments.fragments_inside_museum.NotificationsFragment"
         android:orientation="vertical"
 
-        tools:background="@color/white">
+        >
 
     <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/notiSearchView">
+            android:id="@+id/notiSearchView"
+            android:layout_marginTop="50dp">
 
     </androidx.appcompat.widget.SearchView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
