@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
@@ -79,7 +80,6 @@ public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapte
 
     public static class MapGuideHolder extends RecyclerView.ViewHolder {
         LinearLayout container;
-
         public MapGuideHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
