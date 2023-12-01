@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        style="@style/item_rounded_corner"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:stateListAnimator="@animator/zoom_out_animator">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/rounded_corners_card_view">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/thing_shimmer_view_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                    1
+
+                    <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="200dp"
+                            android:id="@+id/thing_image_"
+                            android:background="#7BE4E4E4"
+                            android:scaleType="centerCrop"
+                            tools:ignore="ContentDescription" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/thing_shimmer_view_container"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+            </LinearLayout>
+            2
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/thing_shimmer_view_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/thing_image_"
+                        android:background="#7BE4E4E4"
+                        android:scaleType="centerCrop"
+                        tools:ignore="ContentDescription" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_thing_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/thing_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fcfcf9"
+                    android:textSize="22sp"
+                    android:scrollHorizontally="true"
+                    android:layout_marginBottom="5dp"
+                    android:singleLine="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:ellipsize="marquee"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:freezesText="true"
+                    android:background="@drawable/grey_round_corner"
+
+                    tools:ignore="HardcodedText" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

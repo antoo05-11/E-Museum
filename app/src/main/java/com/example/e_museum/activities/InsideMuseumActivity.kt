@@ -3,7 +3,6 @@ package com.example.e_museum.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityInsideMuseumBinding
@@ -23,12 +22,15 @@ class InsideMuseumActivity : AppCompatActivity() {
         binding.bottomNavigationView.background = null
 
         val navController = findNavController(R.id.nav_host_fragment_activity_inside_museum)
-        binding.bottomNavigationView.setupWithNavController(navController)
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_notifications -> {
                     binding.topBarTextView.text = getString(R.string.event_notification)
+                }
+
+                R.id.navigation_collection -> {
+                    binding.topBarTextView.text = getString(R.string.list_collection)
                 }
 
                 else -> {
@@ -57,21 +59,12 @@ class InsideMuseumActivity : AppCompatActivity() {
             .into(binding.fab)
 
         binding.backInsideMuseumButton.setOnClickListener {
-            onBackPressed()
+            if (binding.bottomNavigationView.selectedItemId == R.id.navigation_home) {
+                finish()
+            }
+            else {
+                binding.bottomNavigationView.selectedItemId = R.id.navigation_home
+            }
         }
-
-//        supportActionBar?.title = museum.name
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    //    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        if (item.itemId == android.R.id.home) {
-//            finish()
-//            return true
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-    override fun finish() {
-        super.finish()
     }
 }

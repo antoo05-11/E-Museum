@@ -42,8 +42,8 @@
                     android:layout_height="30dp"
                     android:id="@+id/back_inside_museum_button"
                     android:background="@drawable/circle_back_button"
-                    android:scaleType="centerInside"
-                    android:paddingLeft="5dp"
+                    android:scaleType="fitCenter"
+                    android:paddingLeft="8dp"
                     android:stateListAnimator="@animator/zoom_out_animator" />
 
             <TextView
@@ -52,7 +52,8 @@
                     android:id="@+id/top_bar_text_view"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginLeft="12dp"
+                    android:textColor="@color/white" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
