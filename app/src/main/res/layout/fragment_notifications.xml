@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/notiSearchView"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             style="@style/search_box">
 
     </androidx.appcompat.widget.SearchView>

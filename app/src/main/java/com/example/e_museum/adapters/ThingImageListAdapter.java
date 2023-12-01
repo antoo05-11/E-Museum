@@ -64,7 +64,7 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
                                 );
                         ViewPager2 viewPager = (ViewPager2) holder.itemView.getParent().getParent();
                         if (viewPager.getCurrentItem() == position) {
-                            activity.findViewById(R.id.frameLayout).setBackground(backgroundDominantColor);
+                            activity.findViewById(R.id.thing_view_root).setBackground(backgroundDominantColor);
                         }
 
                         holder.imageView.setOnClickListener((v) -> {

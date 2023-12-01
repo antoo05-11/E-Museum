@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/thing_finding_navigation"
-        app:startDestination="@id/findingThingByIDFragment">
+        app:startDestination="@id/findingThingByScanningFragment">
 
     <fragment
             android:id="@+id/findingThingByIDFragment"

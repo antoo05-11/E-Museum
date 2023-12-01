@@ -44,7 +44,7 @@ class InsideMuseumActivity : AppCompatActivity() {
         val search = binding.fab
         search.setOnClickListener {
             navController.popBackStack()
-
+            binding.topBarTextView.text = ""
             val menu = binding.bottomNavigationView.menu
             menu.setGroupCheckable(0, true, false)
             for (i in 0 until menu.size()) {
@@ -61,8 +61,7 @@ class InsideMuseumActivity : AppCompatActivity() {
         binding.backInsideMuseumButton.setOnClickListener {
             if (binding.bottomNavigationView.selectedItemId == R.id.navigation_home) {
                 finish()
-            }
-            else {
+            } else {
                 binding.bottomNavigationView.selectedItemId = R.id.navigation_home
             }
         }

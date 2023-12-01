@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="pageMargin">30dp</dimen>
     <dimen name="offset">30dp</dimen>
-    <dimen name="pageMarginAndOffset">50dp</dimen>
+    <dimen name="pageMarginAndOffset">60dp</dimen>
     <dimen name="next_item_visible_width">100dp</dimen>
     <dimen name="viewpager_horizontal_margin">10dp</dimen>
     <dimen name="fab_margin">16dp</dimen>

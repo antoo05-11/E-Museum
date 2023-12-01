@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.CollectionsListAdapter
 import com.example.e_museum.databinding.FragmentCollectionsListBinding
@@ -24,7 +25,9 @@ class CollectionsListFragment : Fragment() {
 
         // TODO: ...
         val collections = mutableListOf(Collection(), Collection(), Collection())
-        adapter = CollectionsListAdapter()
+        adapter = CollectionsListAdapter(activity, collections)
+        binding.collectionsListRcv.adapter = adapter
+        binding.collectionsListRcv.layoutManager = LinearLayoutManager(requireActivity())
 
         Thread {
             val resultSet = MainActivity.sqlConnection.getDataQuery(
@@ -45,7 +48,7 @@ class CollectionsListFragment : Fragment() {
                 while (collectionResultSet.next()) {
                     thingsList.add(Thing(collectionResultSet))
                 }
-                collections.add(Collection(collectionResultSet, thingsList))
+                collections.add(Collection(resultSet, thingsList))
             }
         }.start()
         return binding.root

@@ -27,4 +27,6 @@
     <string name="list_collection">Danh sách cổ vật</string>
     <string name="something">Something</string>
     <string name="title_activity_view_collection">ViewCollectionActivity</string>
+    <string name="view_document">Document</string>
+    <string name="QR_code">QR Code</string>
 </resources>
