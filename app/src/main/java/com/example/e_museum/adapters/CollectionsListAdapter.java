@@ -38,23 +38,28 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
     public static class CollectionsListHolder extends RecyclerView.ViewHolder {
         private final ImageView thingImage1;
         private final ImageView thingImage2;
+        private final ImageView thingImage3;
         private final TextView thingNameText;
         private final TextView thingsNumTextView;
         private final ShimmerFrameLayout thingsNumTextViewShimmer;
         private final ShimmerFrameLayout thingShimmerName;
         private final ShimmerFrameLayout thingShimmerViewContainer;
         private final ShimmerFrameLayout thingShimmerViewContainer1;
+        private final ShimmerFrameLayout thingShimmerViewContainer2;
+
 
         public CollectionsListHolder(@NonNull View itemView) {
             super(itemView);
             thingImage1 = itemView.findViewById(R.id.thing_image_1);
             thingImage2 = itemView.findViewById(R.id.thing_image_2);
+            thingImage3 = itemView.findViewById(R.id.thing_image_3);
             thingNameText = itemView.findViewById(R.id.thing_name);
             thingsNumTextView = itemView.findViewById(R.id.things_num);
 
             thingShimmerName = itemView.findViewById(R.id.shimmer_thing_name);
             thingShimmerViewContainer = itemView.findViewById(R.id.thing_shimmer_view_container);
             thingShimmerViewContainer1 = itemView.findViewById(R.id.thing_shimmer_view_container_1);
+            thingShimmerViewContainer2 = itemView.findViewById(R.id.thing_shimmer_view_container_2);
             thingsNumTextViewShimmer = itemView.findViewById(R.id.shimmer_things_num);
         }
     }
@@ -115,6 +120,23 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
                     @Override
                     public void onSuccess() {
                         holder.thingShimmerViewContainer1.hideShimmer();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+
+                    }
+                });
+
+        Picasso.get()
+                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                        collection.getThingsList().get(1).getThingID()))
+                .fit()
+                .centerInside()
+                .into(holder.thingImage3, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        holder.thingShimmerViewContainer2.hideShimmer();
                     }
 
                     @Override
