@@ -45,7 +45,7 @@
             android:layout_height="0dp"
             android:fillViewport="true"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/player_view_container"
+            app:layout_constraintBottom_toTopOf="@id/seekBar2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
@@ -70,24 +70,18 @@
                     android:id="@+id/thing_name_text_view"
                     tools:ignore="UnusedAttribute" />
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tầng 3"
-                    android:gravity="center"
-                    android:id="@+id/thing_position_text_view" />
-
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="5dp">
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
-                        android:text="Nguồn gốc: "
+                        android:text="Nguồn gốc"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -96,16 +90,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_orange_light" />
+                        android:textSize="18sp" />
             </LinearLayout>
 
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginVertical="5dp">
+                    android:orientation="vertical"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginBottom="10dp">
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -113,25 +107,24 @@
                         android:justificationMode="inter_word"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="Niên đại: " />
+                        android:text="Niên đại" />
 
                 <TextView
                         android:text="TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/thing_age_text_view"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_orange_light" />
+                        android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp">
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
 
                 <TextView
-                        android:text="Kích thước: "
+                        android:text="Kích thước"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView9"
@@ -143,27 +136,44 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/thing_size_text_view"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_orange_light" />
+                        android:textSize="18sp" />
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Mô tả" />
+                    android:layout_height="match_parent">
 
-            <TextView
-                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:justificationMode="inter_word"
-                    android:textSize="16sp"
-                    android:id="@+id/thing_description_text_view" />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:justificationMode="inter_word"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="Mô tả" />
+
+                <TextView
+                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:id="@+id/thing_description_text_view" />
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <SeekBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar2"
+            android:thumbTint="@color/white"
+            android:thumb="@drawable/custom_thumb"
+            android:progressTint="@color/white"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@id/player_view_container"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     <LinearLayout
             android:id="@+id/player_view_container"

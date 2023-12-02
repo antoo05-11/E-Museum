@@ -43,6 +43,9 @@ class InsideMuseumActivity : AppCompatActivity() {
 
         val search = binding.fab
         search.setOnClickListener {
+            if(navController.currentDestination?.id == R.id.fragment_finding_thing) {
+                return@setOnClickListener
+            }
             navController.popBackStack()
             binding.topBarTextView.text = ""
             val menu = binding.bottomNavigationView.menu
@@ -55,7 +58,7 @@ class InsideMuseumActivity : AppCompatActivity() {
             navController.navigate(R.id.fragment_finding_thing)
         }
 
-        Glide.with(this).load(R.drawable.qr_scanner)
+        Glide.with(this).load(R.drawable.icons8_search)
             .into(binding.fab)
 
         binding.backInsideMuseumButton.setOnClickListener {

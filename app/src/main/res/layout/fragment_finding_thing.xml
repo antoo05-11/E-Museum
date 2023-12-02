@@ -18,7 +18,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:id="@+id/thing_finding_nav_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nav_host_fragment_thing_finding"
@@ -31,7 +31,7 @@
             android:layout_marginBottom="50dp"
             app:itemIconTint="@color/bottom_thing_finding_view_nav_color"
             app:itemTextColor="@color/bottom_thing_finding_view_nav_color"
-            app:itemIconSize="40dp">
+            app:itemIconSize="35dp">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

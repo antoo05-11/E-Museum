@@ -10,9 +10,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingListAdapter
 import com.example.e_museum.databinding.ActivityViewCollectionBinding
+import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Thing
 import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
+import com.example.e_museum.utils.printLogcat
 import kotlin.math.abs
 
 class ViewCollectionActivity : AppCompatActivity() {
@@ -22,12 +24,19 @@ class ViewCollectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewCollectionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.backInsideMuseumButton.setOnClickListener {
+            finish()
+        }
 
         viewPager = binding.thingImagesViewPager
 
-        val thingList = ArrayList<Thing>()
-        adapter = ThingListAdapter(this, thingList)
+        val collection = intent.getSerializableExtra("collection") as Collection
 
+        val thingsList = collection.thingsList as ArrayList<Thing>
+        printLogcat(thingsList.size)
+        adapter = ThingListAdapter(this, thingsList)
         createCardHolder()
 
         viewPager.registerOnPageChangeCallback(object :
@@ -45,7 +54,7 @@ class ViewCollectionActivity : AppCompatActivity() {
                         0f,
                         GradientDrawable.Orientation.TOP_BOTTOM, null
                     )
-                    binding.frameLayout.background = backgroundDominantColor
+                    binding.root.background = backgroundDominantColor
                 }
             }
         })

@@ -5,7 +5,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.ViewCollectionActivity"
-        android:id="@+id/frameLayout">
+        android:id="@+id/root_view">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:translationZ="90dp">
+
+        <ImageButton
+                android:src="@drawable/baseline_arrow_back_ios_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/back_inside_museum_button"
+                android:background="@drawable/circle_back_button"
+                android:scaleType="fitCenter"
+                android:paddingLeft="8dp"
+                android:stateListAnimator="@animator/zoom_out_animator" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/top_bar_text_view"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="12dp"
+                android:textColor="@color/white" />
+    </LinearLayout>
 
     <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/thing_images_view_pager"

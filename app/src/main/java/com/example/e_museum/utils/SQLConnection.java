@@ -12,7 +12,6 @@ public class SQLConnection {
     public Connection connection;
     private boolean reconnecting;
     private static SQLConnection sqlConnection;
-
     String url, username, password;
 
     public static SQLConnection getSqlConnection() {

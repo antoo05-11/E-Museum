@@ -9,7 +9,7 @@
     <string name="notification_image">Notification Image</string>
     <string name="hello">Hello</string>
     <string name="title_find_by_id">Nhập mã số</string>
-    <string name="title_find_by_scanning">"Quét mã"</string>
+    <string name="title_find_by_scanning">"Quét mọi QR"</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="e_museum">E-MUSEUM</string>
     <string name="go_to_museum_chose">Đi đến</string>
@@ -23,10 +23,22 @@
     <string name="manual_search">TÌM KIẾM THỦ CÔNG</string>
     <string name="continue_finding">Tiếp tục tìm kiếm</string>
     <string name="event_notification">Thông báo sự kiện</string>
-    <string name="title_collection">Collection</string>
-    <string name="list_collection">Danh sách cổ vật</string>
+    <string name="title_collection">Bộ sưu tập</string>
+    <string name="list_collection">Các bộ sưu tập nổi bật</string>
     <string name="something">Something</string>
     <string name="title_activity_view_collection">ViewCollectionActivity</string>
-    <string name="view_document">Document</string>
-    <string name="QR_code">QR Code</string>
+    <string name="view_document">Thông tin</string>
+    <string name="QR_code">Mã QR</string>
+    <string name="share_content">Download Museum App to see more.</string>
+    <string name="open_time">Thời gian mở cửa</string>
+    <string name="ticket_price">Giá vé vào cửa</string>
+    <string name="adult">Người lớn</string>
+    <string name="student">Sinh viên</string>
+    <string name="children_6_16">Trẻ em 6 - 16 tuổi</string>
+    <string name="the_disable">Người khuyết tật</string>
+    <string name="children_under_6">Trẻ em dưới 6 tuổi</string>
+    <string name="contact">Liên lạc</string>
+    <string name="phone_number">Điện thoại</string>
+    <string name="website">Website</string>
+    <string name="address">Địa chỉ</string>
 </resources>

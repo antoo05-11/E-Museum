@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
             android:id="@+id/findingThingByScanningFragment"
-            android:icon="@drawable/icons8_qr_scan_64"
+            android:icon="@drawable/icons8_scan_48_1_"
             android:title="@string/title_find_by_scanning" />
     <item
             android:id="@+id/findingThingByIDFragment"
-            android:icon="@drawable/icons8_dialing_number_50"
+            android:icon="@drawable/icons8_dial_60"
             android:title="@string/title_find_by_id" />
 </menu>

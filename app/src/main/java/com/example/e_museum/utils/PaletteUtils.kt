@@ -58,6 +58,53 @@ class PaletteUtils {
         return gradientDrawable
     }
 
+    fun getDeeperDrawable(gradientDrawable: GradientDrawable): GradientDrawable {
+        val existingGradientDrawable = gradientDrawable.mutate() as GradientDrawable
+        val colors = existingGradientDrawable.colors
+
+        if (colors != null) {
+            for (i in colors.indices) {
+                val color = colors[i]
+                colors[i] = Color.argb(
+                    Color.alpha(color),
+                    (Color.red(color) + 50).coerceAtMost(255),
+                    (Color.green(color) + 50).coerceAtMost(255),
+                    (Color.blue(color) + 50).coerceAtMost(255)
+                )
+            }
+        }
+        existingGradientDrawable.colors = colors
+        return existingGradientDrawable
+    }
+
+    fun getDominantColor(bitmap: Bitmap?): Int {
+        val newBitmap = Bitmap.createScaledBitmap(bitmap!!, 1, 1, true)
+        val color = newBitmap.getPixel(0, 0)
+        newBitmap.recycle()
+        return lightenColor(color)
+    }
+
+    private fun darkenColor(color: Int): Int {
+        val factor = 0.8f
+
+        val alpha = Color.alpha(color)
+        val red = (Color.red(color) * factor).toInt()
+        val green = (Color.green(color) * factor).toInt()
+        val blue = (Color.blue(color) * factor).toInt()
+
+        return Color.argb(alpha, red, green, blue)
+    }
+
+    private fun lightenColor(color: Int): Int {
+        val factor = 1.2f
+
+        val alpha = Color.alpha(color)
+        val red = (Color.red(color) * factor).toInt().coerceAtMost(255)
+        val green = (Color.green(color) * factor).toInt().coerceAtMost(255)
+        val blue = (Color.blue(color) * factor).toInt().coerceAtMost(255)
+
+        return Color.argb(alpha, red, green, blue)
+    }
 }
 
 fun convertDpToPixels(dp: Float): Int {

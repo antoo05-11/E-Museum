@@ -3,6 +3,7 @@ package com.example.e_museum.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.GradientDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -42,11 +43,40 @@ class ViewThingActivity : AppCompatActivity() {
         binding = ActivityViewThingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val thing = intent.getSerializableExtra("thing") as Thing
+        val thingURLLists = ArrayList<String>()
+
+        repeat(thing.images) { i ->
+            thingURLLists.add(
+                "${MainActivity.fileServerURL}thing_images/${thing.thingID}_${i + 1}.png"
+            )
+        }
+
         binding.backViewThingButton.setOnClickListener {
             finish()
         }
 
-        val thing = intent.getSerializableExtra("thing") as Thing
+        binding.shareButton.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND_MULTIPLE
+
+                val imageUris = ArrayList<Uri>()
+                for (i in 0 until thingURLLists.size) {
+                    imageUris.add(Uri.parse(thingURLLists[i]))
+                }
+
+                putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris)
+                putExtra(Intent.EXTRA_TEXT, thing.name + "\n" + getString(R.string.share_content))
+
+                type = "image/*"
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
+
+
         binding.thingNameMainTextView.text = thing.name
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -99,16 +129,7 @@ class ViewThingActivity : AppCompatActivity() {
 
         viewPager = binding.viewPager
 
-        val thingURLLists = ArrayList<String>()
-        for (i in 1..thing.images) {
-            thingURLLists.add(
-                String.format(
-                    "https://muzik-files-server.000webhostapp.com/emuseum/thing_images/%d_%d.png",
-                    thing.thingID,
-                    i
-                )
-            )
-        }
+
         myAdapter = ThingImageListAdapter(
             this,
             thingURLLists

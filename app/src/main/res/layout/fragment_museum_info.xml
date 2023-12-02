@@ -65,7 +65,8 @@
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="left|center_vertical">
+                            android:gravity="left|center_vertical"
+                            tools:ignore="RtlHardcoded">
 
                         <ImageView
                                 android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                                 android:src="@drawable/baseline_home_work_24" />
 
                         <TextView
-                                android:text="Thoi gian mo cua"
+                                android:text="@string/open_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -110,7 +111,7 @@
                                 android:src="@drawable/baseline_monetization_on_24" />
 
                         <TextView
-                                android:text="Gia ve vao cua"
+                                android:text="@string/ticket_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -124,7 +125,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Nguoi lon:"
+                                android:text="@string/adult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -143,7 +144,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Sinh vien:"
+                                android:text="@string/student"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -162,7 +163,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Tre em 6 - 16 tuoi:"
+                                android:text="@string/children_6_16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -181,7 +182,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Nguoi khuyet tat:"
+                                android:text="@string/the_disable"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -200,7 +201,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Tre em duoi 6 tuoi:"
+                                android:text="@string/children_under_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -235,7 +236,7 @@
                                 android:src="@drawable/baseline_contact_support_24" />
 
                         <TextView
-                                android:text="Lien lac"
+                                android:text="@string/contact"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
@@ -249,7 +250,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Dien thoai"
+                                android:text="@string/phone_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -268,7 +269,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Website"
+                                android:text="@string/website"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />
@@ -287,7 +288,7 @@
                             android:layout_marginTop="10dp">
 
                         <TextView
-                                android:text="Dia chi"
+                                android:text="@string/address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="parent" />

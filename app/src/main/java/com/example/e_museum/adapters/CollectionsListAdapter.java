@@ -1,21 +1,23 @@
 package com.example.e_museum.adapters;
 
+import static com.example.e_museum.utils.UtilsKt.printLogcat;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.activities.MainActivity;
+import com.example.e_museum.activities.ViewCollectionActivity;
 import com.example.e_museum.entities.Collection;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
@@ -23,7 +25,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-//Lấy ra từ item thing preview.
 public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsListAdapter.CollectionsListHolder> {
     private final Activity activity;
 
@@ -35,30 +36,33 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
     }
 
     public static class CollectionsListHolder extends RecyclerView.ViewHolder {
-        ImageView thingImage1;
-        ImageView thingImage2;
-        TextView thingNameText;
-
-        ShimmerFrameLayout thingShimmerName;
-        ShimmerFrameLayout thingShimmerViewContainer;
-        ShimmerFrameLayout thingShimmerViewContainer1;
+        private final ImageView thingImage1;
+        private final ImageView thingImage2;
+        private final TextView thingNameText;
+        private final TextView thingsNumTextView;
+        private final ShimmerFrameLayout thingsNumTextViewShimmer;
+        private final ShimmerFrameLayout thingShimmerName;
+        private final ShimmerFrameLayout thingShimmerViewContainer;
+        private final ShimmerFrameLayout thingShimmerViewContainer1;
 
         public CollectionsListHolder(@NonNull View itemView) {
             super(itemView);
             thingImage1 = itemView.findViewById(R.id.thing_image_1);
             thingImage2 = itemView.findViewById(R.id.thing_image_2);
             thingNameText = itemView.findViewById(R.id.thing_name);
+            thingsNumTextView = itemView.findViewById(R.id.things_num);
 
             thingShimmerName = itemView.findViewById(R.id.shimmer_thing_name);
             thingShimmerViewContainer = itemView.findViewById(R.id.thing_shimmer_view_container);
             thingShimmerViewContainer1 = itemView.findViewById(R.id.thing_shimmer_view_container_1);
+            thingsNumTextViewShimmer = itemView.findViewById(R.id.shimmer_things_num);
         }
     }
 
     @NonNull
     @Override
     public CollectionsListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_thing_preview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_collection, parent, false);
         return new CollectionsListAdapter.CollectionsListHolder(view);
     }
 
@@ -66,27 +70,28 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
     @Override
     public void onBindViewHolder(@NonNull CollectionsListHolder holder, int position) {
         Collection collection = collections.get(position);
+
         if (collection == null) {
             return;
         }
+
         if (collection.getCollectionID() == -1) {
-            holder.thingShimmerName.startShimmer();
-            holder.thingShimmerViewContainer.startShimmer();
-            holder.thingShimmerViewContainer1.startShimmer();
-
             holder.thingNameText.setText("");
-        } else {
-            holder.thingShimmerViewContainer.startShimmer();
-            holder.thingShimmerViewContainer1.startShimmer();
-
-            holder.thingShimmerName.hideShimmer();
-
-            holder.thingNameText.setBackgroundColor(Color.TRANSPARENT);
-
-            holder.thingNameText.setText(collection.getName());
+            holder.thingsNumTextView.setText("");
+            return;
         }
+
+        holder.thingsNumTextView.setText(String.format("Số hiện vật: " + collection.getThingsNum()));
+        holder.thingsNumTextViewShimmer.hideShimmer();
+        holder.thingsNumTextView.setBackgroundColor(Color.TRANSPARENT);
+
+        holder.thingNameText.setText(collection.getName());
+        holder.thingShimmerName.hideShimmer();
+        holder.thingNameText.setBackgroundColor(Color.TRANSPARENT);
+
         Picasso.get()
-                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", collection.getCollectionID()))
+                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                        collection.getThingsList().get(0).getThingID()))
                 .fit()
                 .centerInside()
                 .into(holder.thingImage1, new Callback() {
@@ -102,7 +107,8 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
                 });
 
         Picasso.get()
-                .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", collection.getCollectionID()))
+                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                        collection.getThingsList().get(1).getThingID()))
                 .fit()
                 .centerInside()
                 .into(holder.thingImage2, new Callback() {
@@ -116,6 +122,13 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
 
                     }
                 });
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(activity.getApplicationContext(), ViewCollectionActivity.class);
+            intent.putExtra("collection", collection);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            activity.startActivity(intent);
+        });
     }
 
 

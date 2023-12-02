@@ -4,17 +4,37 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="60dp"
         tools:context=".fragments.fragments_thing_finding.FindingThingByScanningFragment">
 
-    <com.budiyev.android.codescanner.CodeScannerView
-            android:id="@+id/scanner_view"
+    <TextView
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quét mã"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/scan_text_view"
+            android:textSize="18sp" />
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:cardCornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@id/scan_text_view"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="45dp">
 
-    </com.budiyev.android.codescanner.CodeScannerView>
+        <com.budiyev.android.codescanner.CodeScannerView
+                android:id="@+id/scanner_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"></com.budiyev.android.codescanner.CodeScannerView>
+
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,23 +11,32 @@
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/border_container"
-            app:cardCornerRadius="15dp"
-            android:background="@color/grey">
+            app:cardBackgroundColor="#DCE6E4DB"
+            app:cardCornerRadius="15dp">
 
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="380dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/border_container"
                 app:cardCornerRadius="15dp"
-                android:layout_margin="8dp">
+                android:background="@color/grey"
+                android:layout_margin="0.5dp">
 
-            <ImageView
-                    android:id="@+id/thing_image_inside"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/app_name"
+            <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:scaleType="centerCrop" />
+                    android:layout_height="380dp"
+                    app:cardCornerRadius="15dp"
+                    android:layout_margin="8dp">
+
+                <ImageView
+                        android:id="@+id/thing_image_inside"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/app_name"
+                        android:layout_width="match_parent"
+                        android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
         </androidx.cardview.widget.CardView>
+
     </androidx.cardview.widget.CardView>
 
 

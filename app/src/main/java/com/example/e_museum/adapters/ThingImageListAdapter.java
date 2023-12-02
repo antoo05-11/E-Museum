@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -36,8 +37,7 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
     @Override
     public ThingImageListAdapter.ThingImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_thing_image, parent, false);
-        ThingImageListAdapter.ThingImageViewHolder viewHolder = new ThingImageListAdapter.ThingImageViewHolder(view);
-        return viewHolder;
+        return new ThingImageViewHolder(view);
     }
 
     @Override
@@ -56,8 +56,9 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
                     @Override
                     public void onSuccess() {
                         Bitmap imageBitmap = ((BitmapDrawable) holder.imageView.getDrawable()).getBitmap();
+                        PaletteUtils paletteUtils = new PaletteUtils();
                         GradientDrawable backgroundDominantColor =
-                                new PaletteUtils().getDominantGradient(
+                                paletteUtils.getDominantGradient(
                                         imageBitmap,
                                         0f,
                                         GradientDrawable.Orientation.TOP_BOTTOM, null
@@ -66,7 +67,7 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
                         if (viewPager.getCurrentItem() == position) {
                             activity.findViewById(R.id.thing_view_root).setBackground(backgroundDominantColor);
                         }
-
+                        holder.borderContainer.setCardBackgroundColor(paletteUtils.getDominantColor(imageBitmap));
                         holder.imageView.setOnClickListener((v) -> {
                             Intent intent = new Intent(activity.getApplicationContext(), ViewImagesActivity.class);
                             intent.putExtra("imageURL", imageURL);
@@ -89,11 +90,12 @@ public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAd
 
     public static class ThingImageViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
+        private final CardView borderContainer;
 
         public ThingImageViewHolder(@NonNull View itemView) {
             super(itemView);
+            borderContainer = itemView.findViewById(R.id.border_container);
             imageView = itemView.findViewById(R.id.thing_image_inside);
-
         }
 
         public ImageView getImageView() {
