@@ -93,29 +93,30 @@ dependencies {
     implementation("androidx.camera:camera-mlkit-vision:${camerax_version}")
     implementation("androidx.camera:camera-extensions:${camerax_version}")
 
-    implementation("com.squareup.picasso:picasso:2.71828")
     implementation("io.coil-kt:coil-compose:2.5.0")
 
-    implementation("com.airbnb.android:lottie:3.4.0")
     implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
 
-
+    // Photo.
+    implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.github.chrisbanes:PhotoView:2.3.0")
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.airbnb.android:lottie:3.4.0")
 
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     implementation("com.google.android.material:material:1.7.0")
-    //exoplayer
+    // Sound player.
     implementation("androidx.media3:media3-exoplayer:1.2.0")
     implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
     implementation("androidx.media3:media3-ui:1.2.0")
     implementation("androidx.media3:media3-exoplayer-hls:1.2.0")
 
-    //Palette
     implementation("androidx.palette:palette-ktx:1.0.0")
 
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+
+    implementation("com.github.dk19121991:DropdownTextView:0.3.3")
 }

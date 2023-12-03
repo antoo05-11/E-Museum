@@ -1,17 +1,23 @@
 package com.example.e_museum.fragments.fragments_inside_museum
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.MuseumImagesListAdapter
 import com.example.e_museum.databinding.FragmentMuseumInfoBinding
 import com.example.e_museum.entities.Museum
+import com.example.e_museum.utils.printLogcat
+import java.net.URLEncoder
 import java.util.Timer
 import java.util.TimerTask
 
@@ -31,25 +37,31 @@ class MuseumInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMuseumInfoBinding.inflate(inflater, container, false)
+        binding = FragmentMuseumInfoBinding.inflate(inflater, container, false);
+
+        val museum = activity?.intent?.getSerializableExtra("museum") as Museum
 
         museumImagesViewPager = binding.museumImagesViewPager
 
-        val museum = activity?.intent?.getSerializableExtra("museum") as Museum
-        val museumImageURLsList = mutableListOf<String>()
-
-        for (i in 1..museum.imagesNum) {
-            museumImageURLsList.add(
-                String.format(
-                    MainActivity.fileServerURL + "museum_images/%d_%d.png",
-                    museum.museumID, i
-                )
-            )
+        val museumImageURLsList = List(museum.imagesNum) { index ->
+            buildString {
+                append(MainActivity.fileServerURL)
+                append("museum_images/")
+                append("${museum.museumID}_${index + 1}.png")
+            }
         }
 
         adapter = MuseumImagesListAdapter(activity, listOf(""))
         binding.museumImagesViewPager.adapter = adapter
         binding.museumImagesViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        binding.addressTextView.text = museum.address
+        binding.addressTextView.setOnClickListener {
+            val address = binding.addressTextView.text
+            val content = "geo:0,0?q=$address"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(content))
+            startActivity(intent)
+        }
 
         Thread {
             Thread.sleep(1000)

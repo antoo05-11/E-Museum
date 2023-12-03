@@ -43,7 +43,7 @@ class InsideMuseumActivity : AppCompatActivity() {
 
         val search = binding.fab
         search.setOnClickListener {
-            if(navController.currentDestination?.id == R.id.fragment_finding_thing) {
+            if (navController.currentDestination?.id == R.id.fragment_finding_thing) {
                 return@setOnClickListener
             }
             navController.popBackStack()
@@ -62,7 +62,9 @@ class InsideMuseumActivity : AppCompatActivity() {
             .into(binding.fab)
 
         binding.backInsideMuseumButton.setOnClickListener {
-            if (binding.bottomNavigationView.selectedItemId == R.id.navigation_home) {
+            if (binding.bottomNavigationView.selectedItemId == R.id.navigation_home
+                && navController.currentDestination?.id != R.id.fragment_finding_thing
+            ) {
                 finish()
             } else {
                 binding.bottomNavigationView.selectedItemId = R.id.navigation_home

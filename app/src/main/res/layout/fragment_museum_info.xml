@@ -260,7 +260,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:autoLink="all"
+                                android:textColorLink="#FFFFFF" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -279,7 +280,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:autoLink="all"
+                                android:textColorLink="#FFFFFF" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -295,10 +297,17 @@
 
                         <TextView
                                 android:text="Street A"
+                                android:id="@+id/address_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:maxWidth="200dp"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:autoLink="all"
+                                android:maxLines="2"
+                                android:gravity="right"
+                                android:clickable="true"
+                                android:textColorLink="#FFFFFF"
+                                android:textColor="#FFFFFF" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>

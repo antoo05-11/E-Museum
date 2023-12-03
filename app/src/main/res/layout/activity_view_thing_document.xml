@@ -65,100 +65,93 @@
                     android:text="Tên gọi"
                     android:textSize="30sp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:gravity="center"
                     android:id="@+id/thing_name_text_view"
-                    tools:ignore="UnusedAttribute" />
+                    tools:ignore="UnusedAttribute"
+                    android:textColor="@color/white" />
 
-            <LinearLayout
+
+            <hakobastvatsatryan.DropdownTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp">
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:justificationMode="inter_word"
-                        android:text="Nguồn gốc"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                <TextView
-                        android:id="@+id/thing_origin_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textSize="18sp" />
-            </LinearLayout>
+                    android:layout_height="100dp"
+                    android:id="@+id/origin_dropdown_text_view"
+                    app:title_text="Nguồn gốc"
+                    app:content_text_color="@color/white"
+                    app:title_text_color="@color/white"
+                    app:title_text_color_expanded="@color/white"
+                    app:link_text_color="@color/white"
+                    app:title_text_size="24sp"
+                    app:content_padding="10dp"
+                    app:content_text_size="22sp"
+                    app:underline_link="true"
+                    app:arrow_drawable="@drawable/baseline_keyboard_arrow_down_24"
+                    app:bg_drawable_regular="@drawable/regular_background"
+                    app:bg_drawable_expanded="@drawable/expanded_background"
+                    app:expand_duration="500"
+                    app:panel_padding="10dp"
+                    android:layout_marginBottom="15dp" />
 
 
-            <LinearLayout
+            <hakobastvatsatryan.DropdownTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="100dp"
+                    android:id="@+id/age_dropdown_text_view"
+                    app:title_text="Niên đại"
+                    app:content_text_color="@color/white"
+                    app:title_text_color="@color/white"
+                    app:title_text_color_expanded="@color/white"
+                    app:link_text_color="@color/white"
+                    app:title_text_size="24sp"
+                    app:content_padding="10dp"
+                    app:content_text_size="22sp"
+                    app:underline_link="true"
+                    app:arrow_drawable="@drawable/baseline_keyboard_arrow_down_24"
+                    app:bg_drawable_regular="@drawable/regular_background"
+                    app:bg_drawable_expanded="@drawable/expanded_background"
+                    app:expand_duration="500"
+                    app:panel_padding="10dp"
+                    android:layout_marginBottom="15dp" />
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:justificationMode="inter_word"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="Niên đại" />
 
-                <TextView
-                        android:text="TextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/thing_age_text_view"
-                        android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
+            <hakobastvatsatryan.DropdownTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="100dp"
+                    android:id="@+id/thing_size_dropdown_text_view"
+                    app:title_text="Kích thước"
+                    app:content_text_color="@color/white"
+                    app:title_text_color="@color/white"
+                    app:title_text_color_expanded="@color/white"
+                    app:link_text_color="@color/white"
+                    app:title_text_size="24sp"
+                    app:content_padding="10dp"
+                    app:content_text_size="22sp"
+                    app:underline_link="true"
+                    app:arrow_drawable="@drawable/baseline_keyboard_arrow_down_24"
+                    app:bg_drawable_regular="@drawable/regular_background"
+                    app:bg_drawable_expanded="@drawable/expanded_background"
+                    app:expand_duration="500"
+                    app:panel_padding="10dp"
+                    android:layout_marginBottom="15dp" />
 
-                <TextView
-                        android:text="Kích thước"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView9"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
 
-                <TextView
-                        android:text="TextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/thing_size_text_view"
-                        android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:orientation="vertical"
+            <hakobastvatsatryan.DropdownTextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:justificationMode="inter_word"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:text="Mô tả" />
-
-                <TextView
-                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:id="@+id/thing_description_text_view" />
-            </LinearLayout>
+                    android:layout_height="100dp"
+                    android:id="@+id/thing_description_dropdown_text_view"
+                    app:title_text="Mô tả"
+                    app:content_text_color="@color/white"
+                    app:title_text_color="@color/white"
+                    app:title_text_color_expanded="@color/white"
+                    app:link_text_color="@color/white"
+                    app:title_text_size="24sp"
+                    app:content_padding="10dp"
+                    app:underline_link="true"
+                    app:arrow_drawable="@drawable/baseline_keyboard_arrow_down_24"
+                    app:bg_drawable_regular="@drawable/regular_background"
+                    app:bg_drawable_expanded="@drawable/expanded_background"
+                    app:expand_duration="500"
+                    app:panel_padding="10dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
