@@ -42,7 +42,7 @@
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
                  <com.facebook.shimmer.ShimmerFrameLayout
-                        android:id="@+id/thing_shimmer_view_container_3"
+                        android:id="@+id/thing_shimmer_view_container_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
