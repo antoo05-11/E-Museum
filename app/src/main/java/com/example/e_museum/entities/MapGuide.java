@@ -2,7 +2,6 @@ package com.example.e_museum.entities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class MapGuide {
     private final String title;

@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.adapters.MuseumListAdapter
+import com.example.e_museum.adapters.MuseumsListAdapter
 import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
 import com.example.e_museum.entities.Museum
 
@@ -36,9 +36,10 @@ class MuseumChoosingActivity : AppCompatActivity() {
         museums.add(Museum())
         museums.add(Museum())
         museums.add(Museum())
-        val tmpMuseumListAdapter = MuseumListAdapter(this, museums)
+        val tmpMuseumsListAdapter =
+            MuseumsListAdapter(this, museums)
         binding.rcvMuseums.layoutManager = LinearLayoutManager(this)
-        binding.rcvMuseums.adapter = tmpMuseumListAdapter
+        binding.rcvMuseums.adapter = tmpMuseumsListAdapter
 
         val dividerItemDecoration = DividerItemDecoration(
             binding.rcvMuseums.context,
@@ -65,19 +66,23 @@ class MuseumChoosingActivity : AppCompatActivity() {
                 museums.add(Museum(resultSet))
             }
             runOnUiThread {
-                val museumListAdapter = MuseumListAdapter(this, museums)
+                val museumsListAdapter =
+                    MuseumsListAdapter(
+                        this,
+                        museums
+                    )
                 binding.rcvMuseums.layoutManager = LinearLayoutManager(this)
-                binding.rcvMuseums.adapter = museumListAdapter
+                binding.rcvMuseums.adapter = museumsListAdapter
 
                 binding.searchView.setOnQueryTextListener(object :
                     SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        museumListAdapter.filter.filter(query)
+                        museumsListAdapter.filter.filter(query)
                         return true
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        museumListAdapter.filter.filter(newText)
+                        museumsListAdapter.filter.filter(newText)
                         return true
                     }
                 })

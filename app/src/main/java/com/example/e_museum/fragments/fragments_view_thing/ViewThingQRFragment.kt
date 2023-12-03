@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.databinding.FragmentViewThingQrBinding
 import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso
 
+@Deprecated("Unused")
 class ViewThingQRFragment : Fragment() {
     private lateinit var binding: FragmentViewThingQrBinding
 
@@ -21,7 +23,7 @@ class ViewThingQRFragment : Fragment() {
         Picasso.get()
             .load(
                 String.format(
-                    "https://muzik-files-server.000webhostapp.com/emuseum/qr_code_images/%d.png",
+                    MainActivity.fileServerURL+"qr_code_images/%d.png",
                     thing.thingID
                 )
             )

@@ -8,7 +8,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingListAdapter
+import com.example.e_museum.adapters.ThingsListAdapter
 import com.example.e_museum.databinding.ActivityViewCollectionBinding
 import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Thing
@@ -19,7 +19,7 @@ import kotlin.math.abs
 
 class ViewCollectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityViewCollectionBinding
-    private lateinit var adapter: ThingListAdapter
+    private lateinit var adapter: ThingsListAdapter
     private lateinit var viewPager: ViewPager2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,8 @@ class ViewCollectionActivity : AppCompatActivity() {
 
         val thingsList = collection.thingsList as ArrayList<Thing>
         printLogcat(thingsList.size)
-        adapter = ThingListAdapter(this, thingsList)
+        adapter =
+            ThingsListAdapter(this, thingsList)
         createCardHolder()
 
         viewPager.registerOnPageChangeCallback(object :
@@ -46,7 +47,7 @@ class ViewCollectionActivity : AppCompatActivity() {
                 val imageView =
                     ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
                         position
-                    ) as ThingListAdapter.ThingViewHolder).thingImageView
+                    ) as ThingsListAdapter.ThingViewHolder).thingImageView
                 if (imageView.drawable != null) {
                     val imageBitmap = imageView.drawable.toBitmap()
                     val backgroundDominantColor = PaletteUtils().getDominantGradient(

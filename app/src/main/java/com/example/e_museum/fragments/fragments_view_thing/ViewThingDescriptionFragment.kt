@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.e_museum.databinding.FragmentViewThingDescriptionBinding
 import com.example.e_museum.entities.Thing
 
+@Deprecated("Unused")
 class ViewThingDescriptionFragment : Fragment() {
     private lateinit var binding: FragmentViewThingDescriptionBinding
 

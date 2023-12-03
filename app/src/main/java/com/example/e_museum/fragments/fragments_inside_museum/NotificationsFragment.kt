@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.adapters.NotificationListAdapter
+import com.example.e_museum.adapters.NotificationsListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification
 import com.example.e_museum.utils.SQLConnection
@@ -27,7 +27,11 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val notifications = ArrayList<Notification>()
-        val adapter = NotificationListAdapter(requireActivity(), notifications, this)
+        val adapter = NotificationsListAdapter(
+            requireActivity(),
+            notifications,
+            this
+        )
         binding.rvcNotifications.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvcNotifications.adapter = adapter
 

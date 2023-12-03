@@ -20,14 +20,20 @@
                 android:layout_height="1000dp"
                 android:gravity="center_horizontal">
 
-            <ImageView
+            <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:id="@+id/notification_main_image"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/rectangle_shape"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="10dp" />
+                    android:layout_marginVertical="10dp"
+                    app:cardCornerRadius="15dp">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/notification_main_image"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/rectangle_shape" />
+            </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -82,7 +88,8 @@
                                 android:textStyle="bold"
                                 android:textColor="#fcfcf9"
                                 android:textSize="25dp"
-                                android:layout_marginTop="5dp" />
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp" />
 
                         <TextView
                                 android:text="Date"
@@ -93,15 +100,15 @@
                                 android:layout_marginBottom="5dp"/>
 
                         <TextView
-                                android:text="Hot"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/event_label"
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
                                 android:textSize="12dp"
-                                android:background="#E7E491"
-                                android:paddingHorizontal="10dp"/>
+                                android:background="#A3DF274C"
+                                android:paddingHorizontal="10dp"
+                                android:text="Hot" />
 
                     </LinearLayout>
 
@@ -123,13 +130,13 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Điều kiện"
-                                android:gravity="center"
-                                android:textColor="#F69C08"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Điều kiện"
+                                    android:gravity="center"
+                                    android:textColor="#A31ACDAF"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -159,20 +166,19 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingBottom="5dp"
-                                android:text="Nội dung"
-                                android:textColor="#B4BEEC"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="5dp"
+                                    android:text="Nội dung"
+                                    android:textColor="#A31ACDAF"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/notìication_content_tv"
                                 style="@style/justify_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="10dp"
                                 android:justificationMode="inter_word"
                                 android:text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
                                 android:textSize="16sp" />

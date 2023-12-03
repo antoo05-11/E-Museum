@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
@@ -21,12 +20,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class MapGuideListAdapter extends RecyclerView.Adapter<MapGuideListAdapter.MapGuideHolder> {
+public class MapGuidesListAdapter extends RecyclerView.Adapter<MapGuidesListAdapter.MapGuideHolder> {
     private final Activity activity;
-
     private final List<MapGuide> mapGuides;
 
-    public MapGuideListAdapter(Activity activity, List<MapGuide> mapGuides) {
+    public MapGuidesListAdapter(Activity activity, List<MapGuide> mapGuides) {
         this.activity = activity;
         this.mapGuides = mapGuides;
     }

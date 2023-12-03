@@ -46,7 +46,7 @@ class NotificationViewActivity : AppCompatActivity() {
                     Picasso.get()
                         .load(
                             String.format(
-                                "https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_%d_preview_image.png",
+                                MainActivity.fileServerURL + "notifications/notification_%d_preview_image.png",
                                 intent.getIntExtra("notification_id", 1)
                             )
                         )

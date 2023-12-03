@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
-import com.example.e_museum.adapters.MapGuideListAdapter
+import com.example.e_museum.adapters.MapGuidesListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding
 import com.example.e_museum.entities.MapGuide
 import com.example.e_museum.entities.Museum
@@ -33,7 +33,7 @@ class MapFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var viewPager: ViewPager2
-    private lateinit var adapter: MapGuideListAdapter
+    private lateinit var adapter: MapGuidesListAdapter
 
     private lateinit var bitmap: Bitmap
 
@@ -110,7 +110,10 @@ class MapFragment : Fragment() {
                     mapGuides.add(MapGuide(resultSet))
                 }
                 activity?.runOnUiThread {
-                    adapter = MapGuideListAdapter(activity, mapGuides)
+                    adapter = MapGuidesListAdapter(
+                        activity,
+                        mapGuides
+                    )
                     createCardHolder()
                 }
             }

@@ -19,7 +19,7 @@ class ViewQRActivity : AppCompatActivity() {
         Picasso.get()
             .load(
                 String.format(
-                    "https://muzik-files-server.000webhostapp.com/emuseum/qr_code_images/%d.png",
+                    MainActivity.fileServerURL + "qr_code_images/%d.png",
                     thing.thingID
                 )
             )

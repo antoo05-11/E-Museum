@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.CountDownTimer;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.activities.MainActivity;
 import com.example.e_museum.entities.Notification;
 import com.example.e_museum.activities.NotificationViewActivity;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -27,11 +26,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
 
-import okhttp3.internal.http2.Http2Reader;
-
-public class NotificationListAdapter extends RecyclerView.Adapter<NotificationListAdapter.NotificationViewHolder> implements Filterable {
+public class NotificationsListAdapter extends RecyclerView.Adapter<NotificationsListAdapter.NotificationViewHolder> implements Filterable {
     private List<Notification> notifications;
     private List<Notification> oldNotifications;
 
@@ -39,7 +35,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 
     private Fragment containerFragment;
 
-    public NotificationListAdapter(Activity activity, List<Notification> notifications, Fragment containerFragment) {
+    public NotificationsListAdapter(Activity activity, List<Notification> notifications, Fragment containerFragment) {
         this.notifications = notifications;
         this.activity = activity;
         this.containerFragment = containerFragment;
@@ -128,7 +124,7 @@ public class NotificationListAdapter extends RecyclerView.Adapter<NotificationLi
 
 
             Picasso.get()
-                    .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/notifications/notification_%d_preview_image.png", notification.getNotificationID()))
+                    .load(String.format(MainActivity.fileServerURL + "notifications/notification_%d_preview_image.png", notification.getNotificationID()))
                     .fit()
                     .centerInside()
                     .into(holder.notificationImageView, new Callback() {

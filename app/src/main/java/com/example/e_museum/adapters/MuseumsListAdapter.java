@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
+import com.example.e_museum.activities.MainActivity;
 import com.example.e_museum.fragments.fragments_dialog.MuseumConfirmDialogFragment;
 import com.example.e_museum.entities.Museum;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -26,12 +27,12 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.MuseumViewHolder> implements Filterable {
+public class MuseumsListAdapter extends RecyclerView.Adapter<MuseumsListAdapter.MuseumViewHolder> implements Filterable {
     private final Activity activity;
     private List<Museum> museums;
     private final List<Museum> museumsOld;
 
-    public MuseumListAdapter(Activity activity, List<Museum> museums) {
+    public MuseumsListAdapter(Activity activity, List<Museum> museums) {
         this.activity = activity;
         this.museums = museums;
         this.museumsOld = museums;
@@ -99,7 +100,7 @@ public class MuseumListAdapter extends RecyclerView.Adapter<MuseumListAdapter.Mu
             });
 
             Picasso.get()
-                    .load(String.format("https://muzik-files-server.000webhostapp.com/emuseum/museum_%d_preview_image.png", museum.getMuseumID()))
+                    .load(String.format(MainActivity.fileServerURL + "museum_%d_preview_image.png", museum.getMuseumID()))
                     .fit()
                     .centerInside()
                     .into(holder.museumImageView, new Callback() {

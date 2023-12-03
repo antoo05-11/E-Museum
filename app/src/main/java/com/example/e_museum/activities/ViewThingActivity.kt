@@ -16,10 +16,9 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingImageListAdapter
+import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
 import com.example.e_museum.entities.Thing
-import com.example.e_museum.fragments.fragments_view_thing.ViewThingQRFragment
 import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import kotlin.math.abs
@@ -30,7 +29,7 @@ class ViewThingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityViewThingBinding
     private lateinit var viewPager: ViewPager2
-    private lateinit var myAdapter: ThingImageListAdapter
+    private lateinit var myAdapter: ThingImagesListAdapter
 
     private var isPlaying: MutableLiveData<Boolean> = MutableLiveData(false)
 
@@ -104,7 +103,7 @@ class ViewThingActivity : AppCompatActivity() {
         exoPlayer.setMediaItem(
             MediaItem.fromUri(
                 String.format(
-                    "https://muzik-files-server.000webhostapp.com/emuseum/museum_sound/%d.mp3",
+                    MainActivity.fileServerURL + "museum_sound/%d.mp3",
                     thing.thingID
                 )
             )
@@ -130,7 +129,7 @@ class ViewThingActivity : AppCompatActivity() {
         viewPager = binding.viewPager
 
 
-        myAdapter = ThingImageListAdapter(
+        myAdapter = ThingImagesListAdapter(
             this,
             thingURLLists
         )
@@ -143,7 +142,7 @@ class ViewThingActivity : AppCompatActivity() {
                 val imageView =
                     ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
                         position
-                    ) as ThingImageListAdapter.ThingImageViewHolder).imageView
+                    ) as ThingImagesListAdapter.ThingImageViewHolder).imageView
                 if (imageView.drawable != null) {
                     val imageBitmap = imageView.drawable.toBitmap()
                     val backgroundDominantColor = PaletteUtils().getDominantGradient(

@@ -12,7 +12,6 @@ public class Museum implements MuseumEntity {
     private String description;
     private float pos_longitude;
     private float pos_latitude;
-
     private int imagesNum;
 
     public Museum() {

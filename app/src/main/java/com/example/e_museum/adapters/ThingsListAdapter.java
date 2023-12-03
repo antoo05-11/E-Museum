@@ -29,11 +29,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.ThingViewHolder> implements Filterable {
+public class ThingsListAdapter extends RecyclerView.Adapter<ThingsListAdapter.ThingViewHolder> implements Filterable {
     private final Activity activity;
     private final ArrayList<Thing> things;
 
-    public ThingListAdapter(Activity activity, ArrayList<Thing> things) {
+    public ThingsListAdapter(Activity activity, ArrayList<Thing> things) {
         this.activity = activity;
         this.things = things;
     }
@@ -87,6 +87,7 @@ public class ThingListAdapter extends RecyclerView.Adapter<ThingListAdapter.Thin
                                         0f,
                                         GradientDrawable.Orientation.TOP_BOTTOM, null
                                 );
+                        if(holder.itemView.getParent() == null) return;
                         ViewPager2 viewPager = (ViewPager2) holder.itemView.getParent().getParent();
                         if (viewPager.getCurrentItem() == position) {
                             activity.findViewById(R.id.root_view).setBackground(backgroundDominantColor);

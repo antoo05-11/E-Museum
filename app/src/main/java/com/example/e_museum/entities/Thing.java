@@ -1,20 +1,19 @@
 package com.example.e_museum.entities;
 
-import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Thing implements MuseumEntity {
     private int museumID;
     private int thingID;
-    private int images;
-    private int videos;
-    private String name;
-    private String description;
-    private String origin;
-    private String age;
-    private String size;
-    private int collectionID;
+    private final int images;
+    private final int videos;
+    private final String name;
+    private final String description;
+    private final String origin;
+    private final String age;
+    private final String size;
+    private final int collectionID;
 
     public Thing(ResultSet resultSet) throws SQLException {
         this.museumID = resultSet.getInt("museumID");
@@ -49,55 +48,31 @@ public class Thing implements MuseumEntity {
         return images;
     }
 
-    public void setImages(int images) {
-        this.images = images;
-    }
-
     public int getVideos() {
         return videos;
-    }
-
-    public void setVideos(int videos) {
-        this.videos = videos;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getOrigin() {
         return origin;
     }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
     public String getAge() {
         return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
     }
 
     public String getSize() {
         return size;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public int getCollectionID() {
+        return collectionID;
     }
 }

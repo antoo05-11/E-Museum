@@ -12,16 +12,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingImageListAdapter
+import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.FragmentViewThingImagesBinding
 import com.example.e_museum.entities.Thing
 import kotlin.math.abs
 
+@Deprecated("Unused")
 class ViewThingImagesFragment : Fragment() {
     private lateinit var binding: FragmentViewThingImagesBinding
 
     private lateinit var viewPager: ViewPager2
-    private lateinit var myAdapter: ThingImageListAdapter
+    private lateinit var myAdapter: ThingImagesListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,13 +39,13 @@ class ViewThingImagesFragment : Fragment() {
         for (i in 1..thing.images) {
             thingURLLists.add(
                 String.format(
-                    "https://muzik-files-server.000webhostapp.com/emuseum/thing_images/%d_%d.png",
+                    MainActivity.fileServerURL + "thing_images/%d_%d.png",
                     thing.thingID,
                     i
                 )
             )
         }
-        myAdapter = ThingImageListAdapter(
+        myAdapter = ThingImagesListAdapter(
             requireActivity(),
             thingURLLists
         )
@@ -56,7 +58,7 @@ class ViewThingImagesFragment : Fragment() {
                 val imageView =
                     ((viewPager.getChildAt(0) as RecyclerView).findViewHolderForAdapterPosition(
                         position
-                    ) as ThingImageListAdapter.ThingImageViewHolder).imageView
+                    ) as ThingImagesListAdapter.ThingImageViewHolder).imageView
                 if (imageView.drawable != null) {
                     val imageBitmap = imageView.drawable.toBitmap()
                     val backgroundDominantColor = PaletteUtils().getDominantGradient(

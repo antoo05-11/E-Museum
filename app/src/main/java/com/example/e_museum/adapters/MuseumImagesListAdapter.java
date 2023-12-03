@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +67,13 @@ public class MuseumImagesListAdapter extends RecyclerView.Adapter<MuseumImagesLi
         return museumImageURLsList.size();
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
     public static class MuseumImageHolder extends RecyclerView.ViewHolder {
-        private ShimmerFrameLayout shimmerLayout;
-        private ImageView museumImageView;
+        private final ShimmerFrameLayout shimmerLayout;
+        private final ImageView museumImageView;
 
         public MuseumImageHolder(@NonNull View itemView) {
             super(itemView);

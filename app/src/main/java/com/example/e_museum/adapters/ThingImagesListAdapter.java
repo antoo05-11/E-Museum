@@ -24,18 +24,18 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ThingImageListAdapter extends RecyclerView.Adapter<ThingImageListAdapter.ThingImageViewHolder> {
+public class ThingImagesListAdapter extends RecyclerView.Adapter<ThingImagesListAdapter.ThingImageViewHolder> {
     private final Activity activity;
     private final List<String> imageURLs;
 
-    public ThingImageListAdapter(Activity activity, List<String> imageURLs) {
+    public ThingImagesListAdapter(Activity activity, List<String> imageURLs) {
         this.activity = activity;
         this.imageURLs = imageURLs;
     }
 
     @NonNull
     @Override
-    public ThingImageListAdapter.ThingImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ThingImagesListAdapter.ThingImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_thing_image, parent, false);
         return new ThingImageViewHolder(view);
     }

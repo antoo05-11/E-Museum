@@ -1,7 +1,5 @@
 package com.example.e_museum.adapters;
 
-import static com.example.e_museum.utils.UtilsKt.printLogcat;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -130,7 +128,7 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
 
         Picasso.get()
                 .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
-                        collection.getThingsList().get(1).getThingID()))
+                        collection.getThingsList().get(2).getThingID()))
                 .fit()
                 .centerInside()
                 .into(holder.thingImage3, new Callback() {
