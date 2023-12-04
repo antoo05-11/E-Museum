@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,16 +23,50 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsListAdapter.CollectionsListHolder> {
+public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsListAdapter.CollectionsListHolder> implements Filterable {
     private final Activity activity;
 
-    private final List<Collection> collections;
+    private List<Collection> collections;
+    private final List<Collection> collectionsOld;
 
     public CollectionsListAdapter(Activity activity, List<Collection> collections) {
         this.activity = activity;
         this.collections = collections;
+        this.collectionsOld = collections;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String input = constraint.toString().toLowerCase().trim();
+                if (input.isEmpty()) {
+                    collections = collectionsOld;
+                } else {
+                    List<Collection> list = new ArrayList<>();
+                    for (Collection collection : collectionsOld) {
+                        if (collection.getName().toLowerCase().contains(input)) {
+                            list.add(collection);
+                        }
+                    }
+                    collections = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = collections;
+                return filterResults;
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                collections = (List<Collection>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public static class CollectionsListHolder extends RecyclerView.ViewHolder {
