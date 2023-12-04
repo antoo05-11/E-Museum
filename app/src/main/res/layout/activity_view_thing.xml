@@ -7,6 +7,18 @@
         tools:context=".activities.ViewThingActivity"
         android:id="@+id/thing_view_root">
 
+    <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="30dp"
+            android:id="@+id/share_button"
+            android:background="?attr/actionModeShareDrawable"
+            android:stateListAnimator="@animator/zoom_out_animator"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="15dp"
+            android:translationZ="90dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="15dp" />
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -47,7 +59,9 @@
             tools:layout_editor_absoluteX="57dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_layout"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
 
     <LinearLayout
             android:orientation="vertical"
@@ -68,7 +82,7 @@
 
             <TextView
                     android:text="Something"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/thing_name_main_text_view"
                     android:gravity="center"
@@ -82,48 +96,51 @@
                     android:singleLine="true"
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
-                    android:layout_marginHorizontal="20dp"/>
-
-            <ImageButton
-                    android:layout_width="28dp"
-                    android:layout_height="30dp"
-                    android:id="@+id/share_button"
-                    android:background="@drawable/icons8_share_60"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginHorizontal="20dp"
                     android:layout_marginRight="20dp"
-                    android:stateListAnimator="@animator/zoom_out_animator" />
+                    android:layout_marginLeft="20dp" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-                android:orientation="horizontal"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/seek_bar_layout"
-                android:layout_marginBottom="18dp">
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
             <TextView
                     android:text="01:50"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView3" />
+                    android:id="@+id/tvCurrent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
 
             <SeekBar
-                    android:layout_width="290dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/seekBar"
                     android:thumbTint="@color/white"
                     android:thumb="@drawable/custom_thumb"
-                    android:progressTint="@color/white" />
+                    android:progressTint="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvCurrent"
+                    app:layout_constraintRight_toLeftOf="@id/tvTotal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                     android:text="03:46"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView4" />
-        </LinearLayout>
+                    android:id="@+id/tvTotal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
                 android:orientation="horizontal"

@@ -22,7 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.e_museum.R;
 import com.example.e_museum.activities.MainActivity;
 import com.example.e_museum.activities.ViewThingActivity;
-import com.example.e_museum.entities.Thing;
+import com.example.e_museum.models.Thing;
 import com.example.e_museum.utils.PaletteUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

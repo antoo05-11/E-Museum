@@ -10,37 +10,38 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
-import androidx.lifecycle.MutableLiveData
-import androidx.media3.common.MediaItem
+import androidx.lifecycle.ViewModelProvider
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
-import com.example.e_museum.entities.Thing
+import com.example.e_museum.models.Thing
 import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
+import com.example.e_museum.utils.getReadableTime
 import kotlin.math.abs
 
 class ViewThingActivity : AppCompatActivity() {
 
-    private lateinit var exoPlayer: ExoPlayer
-
     private lateinit var binding: ActivityViewThingBinding
     private lateinit var viewPager: ViewPager2
     private lateinit var myAdapter: ThingImagesListAdapter
-
-    private var isPlaying: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    var currentTimeMutableLiveData: MutableLiveData<Int> = MutableLiveData()
-        private set
+    private lateinit var playerViewModel: PlayerViewModel
+    private lateinit var player: ExoPlayer
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityViewThingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.thingNameMainTextView.isSelected = true
+
+        playerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+        player = ExoPlayer.Builder(this).build()
+        playerViewModel.exoPlayerMutableLiveData.value = player
+        playerViewModel.addListener()
 
         val thing = intent.getSerializableExtra("thing") as Thing
         val thingURLLists = ArrayList<String>()
@@ -75,7 +76,6 @@ class ViewThingActivity : AppCompatActivity() {
             startActivity(shareIntent)
         }
 
-
         binding.thingNameMainTextView.text = thing.name
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
@@ -99,41 +99,38 @@ class ViewThingActivity : AppCompatActivity() {
             true
         }
 
-        exoPlayer = ExoPlayer.Builder(this.applicationContext).build()
-        exoPlayer.setMediaItem(
-            MediaItem.fromUri(
-                String.format(
-                    MainActivity.fileServerURL + "museum_sound/%d.mp3",
-                    thing.thingID
-                )
+        binding.seekBar.setOnSeekBarChangeListener(
+            PlayerViewModel.OnSeekBarChangeListener(
+                playerViewModel
             )
         )
-        exoPlayer.prepare()
-
         binding.playButton.setOnClickListener {
-            isPlaying.value = !isPlaying.value!!
+            playerViewModel.playPause()
         }
-
-        isPlaying.observe(this) {
+        playerViewModel.playingMutableLiveData.observe(this) {
             if (it) {
                 binding.playButton.background =
                     ContextCompat.getDrawable(this, R.drawable.icons8_pause_48)
-                exoPlayer.play()
             } else {
                 binding.playButton.background =
                     ContextCompat.getDrawable(this, R.drawable.icons8_play_48)
-                exoPlayer.pause()
             }
         }
 
+         playerViewModel.thingMutableLiveData.observe(this) {
+           binding.tvTotal.text = getReadableTime(it.duration)
+           binding.seekBar.max = it.duration
+       }
+         playerViewModel.currentTimeMutableLiveData.observe(this) {
+             binding.seekBar.progress = it
+             binding.tvCurrent.text = getReadableTime(it)
+         }
+
         viewPager = binding.viewPager
-
-
         myAdapter = ThingImagesListAdapter(
             this,
             thingURLLists
         )
-
         createCardHolder()
         viewPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
@@ -155,12 +152,16 @@ class ViewThingActivity : AppCompatActivity() {
             }
         })
 
-
+        playerViewModel.stop()
+        playerViewModel.setMedia(
+            Uri.parse(MainActivity.fileServerURL + "museum_sound/${thing.thingID}.mp3")
+        )
+        playerViewModel.setThing(thing)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        exoPlayer.release()
+        player.release()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
 import com.example.e_museum.adapters.MuseumsListAdapter
 import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
-import com.example.e_museum.entities.Museum
+import com.example.e_museum.models.Museum
 
 class MuseumChoosingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChoosingMuseumBinding

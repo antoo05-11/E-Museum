@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.databinding.ActivityFindingMuseumBinding
-import com.example.e_museum.entities.Museum
+import com.example.e_museum.models.Museum
 import com.example.e_museum.fragments.fragments_dialog.MuseumGPSConfirmDialogFragment
 import com.example.e_museum.utils.SQLConnection
 import com.example.e_museum.utils.getDistance
@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private val password = "4XxtC2Ky5Dzz2AEEoC60"
 
     private lateinit var viewBinding: ActivityFindingMuseumBinding
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onRestart() {
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         viewBinding = ActivityFindingMuseumBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
@@ -112,8 +112,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var sqlConnection: SQLConnection
-//        const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
+        //const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
         const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
+
+        lateinit var sqlConnection: SQLConnection
     }
 }

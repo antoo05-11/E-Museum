@@ -16,8 +16,8 @@ import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.MapGuidesListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding
-import com.example.e_museum.entities.MapGuide
-import com.example.e_museum.entities.Museum
+import com.example.e_museum.models.MapGuide
+import com.example.e_museum.models.Museum
 import com.example.e_museum.utils.PagerMarginItemDecoration
 import com.github.chrisbanes.photoview.PhotoView
 import com.squareup.picasso.Callback
@@ -72,7 +72,7 @@ class MapFragment : Fragment() {
                 scaleRate = bitmap.width.toFloat().div(photoView.drawable.intrinsicWidth)
 
                 photoView.attacher.scaleType = ImageView.ScaleType.CENTER_CROP
-
+                photoView.maximumScale = 2f
                 viewPager.registerOnPageChangeCallback(object :
                     ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
@@ -81,15 +81,16 @@ class MapFragment : Fragment() {
                         val mapGuide = mapGuides[position]
                         val x = mapGuide.posX.toFloat() * scaleRate
                         val y = mapGuide.posY.toFloat() * scaleRate
-
                         val focalX: Float = (x * photoView.right) / bitmap.width
                         val focalY: Float = (y * photoView.bottom) / bitmap.height
-                        photoView.attacher.setScale(
-                            3f,
+
+                        photoView.setScale(
+                            2f,
                             focalX,
                             focalY,
                             false
                         )
+
                     }
                 })
             }

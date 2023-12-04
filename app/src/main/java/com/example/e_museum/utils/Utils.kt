@@ -11,6 +11,13 @@ fun getDistance(pointA: Point, pointB: Point): Float {
     return sqrt((diffX * diffX + diffY * diffY).toFloat())
 }
 
-fun <T: Serializable> printLogcat(string: T) {
+fun <T : Serializable> printLogcat(string: T) {
     Log.d("app-debug", (string as Serializable).toString())
+}
+
+fun getReadableTime(time: Int): String {
+    var s: Int = time / 1000
+    val m = s / 60
+    s %= 60
+    return "$m:${s / 10}${s % 10}"
 }

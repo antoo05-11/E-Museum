@@ -1,4 +1,4 @@
-package com.example.e_museum.entities;
+package com.example.e_museum.models;
 
 import java.sql.Date;
 import java.sql.ResultSet;

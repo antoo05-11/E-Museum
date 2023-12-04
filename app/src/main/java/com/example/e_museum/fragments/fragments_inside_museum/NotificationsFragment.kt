@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
 import com.example.e_museum.adapters.NotificationsListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
-import com.example.e_museum.entities.Notification
+import com.example.e_museum.models.Notification
 import com.example.e_museum.utils.SQLConnection
 
 class NotificationsFragment : Fragment() {

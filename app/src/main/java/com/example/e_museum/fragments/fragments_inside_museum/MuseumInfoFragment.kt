@@ -4,20 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.text.Html
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.MuseumImagesListAdapter
 import com.example.e_museum.databinding.FragmentMuseumInfoBinding
-import com.example.e_museum.entities.Museum
-import com.example.e_museum.utils.printLogcat
-import java.net.URLEncoder
+import com.example.e_museum.models.Museum
 import java.util.Timer
 import java.util.TimerTask
 

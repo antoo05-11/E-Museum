@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.e_museum.activities.MainActivity
-import com.example.e_museum.databinding.FragmentViewThingQrBinding
-import com.example.e_museum.entities.Thing
+import com.example.e_museum.databinding.DeprecatedFragmentViewThingQrBinding
+import com.example.e_museum.models.Thing
 import com.squareup.picasso.Picasso
 
 @Deprecated("Unused")
 class ViewThingQRFragment : Fragment() {
-    private lateinit var binding: FragmentViewThingQrBinding
+    private lateinit var binding: DeprecatedFragmentViewThingQrBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentViewThingQrBinding.inflate(inflater, container, false)
+        binding = DeprecatedFragmentViewThingQrBinding.inflate(inflater, container, false)
         val thing = requireActivity().intent.extras?.getSerializable("thing") as Thing
         Picasso.get()
             .load(

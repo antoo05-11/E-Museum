@@ -1,4 +1,4 @@
-package com.example.e_museum.entities;
+package com.example.e_museum.models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +14,7 @@ public class Thing implements MuseumEntity {
     private final String age;
     private final String size;
     private final int collectionID;
+    private final int duration;
 
     public Thing(ResultSet resultSet) throws SQLException {
         this.museumID = resultSet.getInt("museumID");
@@ -26,6 +27,11 @@ public class Thing implements MuseumEntity {
         this.age = resultSet.getString("age");
         this.size = resultSet.getString("size");
         this.collectionID = resultSet.getInt("collectionID");
+        this.duration = resultSet.getInt("duration");
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public int getMuseumID() {

@@ -13,10 +13,9 @@ import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.CollectionsListAdapter
 import com.example.e_museum.databinding.FragmentCollectionsListBinding
-import com.example.e_museum.entities.Collection
-import com.example.e_museum.entities.Museum
-import com.example.e_museum.entities.Thing
-import com.example.e_museum.utils.printLogcat
+import com.example.e_museum.models.Collection
+import com.example.e_museum.models.Museum
+import com.example.e_museum.models.Thing
 
 class CollectionsListFragment : Fragment() {
     private lateinit var binding: FragmentCollectionsListBinding

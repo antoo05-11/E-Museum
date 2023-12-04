@@ -2,9 +2,8 @@ package com.example.e_museum.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityViewQrBinding
-import com.example.e_museum.entities.Thing
+import com.example.e_museum.models.Thing
 import com.squareup.picasso.Picasso
 
 class ViewQRActivity : AppCompatActivity() {

@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
-import com.example.e_museum.entities.MapGuide;
+import com.example.e_museum.models.MapGuide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

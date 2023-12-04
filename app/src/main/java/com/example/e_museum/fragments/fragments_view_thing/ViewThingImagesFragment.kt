@@ -14,13 +14,13 @@ import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.ThingImagesListAdapter
-import com.example.e_museum.databinding.FragmentViewThingImagesBinding
-import com.example.e_museum.entities.Thing
+import com.example.e_museum.databinding.DeprecatedFragmentViewThingImagesBinding
+import com.example.e_museum.models.Thing
 import kotlin.math.abs
 
 @Deprecated("Unused")
 class ViewThingImagesFragment : Fragment() {
-    private lateinit var binding: FragmentViewThingImagesBinding
+    private lateinit var binding: DeprecatedFragmentViewThingImagesBinding
 
     private lateinit var viewPager: ViewPager2
     private lateinit var myAdapter: ThingImagesListAdapter
@@ -29,7 +29,7 @@ class ViewThingImagesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentViewThingImagesBinding.inflate(inflater, container, false)
+        binding = DeprecatedFragmentViewThingImagesBinding.inflate(inflater, container, false)
 
         viewPager = binding.viewPager
 
