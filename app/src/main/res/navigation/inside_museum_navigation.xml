@@ -6,31 +6,31 @@
         app:startDestination="@+id/navigation_home">
     <fragment
             android:id="@+id/navigation_home"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.MuseumInfoFragment"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_inside_museum.MuseumInfoFragment"
             android:label="@string/title_home"
             tools:layout="@layout/fragment_museum_info" />
 
     <fragment
             android:id="@+id/navigation_map"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.MapFragment"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_inside_museum.MapFragment"
             android:label="@string/title_map"
             tools:layout="@layout/fragment_map" />
 
     <fragment
             android:id="@+id/fragment_finding_thing"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.ThingFindingFragment"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_inside_museum.ThingFindingFragment"
             android:label="@string/title_search_code"
             tools:layout="@layout/fragment_finding_thing" />
 
     <fragment
             android:id="@+id/navigation_collection"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.CollectionsListFragment"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_inside_museum.CollectionsListFragment"
             android:label="@string/title_collection"
             tools:layout="@layout/fragment_map" />
 
     <fragment
             android:id="@+id/navigation_notifications"
-            android:name="com.example.e_museum.fragments.fragments_inside_museum.NotificationsFragment"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_inside_museum.NotificationsFragment"
             android:label="@string/title_notifications"
             tools:layout="@layout/fragment_notifications" />
 </navigation>

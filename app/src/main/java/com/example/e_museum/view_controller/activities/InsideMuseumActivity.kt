@@ -1,4 +1,4 @@
-package com.example.e_museum.activities
+package com.example.e_museum.view_controller.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +23,7 @@ class InsideMuseumActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_activity_inside_museum)
 
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+        binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_notifications -> {
                     binding.topBarTextView.text = getString(R.string.event_notification)

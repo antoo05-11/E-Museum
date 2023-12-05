@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".view_controller.fragments.fragments_view_thing.ViewThingFragment">
+
+    <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/view_pager"
+            tools:layout_editor_absoluteX="57dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/bottom_layout"
+            android:layout_marginBottom="30dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginBottom="35dp"
+                android:id="@+id/linearLayout2">
+
+            <TextView
+                    android:text="Something"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/thing_name_main_text_view"
+                    android:gravity="center"
+                    android:textSize="28sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/seek_bar_layout"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+            <TextView
+                    android:text="01:50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvCurrent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            <SeekBar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar"
+                    android:thumbTint="@color/white"
+                    android:thumb="@drawable/custom_thumb"
+                    android:progressTint="@color/white"
+                    app:layout_constraintLeft_toRightOf="@id/tvCurrent"
+                    app:layout_constraintRight_toLeftOf="@id/tvTotal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                    android:text="03:46"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTotal"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|center_horizontal"
+                android:layout_marginBottom="20dp">
+
+            <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/play_button2"
+                    android:background="@drawable/baseline_replay_10_24"
+                    android:translationZ="90dp"
+                    android:stateListAnimator="@animator/zoom_out_animator"
+                    android:layout_marginRight="35dp" />
+
+            <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/play_button"
+                    android:background="@drawable/icons8_pause_48"
+                    android:translationZ="90dp"
+                    android:stateListAnimator="@animator/zoom_out_animator"
+                    android:layout_marginRight="35dp" />
+
+            <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/play_button3"
+                    android:background="@drawable/baseline_forward_10_24"
+                    android:translationZ="90dp"
+                    android:stateListAnimator="@animator/zoom_out_animator" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

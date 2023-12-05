@@ -4,7 +4,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.fragments_thing_finding.FindingThingByIDFragment"
+        tools:context=".view_controller.fragments.fragments_thing_finding.FindingThingByIDFragment"
         android:orientation="vertical"
         android:gravity="center">
 

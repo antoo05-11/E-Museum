@@ -31,40 +31,40 @@
             android:theme="@style/Base.Theme.AppCompat"
             tools:targetApi="31">
         <activity
-                android:name=".activities.ViewThingDocumentActivity"
+                android:name=".view_controller.fragments.fragments_view_thing.ViewThingDocumentFragment"
                 android:exported="false"
                 android:theme="@style/Base.Theme.AppCompat"/>
         <activity
-                android:name=".activities.ViewQRActivity"
+                android:name=".view_controller.fragments.fragments_view_thing.ViewQRFragment"
                 android:exported="false"
                 android:theme="@style/Base.Theme.AppCompat" />
         <activity
-                android:name=".activities.ViewImagesActivity"
+                android:name=".view_controller.activities.ViewImagesActivity"
                 android:exported="false"
                 android:label="@string/title_activity_view_images"
                 android:theme="@style/Base.Theme.AppCompat" />
         <activity
-                android:name=".activities.ViewCollectionActivity"
+                android:name=".view_controller.activities.ViewCollectionActivity"
                 android:exported="false"
                 android:label="@string/title_activity_view_collection"
-                android:theme="@style/Base.Theme.AppCompat" />
+                android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-                android:name=".activities.InsideMuseumActivity"
+                android:name=".view_controller.activities.InsideMuseumActivity"
                 android:exported="false"
                 android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-                android:name=".activities.NotificationViewActivity"
+                android:name=".view_controller.activities.NotificationViewActivity"
                 android:exported="false" />
         <activity
-                android:name=".activities.MuseumChoosingActivity"
-                android:parentActivityName=".activities.MainActivity"
+                android:name=".view_controller.activities.MuseumChoosingActivity"
+                android:parentActivityName=".view_controller.activities.MainActivity"
                 android:windowSoftInputMode="adjustPan|stateHidden">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".activities.MainActivity" />
+                    android:value=".view_controller.activities.MainActivity" />
         </activity>
         <activity
-                android:name=".activities.MainActivity"
+                android:name=".view_controller.activities.MainActivity"
                 android:exported="true"
                 android:theme="@style/Base.Theme.AppCompat">
             <intent-filter>
@@ -74,10 +74,10 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activities.ViewThingActivity"
+                android:name=".view_controller.activities.ViewThingActivity"
                 android:exported="true"
                 android:label="ViewThingActivity"
-            android:theme="@style/Base.Theme.AppCompat"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
         />
     </application>
 

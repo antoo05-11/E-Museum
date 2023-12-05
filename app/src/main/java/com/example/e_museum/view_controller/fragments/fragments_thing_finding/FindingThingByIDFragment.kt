@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments.fragments_thing_finding
+package com.example.e_museum.view_controller.fragments.fragments_thing_finding
 
 import android.content.Context
 import android.content.Intent
@@ -12,9 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
-import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.R
-import com.example.e_museum.activities.ViewThingActivity
+import com.example.e_museum.view_controller.activities.ViewThingActivity
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.FragmentFindingThingByIdBinding
 import com.example.e_museum.entities.Thing

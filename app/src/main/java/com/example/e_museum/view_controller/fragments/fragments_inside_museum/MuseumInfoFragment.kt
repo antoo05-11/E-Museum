@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments.fragments_inside_museum
+package com.example.e_museum.view_controller.fragments.fragments_inside_museum
 
 import android.content.Intent
 import android.net.Uri
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.adapters.MuseumImagesListAdapter
 import com.example.e_museum.databinding.FragmentMuseumInfoBinding
 import com.example.e_museum.entities.Museum

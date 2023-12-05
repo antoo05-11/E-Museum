@@ -4,8 +4,21 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.ViewThingActivity"
+        tools:context=".view_controller.activities.ViewThingActivity"
         android:id="@+id/thing_view_root">
+
+    <fragment
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/thing_view_fragment_nav_host"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/thing_view_navigation"
+            tools:ignore="FragmentTagUsage"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
             android:layout_width="28dp"
@@ -17,7 +30,8 @@
             android:layout_marginTop="15dp"
             android:translationZ="90dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="15dp" />
+            android:layout_marginRight="15dp"
+            tools:ignore="ContentDescription" />
 
     <LinearLayout
             android:orientation="horizontal"
@@ -52,140 +66,18 @@
 
     </LinearLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:id="@+id/view_pager"
-            tools:layout_editor_absoluteX="57dp"
-            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp">
-
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|top"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:menu="@menu/thing_option_menu"
+            android:background="@drawable/shape_bottom_nav_view"
+            app:itemIconTint="@color/bottom_thing_view_nav_color"
+            app:itemTextColor="@color/bottom_thing_view_nav_color"
+            android:id="@+id/bottomNavigationView"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/bottom_layout"
-            android:layout_marginBottom="30dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_marginBottom="35dp"
-                android:id="@+id/linearLayout2">
-
-            <TextView
-                    android:text="Something"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/thing_name_main_text_view"
-                    android:gravity="center"
-                    android:textSize="28sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:singleLine="true"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:id="@+id/seek_bar_layout"
-                android:layout_marginBottom="25dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-            <TextView
-                    android:text="01:50"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvCurrent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-
-            <SeekBar
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/seekBar"
-                    android:thumbTint="@color/white"
-                    android:thumb="@drawable/custom_thumb"
-                    android:progressTint="@color/white"
-                    app:layout_constraintLeft_toRightOf="@id/tvCurrent"
-                    app:layout_constraintRight_toLeftOf="@id/tvTotal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                    android:text="03:46"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tvTotal"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:layout_marginBottom="20dp">
-
-            <ImageButton
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/play_button2"
-                    android:background="@drawable/baseline_replay_10_24"
-                    android:translationZ="90dp"
-                    android:stateListAnimator="@animator/zoom_out_animator"
-                    android:layout_marginRight="35dp" />
-
-            <ImageButton
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/play_button"
-                    android:background="@drawable/icons8_pause_48"
-                    android:translationZ="90dp"
-                    android:stateListAnimator="@animator/zoom_out_animator"
-                    android:layout_marginRight="35dp" />
-
-            <ImageButton
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/play_button3"
-                    android:background="@drawable/baseline_forward_10_24"
-                    android:translationZ="90dp"
-                    android:stateListAnimator="@animator/zoom_out_animator" />
-        </LinearLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                app:menu="@menu/thing_option_menu"
-                android:background="@drawable/shape_bottom_nav_view"
-                app:itemIconTint="@color/bottom_thing_view_nav_color"
-                app:itemTextColor="@color/bottom_thing_view_nav_color"
-                android:id="@+id/bottomNavigationView" />
-
-    </LinearLayout>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="30dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

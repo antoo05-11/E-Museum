@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.ViewCollectionActivity"
+        tools:context=".view_controller.activities.ViewCollectionActivity"
         android:id="@+id/root_view">
 
     <LinearLayout

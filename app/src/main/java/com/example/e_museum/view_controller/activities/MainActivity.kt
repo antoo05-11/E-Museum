@@ -1,4 +1,4 @@
-package com.example.e_museum.activities
+package com.example.e_museum.view_controller.activities
 
 import android.Manifest
 import android.content.Intent
@@ -14,7 +14,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.ActivityFindingMuseumBinding
 import com.example.e_museum.entities.Museum
-import com.example.e_museum.fragments.fragments_dialog.MuseumGPSConfirmDialogFragment
+import com.example.e_museum.view_controller.fragments.fragments_dialog.MuseumGPSConfirmDialogFragment
 import com.example.e_museum.data_fetching.SQLConnection
 import com.example.e_museum.utils.getDistance
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -109,8 +109,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
-        //const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
+        //const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
+        const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
         //const val fileServerURL = "http://192.168.33.103:5500/emuseum/"
         lateinit var sqlConnection: SQLConnection
         lateinit var modelController: Model

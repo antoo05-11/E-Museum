@@ -1,11 +1,11 @@
-package com.example.e_museum.fragments.fragments_view_thing
+package com.example.e_museum.view_controller.fragments.fragments_view_thing
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.databinding.DeprecatedFragmentViewThingQrBinding
 import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso

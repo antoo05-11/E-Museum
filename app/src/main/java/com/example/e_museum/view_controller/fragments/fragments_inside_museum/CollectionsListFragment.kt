@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments.fragments_inside_museum
+package com.example.e_museum.view_controller.fragments.fragments_inside_museum
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.activities.MainActivity
+import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.adapters.CollectionsListAdapter
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.FragmentCollectionsListBinding

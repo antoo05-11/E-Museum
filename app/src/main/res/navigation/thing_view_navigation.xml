@@ -3,20 +3,21 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/thing_view_navigation"
-        app:startDestination="@id/viewThingImagesFragment">
+        app:startDestination="@id/fragmentViewThing">
     <fragment
-            android:id="@+id/viewThingDescriptionFragment"
-            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingDescriptionFragment"
-            android:label="ViewThingDescriptionFragment"
-            tools:layout="@layout/deprecated_fragment_view_thing_description" />
+            android:id="@+id/viewThingDocumentActivity"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_view_thing.ViewThingDocumentFragment"
+            android:label="activity_view_thing_document"
+            tools:layout="@layout/activity_view_thing_document" />
     <fragment
-            android:id="@+id/viewThingQRFragment"
-            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingQRFragment"
-            android:label="ViewThingQRFragment"
-            tools:layout="@layout/deprecated_fragment_view_thing_qr" />
-     <fragment
-            android:id="@+id/viewThingImagesFragment"
-            android:name="com.example.e_museum.fragments.fragments_view_thing.ViewThingImagesFragment"
-            android:label="ViewThingImagesFragment"
-            tools:layout="@layout/deprecated_fragment_view_thing_images" />
+            android:id="@+id/viewQRActivity"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_view_thing.ViewQRFragment"
+            android:label="activity_view_qr"
+            tools:layout="@layout/activity_view_qr" />
+
+    <fragment
+            android:id="@+id/fragmentViewThing"
+            android:name="com.example.e_museum.view_controller.fragments.fragments_view_thing.ViewThingFragment"
+            android:label="fragmentViewThing"
+            tools:layout="@layout/fragment_view_thing" />
 </navigation>

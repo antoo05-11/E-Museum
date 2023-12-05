@@ -1,4 +1,4 @@
-package com.example.e_museum.activities
+package com.example.e_museum.view_controller.activities
 
 import android.os.Bundle
 import android.view.MenuItem

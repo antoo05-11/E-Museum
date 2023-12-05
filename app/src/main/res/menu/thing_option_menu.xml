@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/documentMenuItem"
+            android:id="@+id/viewThingDocumentActivity"
             android:icon="@drawable/baseline_text_snippet_24"
             android:title="@string/view_document" />
 
     <item
-            android:id="@+id/qrMenuItem"
+            android:id="@+id/viewQRActivity"
             android:icon="@drawable/baseline_qr_code_24"
             android:title="@string/QR_code" />
 </menu>

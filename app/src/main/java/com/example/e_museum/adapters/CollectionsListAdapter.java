@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
-import com.example.e_museum.activities.MainActivity;
-import com.example.e_museum.activities.ViewCollectionActivity;
+import com.example.e_museum.view_controller.activities.MainActivity;
+import com.example.e_museum.view_controller.activities.ViewCollectionActivity;
 import com.example.e_museum.entities.Collection;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;

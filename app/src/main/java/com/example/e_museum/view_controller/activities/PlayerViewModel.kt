@@ -1,4 +1,4 @@
-package com.example.e_museum.activities
+package com.example.e_museum.view_controller.activities
 
 import android.net.Uri
 import android.os.Handler
@@ -24,8 +24,7 @@ class PlayerViewModel : ViewModel() {
     var currentTimeMutableLiveData: MutableLiveData<Int> = MutableLiveData()
         private set
 
-    var isSelectedMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
-        private set
+    private var isSelectedMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
         updateCurrentProgress()

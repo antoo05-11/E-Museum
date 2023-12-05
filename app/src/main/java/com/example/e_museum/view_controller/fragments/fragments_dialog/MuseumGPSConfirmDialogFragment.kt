@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments.fragments_dialog
+package com.example.e_museum.view_controller.fragments.fragments_dialog
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -13,9 +13,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.R
-import com.example.e_museum.activities.InsideMuseumActivity
-import com.example.e_museum.activities.MainActivity
-import com.example.e_museum.activities.MuseumChoosingActivity
+import com.example.e_museum.view_controller.activities.InsideMuseumActivity
+import com.example.e_museum.view_controller.activities.MainActivity
+import com.example.e_museum.view_controller.activities.MuseumChoosingActivity
 import com.example.e_museum.entities.Museum
 
 class MuseumGPSConfirmDialogFragment(private val activity: Activity, private val museum: Museum) :
@@ -55,7 +55,7 @@ class MuseumGPSConfirmDialogFragment(private val activity: Activity, private val
 
         confirmButton.setOnClickListener {
             val intent =
-                Intent(activity.applicationContext, InsideMuseumActivity::class.java).apply {
+                Intent(activity.applicationContext, com.example.e_museum.view_controller.activities.InsideMuseumActivity::class.java).apply {
                     putExtra("museum", museum)
                 }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

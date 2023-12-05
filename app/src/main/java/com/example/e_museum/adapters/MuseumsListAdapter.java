@@ -17,8 +17,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
-import com.example.e_museum.activities.MainActivity;
-import com.example.e_museum.fragments.fragments_dialog.MuseumConfirmDialogFragment;
+import com.example.e_museum.view_controller.activities.MainActivity;
+import com.example.e_museum.view_controller.fragments.fragments_dialog.MuseumConfirmDialogFragment;
 import com.example.e_museum.entities.Museum;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;

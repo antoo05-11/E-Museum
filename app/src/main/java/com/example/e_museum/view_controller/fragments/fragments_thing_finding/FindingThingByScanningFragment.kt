@@ -1,4 +1,4 @@
-package com.example.e_museum.fragments.fragments_thing_finding
+package com.example.e_museum.view_controller.fragments.fragments_thing_finding
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
-import com.example.e_museum.activities.MainActivity
-import com.example.e_museum.activities.ViewThingActivity
+import com.example.e_museum.view_controller.activities.MainActivity
+import com.example.e_museum.view_controller.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByScanningBinding
 import com.example.e_museum.entities.Thing
 

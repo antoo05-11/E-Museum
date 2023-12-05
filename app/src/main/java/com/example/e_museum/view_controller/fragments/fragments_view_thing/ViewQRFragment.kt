@@ -1,20 +1,27 @@
-package com.example.e_museum.activities
+package com.example.e_museum.view_controller.fragments.fragments_view_thing
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.databinding.ActivityViewQrBinding
 import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso
 
-class ViewQRActivity : AppCompatActivity() {
+class ViewQRFragment : Fragment() {
     private lateinit var binding: ActivityViewQrBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityViewQrBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = ActivityViewQrBinding.inflate(inflater, container, false)
 
-        val thing = intent.extras?.getSerializable("thing") as Thing
+        val thing = activity?.intent?.extras?.getSerializable("thing") as Thing
         Picasso.get()
             .load(
                 String.format(
@@ -28,6 +35,6 @@ class ViewQRActivity : AppCompatActivity() {
         binding.idTextView.text = thing.thingID.toString()
         binding.thingNameTv.text = thing.name
 
-        binding.backButton.setOnClickListener { finish() }
+        return binding.root
     }
 }

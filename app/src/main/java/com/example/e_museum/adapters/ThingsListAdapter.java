@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.e_museum.R;
-import com.example.e_museum.activities.MainActivity;
-import com.example.e_museum.activities.ViewThingActivity;
+import com.example.e_museum.view_controller.activities.MainActivity;
+import com.example.e_museum.view_controller.activities.ViewThingActivity;
 import com.example.e_museum.entities.Thing;
 import com.example.e_museum.utils.PaletteUtils;
 import com.squareup.picasso.Callback;
