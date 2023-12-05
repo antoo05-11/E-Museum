@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
 import com.example.e_museum.adapters.MuseumsListAdapter
 import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
-import com.example.e_museum.models.Museum
+import com.example.e_museum.entities.Museum
+import com.example.e_museum.data_fetching.models.Model
 
 class MuseumChoosingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChoosingMuseumBinding
@@ -28,7 +29,7 @@ class MuseumChoosingActivity : AppCompatActivity() {
             finish()
         }
 
-        (this as AppCompatActivity).supportActionBar!!.title = "Chọn bảo tàng"
+        (this as AppCompatActivity).supportActionBar!!.title = getString(R.string.choose_museum)
 
         val museums = ArrayList<Museum>()
         museums.add(Museum())
@@ -60,11 +61,8 @@ class MuseumChoosingActivity : AppCompatActivity() {
 
         Thread {
             SystemClock.sleep(2000)
-            val resultSet = MainActivity.sqlConnection.getDataQuery("select * from museums");
             museums.clear()
-            while (resultSet.next()) {
-                museums.add(Museum(resultSet))
-            }
+            museums.addAll(Model.getInstance().museumModel.allMuseums)
             runOnUiThread {
                 val museumsListAdapter =
                     MuseumsListAdapter(

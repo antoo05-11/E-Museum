@@ -6,7 +6,7 @@ import android.view.View
 import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.RecyclerView
 
-class PagerMarginItemDecoration(context: Context, @DimenRes horizontalMargin: Int) :
+class MarginItemDecoration(context: Context, @DimenRes horizontalMargin: Int) :
     RecyclerView.ItemDecoration() {
 
     private val horizontalMarginInPx: Int =

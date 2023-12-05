@@ -15,7 +15,7 @@ import com.budiyev.android.codescanner.ScanMode
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.activities.ViewThingActivity
 import com.example.e_museum.databinding.FragmentFindingThingByScanningBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 
 class FindingThingByScanningFragment : Fragment() {
 

@@ -16,14 +16,13 @@ import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.MapGuidesListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding
-import com.example.e_museum.models.MapGuide
-import com.example.e_museum.models.Museum
-import com.example.e_museum.utils.PagerMarginItemDecoration
+import com.example.e_museum.entities.MapGuide
+import com.example.e_museum.entities.Museum
+import com.example.e_museum.utils.MarginItemDecoration
 import com.github.chrisbanes.photoview.PhotoView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlin.math.abs
-
 
 private const val DEFAULT_FLOOR_INDEX = 1
 
@@ -137,7 +136,7 @@ class MapFragment : Fragment() {
             page.scaleY = 1 - (0.25f * abs(position))
             page.alpha = 0.25f + (1 - abs(position))
         }
-        val itemDecoration = PagerMarginItemDecoration(
+        val itemDecoration = MarginItemDecoration(
             requireContext(),
             R.dimen.viewpager_horizontal_margin
         )

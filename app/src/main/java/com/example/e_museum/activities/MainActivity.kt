@@ -11,19 +11,16 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
+import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.ActivityFindingMuseumBinding
-import com.example.e_museum.models.Museum
+import com.example.e_museum.entities.Museum
 import com.example.e_museum.fragments.fragments_dialog.MuseumGPSConfirmDialogFragment
-import com.example.e_museum.utils.SQLConnection
+import com.example.e_museum.data_fetching.SQLConnection
 import com.example.e_museum.utils.getDistance
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 class MainActivity : AppCompatActivity() {
-    private val url =
-        "jdbc:mysql://b8fu1r5tflhnrnqjztht-mysql.services.clever-cloud.com:3306/b8fu1r5tflhnrnqjztht"
-    private val username = "unxmdvotjktefgp8"
-    private val password = "4XxtC2Ky5Dzz2AEEoC60"
 
     private lateinit var viewBinding: ActivityFindingMuseumBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -48,9 +45,9 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         Thread {
-            sqlConnection = SQLConnection.getSqlConnection()
-            sqlConnection.connectServer(url, username, password)
-            if (!sqlConnection.isReconnecting) {
+            modelController = Model.getInstance()
+            sqlConnection = modelController.sqlConnection
+            if (!modelController.sqlConnection.isReconnecting) {
                 findWithGPS()
             }
         }.start()
@@ -78,15 +75,14 @@ class MainActivity : AppCompatActivity() {
 
                     Thread {
                         SystemClock.sleep(2000)
-                        val resultSet = sqlConnection.getDataQuery("select * from museums")
+
                         var nearestMuseum = Museum()
                         var minDistance = Float.MAX_VALUE
-                        if (resultSet == null || !resultSet.isBeforeFirst) {
-                            return@Thread
-                        }
-                        while (resultSet.next()) {
-                            val posLongitude = resultSet.getFloat("pos_longitude")
-                            val posLatitude = resultSet.getFloat("pos_latitude")
+
+                        val museumList = Model.getInstance().museumModel.allMuseums ?: return@Thread
+                        museumList.forEach {
+                            val posLongitude = it.pos_longitude
+                            val posLatitude = it.pos_latitude
                             val tempDistance =
                                 getDistance(
                                     Point(posLatitude.toInt(), posLongitude.toInt()),
@@ -94,9 +90,10 @@ class MainActivity : AppCompatActivity() {
                                 )
                             if (minDistance > tempDistance) {
                                 minDistance = tempDistance
-                                nearestMuseum = Museum(resultSet)
+                                nearestMuseum = it
                             }
                         }
+
                         if (nearestMuseum.museumID > 0) {
                             runOnUiThread {
                                 if (!supportFragmentManager.isStateSaved) {
@@ -112,9 +109,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        //const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
-        const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
-
+        const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
+        //const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
+        //const val fileServerURL = "http://192.168.33.103:5500/emuseum/"
         lateinit var sqlConnection: SQLConnection
+        lateinit var modelController: Model
     }
 }

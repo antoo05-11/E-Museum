@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.databinding.DeprecatedFragmentViewThingQrBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso
 
 @Deprecated("Unused")

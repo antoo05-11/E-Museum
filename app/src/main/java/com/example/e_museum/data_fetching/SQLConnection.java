@@ -1,4 +1,6 @@
-package com.example.e_museum.utils;
+package com.example.e_museum.data_fetching;
+
+import static com.example.e_museum.utils.UtilsKt.printLogcat;
 
 import android.util.Log;
 
@@ -12,7 +14,7 @@ public class SQLConnection {
     public Connection connection;
     private boolean reconnecting;
     private static SQLConnection sqlConnection;
-    String url, username, password;
+    private String url, username, password;
 
     public static SQLConnection getSqlConnection() {
         if (sqlConnection == null) {
@@ -25,14 +27,16 @@ public class SQLConnection {
         return reconnecting;
     }
 
-    public SQLConnection() {
+    private SQLConnection() {
         reconnecting = true;
     }
 
     public void connectServer(String url, String username, String password) {
-        this.url = url;
-        this.username = username;
-        this.password = password;
+        if (this.url == null) {
+            this.url = url;
+            this.username = username;
+            this.password = password;
+        }
         connectServer();
     }
 
@@ -50,7 +54,8 @@ public class SQLConnection {
                 connectServer();
                 return getDataQuery(query);
             }
-            Log.d("getDataQuery: ", e.getClass().toString());
+            printLogcat(e.getClass().toString());
+            printLogcat(query);
         }
         return resultSet;
     }
@@ -63,7 +68,7 @@ public class SQLConnection {
                 connection = DriverManager.getConnection(url, username, password);
                 reconnecting = false;
             } catch (SQLException e) {
-                Log.i("Database", "Connection failed");
+                printLogcat(e);
                 reconnecting = true;
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);

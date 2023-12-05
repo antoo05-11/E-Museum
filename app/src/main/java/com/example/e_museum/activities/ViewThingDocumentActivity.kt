@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.e_museum.databinding.ActivityViewThingDocumentBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 import hakobastvatsatryan.DropdownTextView
 
 class ViewThingDocumentActivity : AppCompatActivity() {

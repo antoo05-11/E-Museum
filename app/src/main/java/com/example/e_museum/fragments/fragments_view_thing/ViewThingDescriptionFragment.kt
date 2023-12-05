@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.e_museum.databinding.DeprecatedFragmentViewThingDescriptionBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 
 @Deprecated("Unused")
 class ViewThingDescriptionFragment : Fragment() {

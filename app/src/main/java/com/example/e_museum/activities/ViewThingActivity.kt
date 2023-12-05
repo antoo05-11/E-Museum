@@ -17,8 +17,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
-import com.example.e_museum.models.Thing
-import com.example.e_museum.utils.PagerMarginItemDecoration
+import com.example.e_museum.entities.Thing
+import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.getReadableTime
 import kotlin.math.abs
@@ -186,7 +186,7 @@ class ViewThingActivity : AppCompatActivity() {
             page.scaleY = 1 - (0.25f * abs(position))
             page.alpha = 0.25f + (1 - abs(position))
         }
-        val itemDecoration = PagerMarginItemDecoration(
+        val itemDecoration = MarginItemDecoration(
             applicationContext,
             R.dimen.viewpager_horizontal_margin
         )

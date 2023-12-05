@@ -15,8 +15,9 @@ import androidx.fragment.app.Fragment
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.R
 import com.example.e_museum.activities.ViewThingActivity
+import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.FragmentFindingThingByIdBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 
 
 class FindingThingByIDFragment : Fragment() {
@@ -62,24 +63,21 @@ class FindingThingByIDFragment : Fragment() {
 
         binding.searchThingButton.setOnClickListener {
             Thread {
-                val queryString = String.format(
-                    "select * from things where thingID = %s", binding.thingIdTv.text
-                )
+                val thing =
+                    Model.getInstance().thingController.getThingByID(Integer.valueOf(binding.thingIdTv.text as String))
 
-                val resultSet = MainActivity.sqlConnection.getDataQuery(queryString)
-
-                if (resultSet == null || !resultSet.isBeforeFirst) {
+                if (thing == null) {
                     val vibrator: Vibrator? =
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                             val vibratorManager =
                                 requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager?
                             vibratorManager!!.defaultVibrator
                         } else {
                             requireActivity().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator?
                         }
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) vibrator!!.vibrate(
-                            VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE)
-                        ) else vibrator!!.vibrate(400)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) vibrator!!.vibrate(
+                        VibrationEffect.createOneShot(400, VibrationEffect.DEFAULT_AMPLITUDE)
+                    ) else vibrator!!.vibrate(400)
 
                     requireActivity().runOnUiThread {
                         binding.thingIdTv.clearAnimation()
@@ -88,13 +86,11 @@ class FindingThingByIDFragment : Fragment() {
                     return@Thread
                 }
 
-                if (resultSet.next()) {
-                    requireActivity().runOnUiThread {
-                        val intent = Intent(requireContext(), ViewThingActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        intent.putExtra("thing", Thing(resultSet))
-                        startActivity(intent)
-                    }
+                requireActivity().runOnUiThread {
+                    val intent = Intent(requireContext(), ViewThingActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.putExtra("thing", thing)
+                    startActivity(intent)
                 }
             }.start()
         }

@@ -14,7 +14,7 @@ import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.e_museum.R
 import com.example.e_museum.activities.InsideMuseumActivity
-import com.example.e_museum.models.Museum
+import com.example.e_museum.entities.Museum
 
 class MuseumConfirmDialogFragment(private val activity: Activity, private val museum: Museum) :
     DialogFragment() {

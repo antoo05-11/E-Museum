@@ -10,9 +10,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.adapters.ThingsListAdapter
 import com.example.e_museum.databinding.ActivityViewCollectionBinding
-import com.example.e_museum.models.Collection
-import com.example.e_museum.models.Thing
-import com.example.e_museum.utils.PagerMarginItemDecoration
+import com.example.e_museum.entities.Collection
+import com.example.e_museum.entities.Thing
+import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.printLogcat
 import kotlin.math.abs
@@ -75,7 +75,7 @@ class ViewCollectionActivity : AppCompatActivity() {
             page.scaleY = 1 - (0.25f * abs(position))
             page.alpha = 0.25f + (1 - abs(position))
         }
-        val itemDecoration = PagerMarginItemDecoration(
+        val itemDecoration = MarginItemDecoration(
             applicationContext,
             R.dimen.viewpager_horizontal_margin
         )

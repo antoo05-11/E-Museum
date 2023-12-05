@@ -9,13 +9,13 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.e_museum.utils.PagerMarginItemDecoration
+import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.DeprecatedFragmentViewThingImagesBinding
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Thing
 import kotlin.math.abs
 
 @Deprecated("Unused")
@@ -88,7 +88,7 @@ class ViewThingImagesFragment : Fragment() {
             page.scaleY = 1 - (0.25f * abs(position))
             page.alpha = 0.25f + (1 - abs(position))
         }
-        val itemDecoration = PagerMarginItemDecoration(
+        val itemDecoration = MarginItemDecoration(
             requireContext(),
             R.dimen.viewpager_horizontal_margin
         )

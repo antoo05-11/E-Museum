@@ -13,13 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
 import com.example.e_museum.activities.MainActivity;
-import com.example.e_museum.models.Notification;
 import com.example.e_museum.activities.NotificationViewActivity;
+import com.example.e_museum.entities.Notification;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -30,18 +29,21 @@ import java.util.List;
 public class NotificationsListAdapter extends RecyclerView.Adapter<NotificationsListAdapter.NotificationViewHolder> implements Filterable {
     private List<Notification> notifications;
     private List<Notification> oldNotifications;
-
     private final Activity activity;
 
-    private Fragment containerFragment;
-
-    public NotificationsListAdapter(Activity activity, List<Notification> notifications, Fragment containerFragment) {
+    public NotificationsListAdapter(Activity activity, List<Notification> notifications) {
         this.notifications = notifications;
         this.activity = activity;
-        this.containerFragment = containerFragment;
         this.oldNotifications = notifications;
     }
 
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications.clear();
+        this.notifications.addAll(notifications);
+        this.oldNotifications = notifications;
+    }
+
+    @SuppressWarnings("unchecked")
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -80,14 +82,14 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
         NotificationViewHolder viewHolder = new NotificationViewHolder(view);
 
         view.setOnClickListener((v) -> {
-            int position = notifications.indexOf(v.getTag());
+            int position = notifications.indexOf((Notification) v.getTag());
             if (position != -1) {
                 Notification notification = notifications.get(position);
                 if (notification != null) {
-                    Intent intent = new Intent(containerFragment.getActivity(), NotificationViewActivity.class);
+                    Intent intent = new Intent(activity, NotificationViewActivity.class);
                     intent.putExtra("notification_id", notification.getNotificationID());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    containerFragment.startActivity(intent);
+                    activity.startActivity(intent);
                 }
             }
         });
@@ -121,7 +123,6 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
 
             holder.notificationNameTextView.setText(notification.getName());
             holder.notificationShortTextView.setText(notification.getShortText());
-
 
             Picasso.get()
                     .load(String.format(MainActivity.fileServerURL + "notifications/notification_%d_preview_image.png", notification.getNotificationID()))

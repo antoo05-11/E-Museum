@@ -1,4 +1,4 @@
-package com.example.e_museum.models;
+package com.example.e_museum.entities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

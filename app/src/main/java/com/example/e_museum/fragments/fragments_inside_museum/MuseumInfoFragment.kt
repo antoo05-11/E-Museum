@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.MuseumImagesListAdapter
 import com.example.e_museum.databinding.FragmentMuseumInfoBinding
-import com.example.e_museum.models.Museum
+import com.example.e_museum.entities.Museum
 import java.util.Timer
 import java.util.TimerTask
 

@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityInsideMuseumBinding
-import com.example.e_museum.models.Museum
+import com.example.e_museum.entities.Museum
 
 class InsideMuseumActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInsideMuseumBinding

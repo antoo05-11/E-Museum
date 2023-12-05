@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
 import com.example.e_museum.activities.MainActivity
 import com.example.e_museum.adapters.CollectionsListAdapter
+import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.FragmentCollectionsListBinding
-import com.example.e_museum.models.Collection
-import com.example.e_museum.models.Museum
-import com.example.e_museum.models.Thing
+import com.example.e_museum.entities.Collection
+import com.example.e_museum.entities.Museum
+import com.example.e_museum.entities.Thing
 
 class CollectionsListFragment : Fragment() {
     private lateinit var binding: FragmentCollectionsListBinding
@@ -29,11 +30,12 @@ class CollectionsListFragment : Fragment() {
         binding = FragmentCollectionsListBinding.inflate(inflater, container, false)
         val museum = activity?.intent?.getSerializableExtra("museum") as Museum
 
-        // TODO: ...
-        val collections = mutableListOf(Collection(), Collection(), Collection())
+        val collections = ArrayList<Collection>()
         adapter = CollectionsListAdapter(activity, collections)
         binding.collectionsListRcv.adapter = adapter
         binding.collectionsListRcv.layoutManager = LinearLayoutManager(requireActivity())
+
+        collections.addAll(listOf(Collection(), Collection(), Collection()))
 
         val dividerItemDecoration = DividerItemDecoration(
             binding.collectionsListRcv.context,
@@ -50,28 +52,11 @@ class CollectionsListFragment : Fragment() {
         binding.collectionsListRcv.addItemDecoration(dividerItemDecoration)
 
         Thread {
-            val resultSet = MainActivity.sqlConnection.getDataQuery(
-                String.format(
-                    "select * from collections where museumID = %d",
-                    museum.museumID
-                )
-            )
+            val list = Model.getInstance().collectionModel.getCollectionByMuseumID(museum.museumID)
             collections.clear()
-            while (resultSet.next()) {
-                val thingsList = mutableListOf<Thing>()
-                val collectionResultSet = MainActivity.sqlConnection.getDataQuery(
-                    String.format(
-                        "select * from things where collectionID = %d",
-                        resultSet.getInt("collectionID")
-                    )
-                )
-                while (collectionResultSet.next()) {
-                    thingsList.add(Thing(collectionResultSet))
-                }
-                collections.add(Collection(resultSet, thingsList))
-                activity?.runOnUiThread {
-                    adapter.notifyDataSetChanged()
-                }
+            collections.addAll(list)
+            activity?.runOnUiThread {
+                adapter.notifyDataSetChanged()
             }
         }.start()
         return binding.root

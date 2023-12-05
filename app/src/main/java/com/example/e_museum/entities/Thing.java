@@ -1,4 +1,4 @@
-package com.example.e_museum.models;
+package com.example.e_museum.entities;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,16 +38,8 @@ public class Thing implements MuseumEntity {
         return museumID;
     }
 
-    public void setMuseumID(int museumID) {
-        this.museumID = museumID;
-    }
-
     public int getThingID() {
         return thingID;
-    }
-
-    public void setThingID(int thingID) {
-        this.thingID = thingID;
     }
 
     public int getImages() {
