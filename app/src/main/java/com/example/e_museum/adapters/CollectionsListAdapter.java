@@ -43,7 +43,7 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
-                String input = constraint.toString().toLowerCase().trim();
+                String input = constraint.toString().toLowerCase();
                 if (input.isEmpty()) {
                     collections = collectionsOld;
                 } else {
@@ -117,67 +117,66 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
         if (collection.getCollectionID() == -1) {
             holder.thingNameText.setText("");
             holder.thingsNumTextView.setText("");
-            return;
+        } else {
+            holder.thingsNumTextView.setText(String.format("Số hiện vật: " + collection.getThingsNum()));
+            holder.thingsNumTextViewShimmer.hideShimmer();
+            holder.thingsNumTextView.setBackgroundColor(Color.TRANSPARENT);
+
+            holder.thingNameText.setText(collection.getName());
+            holder.thingShimmerName.hideShimmer();
+            holder.thingNameText.setBackgroundColor(Color.TRANSPARENT);
+
+            Picasso.get()
+                    .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                            collection.getThingsList().get(0).getThingID()))
+                    .fit()
+                    .centerInside()
+                    .into(holder.thingImage1, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.thingShimmerViewContainer.hideShimmer();
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
+
+            Picasso.get()
+                    .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                            collection.getThingsList().get(1).getThingID()))
+                    .fit()
+                    .centerInside()
+                    .into(holder.thingImage2, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.thingShimmerViewContainer1.hideShimmer();
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
+
+            Picasso.get()
+                    .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
+                            collection.getThingsList().get(2).getThingID()))
+                    .fit()
+                    .centerInside()
+                    .into(holder.thingImage3, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.thingShimmerViewContainer2.hideShimmer();
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+
+                        }
+                    });
         }
-
-        holder.thingsNumTextView.setText(String.format("Số hiện vật: " + collection.getThingsNum()));
-        holder.thingsNumTextViewShimmer.hideShimmer();
-        holder.thingsNumTextView.setBackgroundColor(Color.TRANSPARENT);
-
-        holder.thingNameText.setText(collection.getName());
-        holder.thingShimmerName.hideShimmer();
-        holder.thingNameText.setBackgroundColor(Color.TRANSPARENT);
-
-        Picasso.get()
-                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
-                        collection.getThingsList().get(0).getThingID()))
-                .fit()
-                .centerInside()
-                .into(holder.thingImage1, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.thingShimmerViewContainer.hideShimmer();
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-
-                    }
-                });
-
-        Picasso.get()
-                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
-                        collection.getThingsList().get(1).getThingID()))
-                .fit()
-                .centerInside()
-                .into(holder.thingImage2, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.thingShimmerViewContainer1.hideShimmer();
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-
-                    }
-                });
-
-        Picasso.get()
-                .load(MainActivity.fileServerURL + String.format("thing_images/%d_1.png",
-                        collection.getThingsList().get(2).getThingID()))
-                .fit()
-                .centerInside()
-                .into(holder.thingImage3, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        holder.thingShimmerViewContainer2.hideShimmer();
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-
-                    }
-                });
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(activity.getApplicationContext(), ViewCollectionActivity.class);
