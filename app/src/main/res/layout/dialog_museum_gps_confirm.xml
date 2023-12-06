@@ -36,57 +36,47 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-        <Button
-                android:layout_width="152dp"
-                android:layout_height="0dp"
-                android:paddingHorizontal="12dp"
-                android:id="@+id/confirm_button"
-                android:layout_weight="1"
-                android:text="@string/confirm"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_red_corner_10"
-                tools:ignore="ButtonStyle,Suspicious0dp"
-                android:clickable="true"
-                android:stateListAnimator="@animator/zoom_out_animator"
-                android:focusable="true"
-                android:layout_marginBottom="12dp"
-                android:layout_marginTop="12dp" />
-
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="ExtraText"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:paddingRight="15dp"
+                android:layout_marginTop="10dp">
 
             <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/cancel_button"
                     android:text="@string/continue_finding"
                     android:textSize="14sp"
                     android:background="@drawable/bg_gray_corner_10"
                     android:textColor="@color/background_color"
-                    android:layout_marginEnd="5dp"
                     tools:ignore="ButtonStyle,Suspicious0dp"
                     android:clickable="true"
                     android:stateListAnimator="@animator/zoom_out_animator"
                     android:focusable="true"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp" />
 
             <Button
-                    android:text="@string/manual_search"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_gray_corner_10"
-                    android:id="@+id/manualSearchButton"
+                    android:paddingHorizontal="12dp"
+                    android:id="@+id/confirm_button"
+                    android:layout_weight="1"
+                    android:text="@string/confirm"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_red_corner_10"
+                    tools:ignore="ButtonStyle,Suspicious0dp"
                     android:clickable="true"
                     android:stateListAnimator="@animator/zoom_out_animator"
                     android:focusable="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1" />
+                    android:layout_marginLeft="5dp" />
+
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

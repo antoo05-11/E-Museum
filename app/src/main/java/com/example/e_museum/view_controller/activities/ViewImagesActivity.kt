@@ -16,8 +16,8 @@ class ViewImagesActivity : AppCompatActivity() {
         binding = ActivityViewImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.backButton.background = null
-        binding.backButton.setOnClickListener{
+        binding.backViewThingButton.background = null
+        binding.backViewThingButton.setOnClickListener{
             finish()
         }
         Picasso.get().load(intent.extras?.getString("imageURL")).into(binding.photoView)

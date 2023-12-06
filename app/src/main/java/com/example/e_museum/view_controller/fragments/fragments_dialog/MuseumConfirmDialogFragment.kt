@@ -26,7 +26,6 @@ class MuseumConfirmDialogFragment(private val activity: Activity, private val mu
         val dialogView = inflater.inflate(R.layout.dialog_museum_confirm, null)
         builder.setView(dialogView)
 
-
         val cancelButton = dialogView.findViewById<Button>(R.id.cancel_button)
         val confirmButton = dialogView.findViewById<Button>(R.id.confirm_button)
         cancelButton.setOnClickListener {
@@ -39,7 +38,7 @@ class MuseumConfirmDialogFragment(private val activity: Activity, private val mu
 
         confirmButton.setOnClickListener {
             val intent =
-                Intent(activity.applicationContext, com.example.e_museum.view_controller.activities.InsideMuseumActivity::class.java).apply {
+                Intent(activity.applicationContext, InsideMuseumActivity::class.java).apply {
                     putExtra("museum", museum)
                 }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

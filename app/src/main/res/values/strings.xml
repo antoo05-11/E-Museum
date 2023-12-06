@@ -19,7 +19,7 @@
     <string name="sample_thing_name">Sample Thing Name</string>
     <string name="title_activity_view_images">ViewImagesActivity</string>
     <string name="finding_nearest_museum">Đang tìm kiếm bảo tàng gần nhất</string>
-    <string name="find_museum_with_gps">Find museum with GPS</string>
+    <string name="find_museum_with_gps">Tìm kiếm bằng định vị</string>
     <string name="manual_search">TÌM KIẾM THỦ CÔNG</string>
     <string name="continue_finding">Tiếp tục tìm kiếm</string>
     <string name="event_notification">Thông báo sự kiện</string>
@@ -29,11 +29,11 @@
     <string name="title_activity_view_collection">ViewCollectionActivity</string>
     <string name="view_document">Thông tin</string>
     <string name="QR_code">Mã QR</string>
-    <string name="share_content">Download Museum App to see more.</string>
+    <string name="share_content">Hãy tải app E-Museum trên Google Store để khám phá nhiều hơn!</string>
     <string name="open_time">Thời gian mở cửa</string>
     <string name="ticket_price">Giá vé vào cửa</string>
     <string name="adult">Người lớn</string>
-    <string name="student">Sinh viên</string>
+    <string name="student">Sinh viên, học sinh</string>
     <string name="children_6_16">Trẻ em 6 - 16 tuổi</string>
     <string name="the_disable">Người khuyết tật</string>
     <string name="children_under_6">Trẻ em dưới 6 tuổi</string>
@@ -42,4 +42,7 @@
     <string name="website">Website</string>
     <string name="address">Địa chỉ</string>
     <string name="choose_museum">Chọn bảo tàng</string>
+    <string name="condition">Điều kiện</string>
+    <string name="sample_text">Contrary to popular belief, Lorem Ipsum is not simply random text.</string>
+    <string name="hot">Hot</string>
 </resources>

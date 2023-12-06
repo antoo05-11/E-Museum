@@ -31,11 +31,10 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/searching"
-            android:layout_marginTop="-90dp" />
+            android:layout_marginTop="-130dp" />
 
     <TextView
             android:id="@+id/textView5"
-            android:fontFamily="@font/nexa_heavy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/finding_nearest_museum"

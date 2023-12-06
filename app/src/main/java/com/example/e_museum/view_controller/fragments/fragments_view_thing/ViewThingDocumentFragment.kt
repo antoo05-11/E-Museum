@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.e_museum.view_controller.activities.PlayerViewModel
 import com.example.e_museum.databinding.ActivityViewThingDocumentBinding
 import com.example.e_museum.entities.Thing
@@ -27,7 +28,7 @@ class ViewThingDocumentFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = ActivityViewThingDocumentBinding.inflate(inflater, container, false)
 
-        //playerViewModel = ViewModelProvider(this)[PlayerViewModel::class.java]
+        playerViewModel = ViewModelProvider(requireActivity())[PlayerViewModel::class.java]
 
         val thing = activity?.intent?.extras?.getSerializable("thing") as Thing
 
@@ -41,31 +42,6 @@ class ViewThingDocumentFragment : Fragment() {
         formatDropdownTextView(binding.thingSizeDropdownTextView, thing.size)
 
         binding.thingNameTextView.text = thing.name
-
-//         binding.seekBar.setOnSeekBarChangeListener(
-//            PlayerViewModel.OnSeekBarChangeListener(
-//                playerViewModel
-//            )
-//        )
-//        binding.playButton.setOnClickListener {
-//            playerViewModel.playPause()
-//        }
-//        playerViewModel.playingMutableLiveData.observe(this) {
-//            if (it) {
-//                binding.playButton.background =
-//                    ContextCompat.getDrawable(this, R.drawable.icons8_pause_48)
-//            } else {
-//                binding.playButton.background =
-//                    ContextCompat.getDrawable(this, R.drawable.icons8_play_48)
-//            }
-//        }
-//
-//        playerViewModel.thingMutableLiveData.observe(this) {
-//            binding.seekBar.max = it.duration
-//        }
-//        playerViewModel.currentTimeMutableLiveData.observe(this) {
-//            binding.seekBar.progress = it
-//        }
         return binding.root
     }
 

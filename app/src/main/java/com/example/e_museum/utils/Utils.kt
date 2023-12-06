@@ -21,3 +21,8 @@ fun getReadableTime(time: Int): String {
     s %= 60
     return "$m:${s / 10}${s % 10}"
 }
+
+fun normalizeDate(dateGot: String): String {
+    val dates = dateGot.split('-')
+    return dates[2] + "/" + dates[1] + "/" + dates[0]
+}

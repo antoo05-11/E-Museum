@@ -1,34 +1,21 @@
 package com.example.e_museum.view_controller.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModelProvider
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.ActivityViewThingBinding
 import com.example.e_museum.entities.Thing
-import com.example.e_museum.utils.MarginItemDecoration
-import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.getReadableTime
 import com.example.e_museum.utils.printLogcat
-import kotlin.math.abs
 
 class ViewThingActivity : AppCompatActivity() {
 
@@ -39,7 +26,6 @@ class ViewThingActivity : AppCompatActivity() {
     lateinit var thing: Thing
         private set
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -56,25 +42,52 @@ class ViewThingActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.thing_view_fragment_nav_host) as NavHostFragment
         val navController = navFragment.navController
 
+        binding.playButtonUnder.setOnClickListener {
+            playerViewModel.playPause()
+        }
+        binding.seekBarUnder.setOnSeekBarChangeListener(
+            PlayerViewModel.OnSeekBarChangeListener(
+                playerViewModel
+            )
+        )
+        playerViewModel.playingMutableLiveData.observe(this) {
+            if (it) {
+                binding.playButtonUnder.background =
+                    ContextCompat.getDrawable(applicationContext, R.drawable.icons8_pause_48)
+            } else {
+                binding.playButtonUnder.background =
+                    ContextCompat.getDrawable(applicationContext, R.drawable.icons8_play_48)
+            }
+        }
+        playerViewModel.thingMutableLiveData.observe(this) {
+            binding.seekBarUnder.max = it.duration
+        }
+        playerViewModel.currentTimeMutableLiveData.observe(this) {
+            binding.seekBarUnder.progress = it
+        }
+
         binding.backViewThingButton.setOnClickListener {
             if (navController.currentDestination?.id != R.id.fragmentViewThing) {
                 navController.popBackStack()
+                binding.bottomNavigationView.isVisible = true
+                binding.bottomPlayerView.isVisible = false
                 navFragment.view?.updateLayoutParams<ConstraintLayout.LayoutParams> {
                     bottomToTop = binding.bottomNavigationView.id
                 }
-                binding.bottomNavigationView.isVisible = true
             } else {
                 finish()
             }
         }
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             binding.bottomNavigationView.isVisible = false
+            binding.bottomPlayerView.isVisible = true
             navFragment.view?.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                bottomToBottom = binding.thingViewRoot.id
+                bottomToTop = binding.bottomPlayerView.id
             }
             navController.navigate(menuItem.itemId)
             true
         }
+
 
         val thingURLLists = ArrayList<String>()
         repeat(thing.images) { i ->
@@ -102,6 +115,7 @@ class ViewThingActivity : AppCompatActivity() {
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
         }
+
 
         setContentView(binding.root)
     }

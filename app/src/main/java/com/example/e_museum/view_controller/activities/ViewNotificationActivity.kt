@@ -2,14 +2,16 @@ package com.example.e_museum.view_controller.activities
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.e_museum.R
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.ActivityViewNotificationBinding
+import com.example.e_museum.utils.normalizeDate
 import com.squareup.picasso.Picasso
 
-class NotificationViewActivity : AppCompatActivity() {
+class ViewNotificationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityViewNotificationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,10 @@ class NotificationViewActivity : AppCompatActivity() {
 
         binding.loadingNotificationProgressBar.isVisible = true
         binding.notificationGeneralBox.isVisible = false
+
+        binding.backViewThingButton.setOnClickListener {
+            finish()
+        }
 
         supportActionBar?.title = getString(R.string.event_notification)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -36,8 +42,14 @@ class NotificationViewActivity : AppCompatActivity() {
                 binding.notificationGeneralBox.isVisible = true
 
                 binding.notificationNameTv.text = notification.name
-                binding.notificationConditionTv.text = notification.condition
-                binding.notIcationContentTv.text = notification.content
+                if (notification.condition.isNullOrEmpty()) {
+                    (binding.conditionContainer.parent as LinearLayout).removeView(binding.conditionContainer)
+                } else binding.notificationConditionTv.text = notification.condition
+                binding.notIcationContentTv.text = notification.content.replace(
+                    "\\n",
+                    System.getProperty("line.separator")!! + System.getProperty("line.separator")
+                )
+                binding.notIcationContentTv.setLineSpacing(10f, 1.1f)
                 binding.eventDateTv.text = String.format(
                     "%s đến %s",
                     normalizeDate(notification.dateStart.toString()),
@@ -46,8 +58,8 @@ class NotificationViewActivity : AppCompatActivity() {
                 Picasso.get()
                     .load(
                         String.format(
-                            MainActivity.fileServerURL + "notifications/notification_%d_preview_image.png",
-                            intent.getIntExtra("notification_id", 1)
+                            MainActivity.fileServerURL + "notifications/%d_%d.png",
+                            notification.museumID, notification.notificationID
                         )
                     )
                     .fit()
@@ -66,8 +78,5 @@ class NotificationViewActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun normalizeDate(dateGot: String): String {
-        val dates = dateGot.split('-')
-        return dates[2] + "/" + dates[1] + "/" + dates[0]
-    }
+
 }

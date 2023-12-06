@@ -14,7 +14,6 @@ import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Thing
 import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
-import com.example.e_museum.utils.printLogcat
 import kotlin.math.abs
 
 class ViewCollectionActivity : AppCompatActivity() {
@@ -35,7 +34,7 @@ class ViewCollectionActivity : AppCompatActivity() {
         val collection = intent.getSerializableExtra("collection") as Collection
 
         val thingsList = collection.thingsList as ArrayList<Thing>
-        printLogcat(thingsList.size)
+
         adapter =
             ThingsListAdapter(this, thingsList)
         createCardHolder()

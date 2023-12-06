@@ -16,6 +16,7 @@ import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification
 import com.example.e_museum.data_fetching.SQLConnection
 import com.example.e_museum.data_fetching.models.Model
+import com.example.e_museum.entities.Museum
 
 class NotificationsFragment : Fragment() {
 
@@ -26,6 +27,8 @@ class NotificationsFragment : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val museum = requireActivity().intent.getSerializableExtra("museum") as Museum
 
         val notifications = ArrayList<Notification>()
         val adapter = NotificationsListAdapter(
@@ -56,7 +59,11 @@ class NotificationsFragment : Fragment() {
         binding.rvcNotifications.addItemDecoration(dividerItemDecoration)
 
         Thread {
-            adapter.setNotifications(Model.getInstance().notificationModel.allNotifications)
+            adapter.setNotifications(
+                Model.getInstance().notificationModel.getNotificationsByMuseumID(
+                    museum.museumID
+                )
+            )
             activity?.runOnUiThread {
                 adapter.notifyDataSetChanged()
             }

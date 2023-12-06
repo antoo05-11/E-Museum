@@ -58,6 +58,15 @@ class MuseumInfoFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.museumDescriptionTextView.text = museum.description
+        binding.websiteTextView.text = museum.website
+        binding.adultTicketTextView.text = museum.adult_ticket
+        binding.childOver6TicketTextView.text = museum.child_over_6_ticket
+        binding.childUnder6TicketTextView.text = museum.child_under_6_ticket
+        binding.openTimeTextView.text = museum.open_time
+        binding.phoneNumberTextView.text = museum.phoneNumber
+        binding.theDisableTicketTextView.text = museum.the_disabled_ticket
+
         Thread {
             Thread.sleep(1000)
             adapter = MuseumImagesListAdapter(activity, museumImageURLsList)

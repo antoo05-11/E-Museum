@@ -50,7 +50,7 @@
                             android:gravity="center"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:id="@+id/textView2" />
+                            android:id="@+id/museum_description_text_view" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,12 +83,13 @@
                     </LinearLayout>
 
                     <TextView
+                            android:id="@+id/open_time_text_view"
                             android:text="7h00 - 20h các ngày từ thứ Hai đến Chủ Nhật, trừ các ngày lễ, Tết."
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:textSize="14sp"
-                            android:justificationMode="inter_word"/>
+                            android:justificationMode="inter_word" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -132,6 +133,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/adult_ticket_text_view"
                                 android:text="40.000 VND"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -151,6 +153,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/student_ticket_text_view"
                                 android:text="40.000 VND"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -170,6 +173,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/child_over_6_ticket_text_view"
                                 android:text="40.000 VND"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -189,6 +193,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/the_disable_ticket_text_view"
                                 android:text="Free"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -208,6 +213,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/child_under_6_ticket_text_view"
                                 android:text="Free"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -257,6 +263,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/phone_number_text_view"
                                 android:text="+84 123456789"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -277,6 +284,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
+                                android:id="@+id/website_text_view"
                                 android:text="abc.com"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

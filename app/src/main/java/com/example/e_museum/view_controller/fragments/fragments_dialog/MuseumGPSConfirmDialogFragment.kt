@@ -41,13 +41,13 @@ class MuseumGPSConfirmDialogFragment(private val activity: Activity, private val
             Thread { (activity as MainActivity).findWithGPS() }.start()
         }
 
-        val manualSearchButton = dialogView.findViewById<Button>(R.id.manualSearchButton)
-        manualSearchButton.setOnClickListener {
-            val intent = Intent(activity.applicationContext, MuseumChoosingActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            dialog?.dismiss()
-        }
+//        val manualSearchButton = dialogView.findViewById<Button>(R.id.manualSearchButton)
+//        manualSearchButton.setOnClickListener {
+//            val intent = Intent(activity.applicationContext, MuseumChoosingActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            startActivity(intent)
+//            dialog?.dismiss()
+//        }
 
         val confirmTextView = dialogView.findViewById<TextView>(R.id.confirm_text_view)
         confirmTextView.text =

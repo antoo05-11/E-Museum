@@ -22,6 +22,7 @@ import com.example.e_museum.entities.Thing
 import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.getReadableTime
+import com.example.e_museum.utils.printLogcat
 import kotlin.math.abs
 
 class ViewThingFragment : Fragment() {
@@ -34,6 +35,7 @@ class ViewThingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         playerViewModel = ViewModelProvider(requireActivity())[PlayerViewModel::class.java]
         binding.seekBar.setOnSeekBarChangeListener(
             PlayerViewModel.OnSeekBarChangeListener(
@@ -43,6 +45,7 @@ class ViewThingFragment : Fragment() {
         binding.playButton.setOnClickListener {
             playerViewModel.playPause()
         }
+
         playerViewModel.playingMutableLiveData.observe(viewLifecycleOwner) {
             if (it) {
                 binding.playButton.background =
@@ -56,13 +59,15 @@ class ViewThingFragment : Fragment() {
         playerViewModel.thingMutableLiveData.observe(viewLifecycleOwner) {
             binding.tvTotal.text = getReadableTime(it.duration)
             binding.seekBar.max = it.duration
+            (requireActivity() as ViewThingActivity).binding.seekBarUnder.max = it.duration
         }
         playerViewModel.currentTimeMutableLiveData.observe(viewLifecycleOwner) {
             binding.seekBar.progress = it
+            (requireActivity() as ViewThingActivity).binding.seekBarUnder.progress = it
             binding.tvCurrent.text = getReadableTime(it)
         }
 
-        if (playerViewModel.playingMutableLiveData.value != true) {
+        if (playerViewModel.isSelectedMutableLiveData.value != true) {
             playerViewModel.stop()
             playerViewModel.setMedia(
                 Uri.parse(MainActivity.fileServerURL + "museum_sound/${thing.thingID}.mp3")

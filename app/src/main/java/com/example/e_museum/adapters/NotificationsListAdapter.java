@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
 import com.example.e_museum.view_controller.activities.MainActivity;
-import com.example.e_museum.view_controller.activities.NotificationViewActivity;
+import com.example.e_museum.view_controller.activities.ViewNotificationActivity;
 import com.example.e_museum.entities.Notification;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Callback;
@@ -86,7 +86,7 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
             if (position != -1) {
                 Notification notification = notifications.get(position);
                 if (notification != null) {
-                    Intent intent = new Intent(activity, NotificationViewActivity.class);
+                    Intent intent = new Intent(activity, ViewNotificationActivity.class);
                     intent.putExtra("notification_id", notification.getNotificationID());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     activity.startActivity(intent);
@@ -125,7 +125,7 @@ public class NotificationsListAdapter extends RecyclerView.Adapter<Notifications
             holder.notificationShortTextView.setText(notification.getShortText());
 
             Picasso.get()
-                    .load(String.format(MainActivity.fileServerURL + "notifications/notification_%d_preview_image.png", notification.getNotificationID()))
+                    .load(String.format(MainActivity.fileServerURL + "notifications/%d_%d.png", notification.getMuseumID(), notification.getNotificationID()))
                     .fit()
                     .centerInside()
                     .into(holder.notificationImageView, new Callback() {

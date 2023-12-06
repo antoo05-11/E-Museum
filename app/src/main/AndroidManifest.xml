@@ -28,21 +28,21 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Base.Theme.AppCompat"
+            android:theme="@style/AppTheme"
             tools:targetApi="31">
         <activity
                 android:name=".view_controller.fragments.fragments_view_thing.ViewThingDocumentFragment"
                 android:exported="false"
-                android:theme="@style/Base.Theme.AppCompat"/>
+                android:theme="@style/AppTheme"/>
         <activity
                 android:name=".view_controller.fragments.fragments_view_thing.ViewQRFragment"
                 android:exported="false"
-                android:theme="@style/Base.Theme.AppCompat" />
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".view_controller.activities.ViewImagesActivity"
                 android:exported="false"
                 android:label="@string/title_activity_view_images"
-                android:theme="@style/Base.Theme.AppCompat" />
+                android:theme="@style/AppTheme" />
         <activity
                 android:name=".view_controller.activities.ViewCollectionActivity"
                 android:exported="false"
@@ -51,14 +51,15 @@
         <activity
                 android:name=".view_controller.activities.InsideMuseumActivity"
                 android:exported="false"
-                android:theme="@style/Theme.AppCompat.NoActionBar" />
+                android:theme="@style/AppTheme" />
         <activity
-                android:name=".view_controller.activities.NotificationViewActivity"
+                android:name=".view_controller.activities.ViewNotificationActivity"
                 android:exported="false" />
         <activity
                 android:name=".view_controller.activities.MuseumChoosingActivity"
                 android:parentActivityName=".view_controller.activities.MainActivity"
-                android:windowSoftInputMode="adjustPan|stateHidden">
+                android:windowSoftInputMode="adjustPan|stateHidden"
+                android:theme="@style/Theme.AppCompat">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_controller.activities.MainActivity" />
@@ -66,10 +67,9 @@
         <activity
                 android:name=".view_controller.activities.MainActivity"
                 android:exported="true"
-                android:theme="@style/Base.Theme.AppCompat">
+                android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -24,8 +24,8 @@ class PlayerViewModel : ViewModel() {
     var currentTimeMutableLiveData: MutableLiveData<Int> = MutableLiveData()
         private set
 
-    private var isSelectedMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
-
+    var isSelectedMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
+        private set
     init {
         updateCurrentProgress()
         isSelectedMutableLiveData.value = false
