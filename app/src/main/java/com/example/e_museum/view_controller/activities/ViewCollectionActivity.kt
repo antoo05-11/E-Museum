@@ -32,6 +32,7 @@ class ViewCollectionActivity : AppCompatActivity() {
         viewPager = binding.thingImagesViewPager
 
         val collection = intent.getSerializableExtra("collection") as Collection
+        binding.topBarTextView.text = collection.name
 
         val thingsList = collection.thingsList as ArrayList<Thing>
 

@@ -26,6 +26,7 @@ class PlayerViewModel : ViewModel() {
 
     var isSelectedMutableLiveData: MutableLiveData<Boolean> = MutableLiveData()
         private set
+
     init {
         updateCurrentProgress()
         isSelectedMutableLiveData.value = false
@@ -73,6 +74,20 @@ class PlayerViewModel : ViewModel() {
                 }
             }
         )
+    }
+
+    fun seekNext10s() {
+        val currentPosition: Long = player.currentPosition
+        if (currentPosition + 10000 < thingMutableLiveData.value!!.duration) {
+            player.seekTo(currentPosition + 10000)
+        } else player.seekTo(thingMutableLiveData.value!!.duration.toLong())
+    }
+
+    fun seekPrevious10s() {
+        val currentPosition: Long = player.currentPosition
+        if (currentPosition - 10000 > 0) {
+            player.seekTo(currentPosition - 10000)
+        } else player.seekTo(0)
     }
 
     fun skipNextThing() {

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.e_museum.view_controller.activities.MainActivity
-import com.example.e_museum.databinding.ActivityViewQrBinding
+import com.example.e_museum.databinding.FragmentViewThingQrBinding
 import com.example.e_museum.entities.Thing
 import com.squareup.picasso.Picasso
 
 class ViewQRFragment : Fragment() {
-    private lateinit var binding: ActivityViewQrBinding
+    private lateinit var binding: FragmentViewThingQrBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,7 +19,7 @@ class ViewQRFragment : Fragment() {
     ): View {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityViewQrBinding.inflate(inflater, container, false)
+        binding = FragmentViewThingQrBinding.inflate(inflater, container, false)
 
         val thing = activity?.intent?.extras?.getSerializable("thing") as Thing
         Picasso.get()

@@ -8,12 +8,12 @@
             android:id="@+id/viewThingDocumentActivity"
             android:name="com.example.e_museum.view_controller.fragments.fragments_view_thing.ViewThingDocumentFragment"
             android:label="activity_view_thing_document"
-            tools:layout="@layout/activity_view_thing_document" />
+            tools:layout="@layout/fragment_view_thing_document" />
     <fragment
             android:id="@+id/viewQRActivity"
             android:name="com.example.e_museum.view_controller.fragments.fragments_view_thing.ViewQRFragment"
             android:label="activity_view_qr"
-            tools:layout="@layout/activity_view_qr" />
+            tools:layout="@layout/fragment_view_thing_qr" />
 
     <fragment
             android:id="@+id/fragmentViewThing"

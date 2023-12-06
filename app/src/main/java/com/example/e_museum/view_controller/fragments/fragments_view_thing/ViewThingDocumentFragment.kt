@@ -11,12 +11,12 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.e_museum.view_controller.activities.PlayerViewModel
-import com.example.e_museum.databinding.ActivityViewThingDocumentBinding
+import com.example.e_museum.databinding.FragmentViewThingDocumentBinding
 import com.example.e_museum.entities.Thing
 import hakobastvatsatryan.DropdownTextView
 
 class ViewThingDocumentFragment : Fragment() {
-    private lateinit var binding: ActivityViewThingDocumentBinding
+    private lateinit var binding: FragmentViewThingDocumentBinding
     private lateinit var playerViewModel: PlayerViewModel
 
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -26,7 +26,7 @@ class ViewThingDocumentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreate(savedInstanceState)
-        binding = ActivityViewThingDocumentBinding.inflate(inflater, container, false)
+        binding = FragmentViewThingDocumentBinding.inflate(inflater, container, false)
 
         playerViewModel = ViewModelProvider(requireActivity())[PlayerViewModel::class.java]
 

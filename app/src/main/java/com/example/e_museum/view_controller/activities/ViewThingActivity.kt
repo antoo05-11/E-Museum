@@ -65,6 +65,12 @@ class ViewThingActivity : AppCompatActivity() {
         playerViewModel.currentTimeMutableLiveData.observe(this) {
             binding.seekBarUnder.progress = it
         }
+        binding.next10ButtonUnder.setOnClickListener {
+            playerViewModel.seekNext10s()
+        }
+        binding.previous10ButtonUnder.setOnClickListener {
+            playerViewModel.seekPrevious10s()
+        }
 
         binding.backViewThingButton.setOnClickListener {
             if (navController.currentDestination?.id != R.id.fragmentViewThing) {

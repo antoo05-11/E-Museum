@@ -38,9 +38,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#fcfcf9"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:text="Museum A"
-                android:gravity="center" />
+                android:gravity="center"
+                android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

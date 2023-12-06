@@ -59,12 +59,17 @@ class ViewThingFragment : Fragment() {
         playerViewModel.thingMutableLiveData.observe(viewLifecycleOwner) {
             binding.tvTotal.text = getReadableTime(it.duration)
             binding.seekBar.max = it.duration
-            (requireActivity() as ViewThingActivity).binding.seekBarUnder.max = it.duration
         }
         playerViewModel.currentTimeMutableLiveData.observe(viewLifecycleOwner) {
             binding.seekBar.progress = it
-            (requireActivity() as ViewThingActivity).binding.seekBarUnder.progress = it
             binding.tvCurrent.text = getReadableTime(it)
+        }
+
+        binding.next10Button.setOnClickListener {
+            playerViewModel.seekNext10s()
+        }
+        binding.previous10Button.setOnClickListener {
+            playerViewModel.seekPrevious10s()
         }
 
         if (playerViewModel.isSelectedMutableLiveData.value != true) {
