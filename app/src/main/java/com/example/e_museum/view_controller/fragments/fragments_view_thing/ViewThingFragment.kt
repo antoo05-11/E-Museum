@@ -16,13 +16,12 @@ import com.example.e_museum.R
 import com.example.e_museum.view_controller.activities.MainActivity
 import com.example.e_museum.view_controller.activities.PlayerViewModel
 import com.example.e_museum.view_controller.activities.ViewThingActivity
-import com.example.e_museum.adapters.ThingImagesListAdapter
+import com.example.e_museum.view_controller.adapters.ThingImagesListAdapter
 import com.example.e_museum.databinding.FragmentViewThingBinding
 import com.example.e_museum.entities.Thing
 import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.getReadableTime
-import com.example.e_museum.utils.printLogcat
 import kotlin.math.abs
 
 class ViewThingFragment : Fragment() {
@@ -100,10 +99,11 @@ class ViewThingFragment : Fragment() {
         binding.thingNameMainTextView.text = thing.name
 
         viewPager = binding.viewPager
-        myAdapter = ThingImagesListAdapter(
-            requireActivity(),
-            thingURLLists
-        )
+        myAdapter =
+            ThingImagesListAdapter(
+                requireActivity(),
+                thingURLLists
+            )
         createCardHolder()
         viewPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {

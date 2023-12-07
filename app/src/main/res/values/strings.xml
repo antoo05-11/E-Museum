@@ -45,4 +45,5 @@
     <string name="condition">Điều kiện</string>
     <string name="sample_text">Contrary to popular belief, Lorem Ipsum is not simply random text.</string>
     <string name="hot">Hot</string>
+    <string name="click_here_to_open_app">Nhấn vào đây để vào ứng dụng</string>
 </resources>

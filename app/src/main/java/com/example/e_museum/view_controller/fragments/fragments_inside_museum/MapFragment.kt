@@ -6,19 +6,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
 import androidx.core.graphics.drawable.toBitmap
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
 import com.example.e_museum.view_controller.activities.MainActivity
-import com.example.e_museum.adapters.MapGuidesListAdapter
+import com.example.e_museum.view_controller.adapters.MapGuidesListAdapter
 import com.example.e_museum.databinding.FragmentMapBinding
 import com.example.e_museum.entities.MapGuide
 import com.example.e_museum.entities.Museum
 import com.example.e_museum.utils.MarginItemDecoration
+import com.example.e_museum.view_controller.fragments.fragments_dialog.DataDenyConfirmDialogFragment
 import com.github.chrisbanes.photoview.PhotoView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -59,6 +62,29 @@ class MapFragment : Fragment() {
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, items)
         dropdown.adapter = floorsListAdapter
 
+        dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    activity?.runOnUiThread {
+                        if (!activity!!.supportFragmentManager.isStateSaved) {
+                            val dialogFragment: DialogFragment =
+                                DataDenyConfirmDialogFragment(activity!!)
+                            dialogFragment.show(activity!!.supportFragmentManager, "confirm")
+                        }
+                    }
+                    parent?.setSelection(0)
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
         Picasso.get().load(
             String.format(
                 MainActivity.fileServerURL + "map_images/%d_%d.png",
@@ -71,7 +97,8 @@ class MapFragment : Fragment() {
                 scaleRate = bitmap.width.toFloat().div(photoView.drawable.intrinsicWidth)
 
                 photoView.attacher.scaleType = ImageView.ScaleType.CENTER_CROP
-                photoView.maximumScale = 2f
+                photoView.mediumScale = 1.2f
+                photoView.maximumScale = 1.5f
                 viewPager.registerOnPageChangeCallback(object :
                     ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
@@ -84,7 +111,7 @@ class MapFragment : Fragment() {
                         val focalY: Float = (y * photoView.bottom) / bitmap.height
 
                         photoView.setScale(
-                            2f,
+                            1.5f,
                             focalX,
                             focalY,
                             false
@@ -110,10 +137,11 @@ class MapFragment : Fragment() {
                     mapGuides.add(MapGuide(resultSet))
                 }
                 activity?.runOnUiThread {
-                    adapter = MapGuidesListAdapter(
-                        activity,
-                        mapGuides
-                    )
+                    adapter =
+                        MapGuidesListAdapter(
+                            activity,
+                            mapGuides
+                        )
                     createCardHolder()
                 }
             }

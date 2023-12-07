@@ -1,5 +1,6 @@
 package com.example.e_museum.view_controller.activities
 
+import android.app.NotificationManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,8 +15,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.e_museum.R
 import com.example.e_museum.databinding.ActivityViewThingBinding
 import com.example.e_museum.entities.Thing
-import com.example.e_museum.utils.getReadableTime
-import com.example.e_museum.utils.printLogcat
+import com.example.e_museum.view_controller.NotificationService
+
 
 class ViewThingActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class ViewThingActivity : AppCompatActivity() {
     private lateinit var player: ExoPlayer
     lateinit var thing: Thing
         private set
-
+    private lateinit var notificationManager: NotificationManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,8 +43,14 @@ class ViewThingActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.thing_view_fragment_nav_host) as NavHostFragment
         val navController = navFragment.navController
 
+        val serviceIntent = Intent(applicationContext, NotificationService::class.java).apply {
+            putExtra("thing", thing)
+        }
+        applicationContext.startService(serviceIntent)
+
         binding.playButtonUnder.setOnClickListener {
             playerViewModel.playPause()
+
         }
         binding.seekBarUnder.setOnSeekBarChangeListener(
             PlayerViewModel.OnSeekBarChangeListener(

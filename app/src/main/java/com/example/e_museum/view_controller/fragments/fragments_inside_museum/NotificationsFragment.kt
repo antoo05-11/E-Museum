@@ -11,10 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.adapters.NotificationsListAdapter
+import com.example.e_museum.view_controller.adapters.NotificationsListAdapter
 import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Notification
-import com.example.e_museum.data_fetching.SQLConnection
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.entities.Museum
 
@@ -31,10 +30,11 @@ class NotificationsFragment : Fragment() {
         val museum = requireActivity().intent.getSerializableExtra("museum") as Museum
 
         val notifications = ArrayList<Notification>()
-        val adapter = NotificationsListAdapter(
-            requireActivity(),
-            notifications,
-        )
+        val adapter =
+            NotificationsListAdapter(
+                requireActivity(),
+                notifications,
+            )
         binding.rvcNotifications.layoutManager = LinearLayoutManager(requireActivity())
         binding.rvcNotifications.adapter = adapter
 

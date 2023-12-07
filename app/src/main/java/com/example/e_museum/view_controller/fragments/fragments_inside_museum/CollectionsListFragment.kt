@@ -11,16 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.view_controller.activities.MainActivity
-import com.example.e_museum.adapters.CollectionsListAdapter
-import com.example.e_museum.adapters.NotificationsListAdapter
+import com.example.e_museum.view_controller.adapters.CollectionsListAdapter
 import com.example.e_museum.data_fetching.models.Model
 import com.example.e_museum.databinding.FragmentCollectionsListBinding
-import com.example.e_museum.databinding.FragmentNotificationsBinding
 import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Museum
-import com.example.e_museum.entities.Notification
-import com.example.e_museum.entities.Thing
 
 class CollectionsListFragment : Fragment() {
 //    private lateinit var _binding: FragmentCollectionsListBinding? = null
@@ -34,7 +29,11 @@ class CollectionsListFragment : Fragment() {
         val museum = activity?.intent?.getSerializableExtra("museum") as Museum
 
         val collections = ArrayList<Collection>()
-        adapter = CollectionsListAdapter(activity, collections)
+        adapter =
+            CollectionsListAdapter(
+                activity,
+                collections
+            )
         binding.collectionsListRcv.adapter = adapter
         binding.collectionsListRcv.layoutManager = LinearLayoutManager(requireActivity())
 

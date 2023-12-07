@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.view_controller.activities.MainActivity
-import com.example.e_museum.adapters.MuseumImagesListAdapter
+import com.example.e_museum.view_controller.adapters.MuseumImagesListAdapter
 import com.example.e_museum.databinding.FragmentMuseumInfoBinding
 import com.example.e_museum.entities.Museum
 import java.util.Timer
@@ -46,7 +46,11 @@ class MuseumInfoFragment : Fragment() {
             }
         }
 
-        adapter = MuseumImagesListAdapter(activity, listOf(""))
+        adapter =
+            MuseumImagesListAdapter(
+                activity,
+                listOf("")
+            )
         binding.museumImagesViewPager.adapter = adapter
         binding.museumImagesViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
@@ -69,7 +73,11 @@ class MuseumInfoFragment : Fragment() {
 
         Thread {
             Thread.sleep(1000)
-            adapter = MuseumImagesListAdapter(activity, museumImageURLsList)
+            adapter =
+                MuseumImagesListAdapter(
+                    activity,
+                    museumImageURLsList
+                )
             activity?.runOnUiThread {
                 binding.museumImagesViewPager.adapter = adapter
                 val handler = Handler()

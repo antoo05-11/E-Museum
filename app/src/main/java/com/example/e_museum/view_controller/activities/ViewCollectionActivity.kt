@@ -8,7 +8,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.e_museum.R
-import com.example.e_museum.adapters.ThingsListAdapter
+import com.example.e_museum.view_controller.adapters.ThingsListAdapter
 import com.example.e_museum.databinding.ActivityViewCollectionBinding
 import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Thing
@@ -37,7 +37,10 @@ class ViewCollectionActivity : AppCompatActivity() {
         val thingsList = collection.thingsList as ArrayList<Thing>
 
         adapter =
-            ThingsListAdapter(this, thingsList)
+            ThingsListAdapter(
+                this,
+                thingsList
+            )
         createCardHolder()
 
         viewPager.registerOnPageChangeCallback(object :

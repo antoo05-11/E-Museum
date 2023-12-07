@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.e_museum.R
-import com.example.e_museum.adapters.MuseumsListAdapter
+import com.example.e_museum.view_controller.adapters.MuseumsListAdapter
 import com.example.e_museum.databinding.ActivityChoosingMuseumBinding
 import com.example.e_museum.entities.Museum
 import com.example.e_museum.data_fetching.models.Model
@@ -38,7 +38,10 @@ class MuseumChoosingActivity : AppCompatActivity() {
         museums.add(Museum())
         museums.add(Museum())
         val tmpMuseumsListAdapter =
-            MuseumsListAdapter(this, museums)
+            MuseumsListAdapter(
+                this,
+                museums
+            )
         binding.rcvMuseums.layoutManager = LinearLayoutManager(this)
         binding.rcvMuseums.adapter = tmpMuseumsListAdapter
 

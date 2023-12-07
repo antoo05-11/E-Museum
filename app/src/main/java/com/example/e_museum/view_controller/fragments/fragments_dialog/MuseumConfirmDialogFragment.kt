@@ -1,5 +1,6 @@
 package com.example.e_museum.view_controller.fragments.fragments_dialog
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
@@ -18,6 +19,7 @@ import com.example.e_museum.entities.Museum
 
 class MuseumConfirmDialogFragment(private val activity: Activity, private val museum: Museum) :
     DialogFragment() {
+    @SuppressLint("SetTextI18n")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val builder = AlertDialog.Builder(activity)
@@ -32,10 +34,12 @@ class MuseumConfirmDialogFragment(private val activity: Activity, private val mu
             dialog!!.dismiss()
         }
 
-        val confirmTextView = dialogView.findViewById<TextView>(R.id.confirm_text_view);
-        confirmTextView.text =
-            String.format(confirmTextView.text.toString() + " " + museum.name + " chứ?")
-
+        val confirmTextView = dialogView.findViewById<TextView>(R.id.confirm_text_view)
+        if (museum.museumID == 100002)
+            confirmTextView.text =
+                String.format(confirmTextView.text.toString() + " " + museum.name + " chứ?")
+        else confirmTextView.text =
+            "Dữ liệu bảo tàng đã chọn chưa được cập nhật. \nBạn muốn tiếp tục chứ?"
         confirmButton.setOnClickListener {
             val intent =
                 Intent(activity.applicationContext, InsideMuseumActivity::class.java).apply {

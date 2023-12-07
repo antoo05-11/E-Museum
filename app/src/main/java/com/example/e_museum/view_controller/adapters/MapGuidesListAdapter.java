@@ -1,4 +1,4 @@
-package com.example.e_museum.adapters;
+package com.example.e_museum.view_controller.adapters;
 
 import android.app.Activity;
 import android.graphics.Color;
