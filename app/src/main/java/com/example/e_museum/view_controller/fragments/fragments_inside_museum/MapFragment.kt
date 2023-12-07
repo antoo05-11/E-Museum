@@ -42,8 +42,6 @@ class MapFragment : Fragment() {
     private lateinit var adapter: MapGuidesListAdapter
 
     private lateinit var bitmap: Bitmap
-    private var shortAnimationDuration: Int = 0
-
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -91,19 +89,7 @@ class MapFragment : Fragment() {
             }
         }
 
-        photoView.setOnViewDragListener { dx, dy ->
-            binding.locationIcon.animate()
-                .alpha(0f)
-                .setDuration(shortAnimationDuration.toLong())
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        binding.locationIcon.alpha = 1f
-                        binding.locationIcon.visibility = View.INVISIBLE
-                    }
-                })
 
-            binding.locationIcon.visibility = View.INVISIBLE
-        }
         Picasso.get().load(
             String.format(
                 MainActivity.fileServerURL + "map_images/%d_%d.png",
@@ -117,7 +103,7 @@ class MapFragment : Fragment() {
 
                 photoView.attacher.scaleType = ImageView.ScaleType.CENTER_CROP
                 photoView.mediumScale = 1.2f
-                photoView.maximumScale = 1.5f
+                photoView.maximumScale = 2f
                 viewPager.registerOnPageChangeCallback(object :
                     ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
@@ -130,13 +116,11 @@ class MapFragment : Fragment() {
                         val focalY: Float = (y * photoView.bottom) / bitmap.height
 
                         photoView.setScale(
-                            1.5f,
+                            2f,
                             focalX,
                             focalY,
                             false
                         )
-
-                        binding.locationIcon.visibility = View.VISIBLE
                     }
                 })
             }
@@ -156,6 +140,7 @@ class MapFragment : Fragment() {
                 while (resultSet.next()) {
                     mapGuides.add(MapGuide(resultSet))
                 }
+                mapGuides.reverse()
                 activity?.runOnUiThread {
                     adapter =
                         MapGuidesListAdapter(

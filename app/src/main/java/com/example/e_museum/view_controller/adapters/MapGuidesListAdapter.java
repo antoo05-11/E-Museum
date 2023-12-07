@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_museum.R;
 import com.example.e_museum.entities.MapGuide;
+import com.example.e_museum.view_controller.activities.MainActivity;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -38,8 +41,9 @@ public class MapGuidesListAdapter extends RecyclerView.Adapter<MapGuidesListAdap
 
     @Override
     public void onBindViewHolder(@NonNull MapGuideHolder holder, int position) {
+        if (holder.container.getChildCount() > 1) return;
         MapGuide mapGuide = mapGuides.get(position);
-        if (!mapGuide.getContent().isEmpty()) {
+        if (mapGuide.getContent() != null) {
             LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             params1.setMargins(20, 0, 20, 0);
 
@@ -61,13 +65,24 @@ public class MapGuidesListAdapter extends RecyclerView.Adapter<MapGuidesListAdap
             contentTextView.setGravity(Gravity.CENTER);
             contentTextView.setLayoutParams(params2);
 
+            holder.container.removeView((View) holder.shimmerCenterImageView.getParent());
             holder.container.addView(titleTextView);
             holder.container.addView(contentTextView);
         } else {
-            ImageView imageView = new ImageView(activity.getApplicationContext());
-            Picasso.get().load(mapGuide.getImageURL()).fit().into(imageView);
+            ImageView imageView = new ImageView(activity);
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params1.setMargins(0, 0, 0, 0);
+            imageView.setLayoutParams(params1);
+            Picasso.get().load(MainActivity.fileServerURL + mapGuide.getImageURL()).into(holder.centerImageView, new Callback() {
+                @Override
+                public void onSuccess() {
+                    holder.shimmerCenterImageView.hideShimmer();
+                }
 
-            holder.container.addView(imageView);
+                @Override
+                public void onError(Exception e) {
+                }
+            });
         }
     }
 
@@ -78,9 +93,14 @@ public class MapGuidesListAdapter extends RecyclerView.Adapter<MapGuidesListAdap
 
     public static class MapGuideHolder extends RecyclerView.ViewHolder {
         LinearLayout container;
+        ImageView centerImageView;
+        ShimmerFrameLayout shimmerCenterImageView;
+
         public MapGuideHolder(@NonNull View itemView) {
             super(itemView);
             container = itemView.findViewById(R.id.container);
+            centerImageView = itemView.findViewById(R.id.centerImageView);
+            shimmerCenterImageView = itemView.findViewById(R.id.shimmerCenterImageView);
         }
     }
 

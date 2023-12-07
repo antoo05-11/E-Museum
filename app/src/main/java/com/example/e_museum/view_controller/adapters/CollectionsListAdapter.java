@@ -51,6 +51,13 @@ public class CollectionsListAdapter extends RecyclerView.Adapter<CollectionsList
                     for (Collection collection : collectionsOld) {
                         if (collection.getName().toLowerCase().contains(input)) {
                             list.add(collection);
+                        } else {
+                            for (int i = 0; i < collection.getThingsList().size(); i++) {
+                                if(collection.getThingsList().get(i).getName().toLowerCase().contains(input)) {
+                                    list.add(collection);
+                                    break;
+                                }
+                            }
                         }
                     }
                     collections = list;
