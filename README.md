@@ -45,9 +45,9 @@ Start the server
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Client:** Kotlin, Java
 
-**Server:** Node, Express
+**Server:** Direct Database Connections
 
 
 ## Demo
