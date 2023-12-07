@@ -22,16 +22,20 @@ E-Museum là ứng dụng di động được sử dụng để hỗ trợ trả
     <th>Example 2</th>
   </tr>
   <tr>
-    <td><img src="1.png"/></td>
-    <td><img src="2.png"/></td>
+    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/e95d7ca9-6378-4862-9fba-8cfe81d5806d)
+</td>
+    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/814131fa-aa9f-4278-8c15-912234384dc9)
+</td>
   </tr>
   <tr>
     <th>Example 3</th>
     <th>Example 4</th>
   </tr>
   <tr>
-    <td><img src="3.png"/></td>
-    <td><img src="4.png"/></td>
+    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/9b143b96-adb4-4c0c-8d79-abdc8c984e81)
+</td>
+    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/e94d5ac5-e090-4198-87b3-55eb46e55cab)
+</td>
   </tr>
 </table>
 
