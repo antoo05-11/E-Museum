@@ -16,28 +16,11 @@ E-Museum là ứng dụng di động được sử dụng để hỗ trợ trả
 **Architecture:** MVC 
 
 ## Demo
-<table style="width:100%">
-  <tr>
-    <th>Example 1</th>
-    <th>Example 2</th>
-  </tr>
-  <tr>
-    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/e95d7ca9-6378-4862-9fba-8cfe81d5806d)
-</td>
-    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/814131fa-aa9f-4278-8c15-912234384dc9)
-</td>
-  </tr>
-  <tr>
-    <th>Example 3</th>
-    <th>Example 4</th>
-  </tr>
-  <tr>
-    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/9b143b96-adb4-4c0c-8d79-abdc8c984e81)
-</td>
-    <td>![Screenshot](https://github.com/antoo05-11/E-Museum/assets/100185375/e94d5ac5-e090-4198-87b3-55eb46e55cab)
-</td>
-  </tr>
-</table>
+![unnamed (1)](https://github.com/antoo05-11/E-Museum/assets/100185375/4286f9d6-8062-4d1a-94ce-b57d98680bfc)
+![unnamed (4)](https://github.com/antoo05-11/E-Museum/assets/100185375/73c9c7c2-81bb-4df2-bd27-efcdcee316cd)
+![unnamed (7)](https://github.com/antoo05-11/E-Museum/assets/100185375/d709322c-24b4-4810-a5b7-382c84b204df)
+![unnamed (11)](https://github.com/antoo05-11/E-Museum/assets/100185375/a867dd92-9de1-422e-bc33-79e5e97aba6c)
+
 
 ## Authors
 
