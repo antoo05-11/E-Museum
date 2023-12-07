@@ -6,33 +6,6 @@
 
 E-Museum là ứng dụng di động được sử dụng để hỗ trợ trải nghiệm của người tham quan và hướng dẫn viên ở các bảo tàng trong nước.
 
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/antoo05-11/E-Museum.git
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-
 ## Tech Stack
 
 **Client:** Kotlin, Java
