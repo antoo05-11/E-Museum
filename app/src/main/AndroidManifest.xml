@@ -31,44 +31,46 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:targetApi="31">
+
+        <activity
+                android:name=".view_controller.activities.ViewVideoActivity"
+                android:exported="false"
+                android:label="@string/title_activity_view_video"
+                android:theme="@style/AppTheme" />
+
         <service
                 android:name=".view_controller.NotificationService"
                 android:enabled="true"
-                android:exported="true"></service>
-        <service
-                android:name=".view_controller.MyIntentService"
-                android:exported="false" />
+                android:exported="true" />
 
-        <activity
-                android:name=".view_controller.fragments.fragments_view_thing.ViewThingDocumentFragment"
-                android:exported="false"
-                android:theme="@style/AppTheme" />
-        <activity
-                android:name=".view_controller.fragments.fragments_view_thing.ViewQRFragment"
-                android:exported="false"
-                android:theme="@style/AppTheme" />
         <activity
                 android:name=".view_controller.activities.ViewImagesActivity"
                 android:exported="false"
                 android:label="@string/title_activity_view_images"
-                android:theme="@style/AppTheme" />
+                android:theme="@style/AppTheme"  android:screenOrientation="portrait"
+                />
         <activity
                 android:name=".view_controller.activities.ViewCollectionActivity"
                 android:exported="false"
                 android:label="@string/title_activity_view_collection"
-                android:theme="@style/Theme.AppCompat.NoActionBar" />
+                android:theme="@style/Theme.AppCompat.NoActionBar"
+                android:screenOrientation="portrait"
+                tools:ignore="LockedOrientationActivity" />
         <activity
                 android:name=".view_controller.activities.InsideMuseumActivity"
                 android:exported="false"
-                android:theme="@style/AppTheme" />
+                android:theme="@style/AppTheme"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".view_controller.activities.ViewNotificationActivity"
-                android:exported="false" />
+                android:exported="false"
+                  android:screenOrientation="portrait"/>
         <activity
                 android:name=".view_controller.activities.MuseumChoosingActivity"
                 android:parentActivityName=".view_controller.activities.MainActivity"
                 android:theme="@style/Theme.AppCompat"
-                android:windowSoftInputMode="adjustPan|stateHidden">
+                android:windowSoftInputMode="adjustPan|stateHidden"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".view_controller.activities.MainActivity" />
@@ -76,7 +78,8 @@
         <activity
                 android:name=".view_controller.activities.MainActivity"
                 android:exported="true"
-                android:theme="@style/Theme.AppCompat">
+                android:theme="@style/Theme.AppCompat"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -87,6 +90,7 @@
                 android:name=".view_controller.activities.ViewThingActivity"
                 android:exported="true"
                 android:label="ViewThingActivity"
+                  android:screenOrientation="portrait"
                 android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
 

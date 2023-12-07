@@ -110,6 +110,10 @@ class PlayerViewModel : ViewModel() {
         }
     }
 
+    fun pause() {
+        player.pause()
+    }
+
     fun setMedia(uri: Uri) {
         val mediaItem = MediaItem.fromUri(uri)
         player.setMediaItem(mediaItem)

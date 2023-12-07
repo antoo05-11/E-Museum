@@ -6,6 +6,8 @@
         android:layout_height="match_parent"
         tools:context=".view_controller.fragments.fragments_inside_museum.MuseumInfoFragment">
 
+
+
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -37,7 +39,7 @@
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView"
+                            android:id="@+id/museum_name_text_view"
                             android:gravity="center"
                             android:textSize="25sp"
                             android:textStyle="bold"
@@ -88,7 +90,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:textSize="14sp"
+                            android:textSize="18sp"
                             android:justificationMode="inter_word" />
                 </LinearLayout>
 
@@ -130,7 +132,8 @@
                                 android:text="@string/adult"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/adult_ticket_text_view"
@@ -138,7 +141,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,7 +154,8 @@
                                 android:text="@string/student"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/student_ticket_text_view"
@@ -158,7 +163,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -170,7 +176,8 @@
                                 android:text="@string/children_6_16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/child_over_6_ticket_text_view"
@@ -178,7 +185,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -190,7 +198,8 @@
                                 android:text="@string/the_disable"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/the_disable_ticket_text_view"
@@ -198,7 +207,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -210,7 +220,8 @@
                                 android:text="@string/children_under_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/child_under_6_ticket_text_view"
@@ -218,7 +229,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -260,7 +272,8 @@
                                 android:text="@string/phone_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/phone_number_text_view"
@@ -269,7 +282,8 @@
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:autoLink="all"
-                                android:textColorLink="#FFFFFF" />
+                                android:textColorLink="#FFFFFF"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -281,7 +295,8 @@
                                 android:text="@string/website"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:id="@+id/website_text_view"
@@ -290,7 +305,8 @@
                                 android:layout_height="wrap_content"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:autoLink="all"
-                                android:textColorLink="#FFFFFF" />
+                                android:textColorLink="#FFFFFF"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -302,7 +318,8 @@
                                 android:text="@string/address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:textSize="18sp" />
 
                         <TextView
                                 android:text="Street A"
@@ -317,7 +334,8 @@
                                 android:clickable="true"
                                 android:textColorLink="#FFFFFF"
                                 android:textColor="#FFFFFF"
-                                android:focusable="true" />
+                                android:focusable="true"
+                                android:textSize="18sp" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>

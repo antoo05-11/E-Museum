@@ -26,7 +26,8 @@ class ViewThingActivity : AppCompatActivity() {
     private lateinit var player: ExoPlayer
     lateinit var thing: Thing
         private set
-    private lateinit var notificationManager: NotificationManager
+    private lateinit var serviceIntent: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,10 +44,10 @@ class ViewThingActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.thing_view_fragment_nav_host) as NavHostFragment
         val navController = navFragment.navController
 
-        val serviceIntent = Intent(applicationContext, NotificationService::class.java).apply {
+        serviceIntent = Intent(applicationContext, NotificationService::class.java).apply {
             putExtra("thing", thing)
         }
-        applicationContext.startService(serviceIntent)
+        //startService(serviceIntent)
 
         binding.playButtonUnder.setOnClickListener {
             playerViewModel.playPause()
@@ -136,6 +137,7 @@ class ViewThingActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         player.release()
+        stopService(serviceIntent)
     }
 }
 

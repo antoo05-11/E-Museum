@@ -37,7 +37,7 @@ class MuseumInfoFragment : Fragment() {
         val museum = activity?.intent?.getSerializableExtra("museum") as Museum
 
         museumImagesViewPager = binding.museumImagesViewPager
-
+        binding.museumNameTextView.text = museum.name
         val museumImageURLsList = List(museum.imagesNum) { index ->
             buildString {
                 append(MainActivity.fileServerURL)

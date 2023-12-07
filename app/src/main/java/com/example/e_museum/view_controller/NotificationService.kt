@@ -50,7 +50,7 @@ class NotificationService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "channel_name",
+                "sound",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             val manager = getSystemService(
@@ -61,6 +61,12 @@ class NotificationService : Service() {
     }
 
     companion object {
-        private const val CHANNEL_ID = "your_channel_id"
+        private const val CHANNEL_ID = "channel_id"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopForeground(true)
+        stopSelf()
     }
 }

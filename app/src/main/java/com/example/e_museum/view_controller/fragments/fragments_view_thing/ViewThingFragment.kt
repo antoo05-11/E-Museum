@@ -1,11 +1,13 @@
 package com.example.e_museum.view_controller.fragments.fragments_view_thing
 
+import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
@@ -22,6 +24,7 @@ import com.example.e_museum.entities.Thing
 import com.example.e_museum.utils.MarginItemDecoration
 import com.example.e_museum.utils.PaletteUtils
 import com.example.e_museum.utils.getReadableTime
+import com.example.e_museum.view_controller.activities.ViewVideoActivity
 import kotlin.math.abs
 
 class ViewThingFragment : Fragment() {
@@ -43,6 +46,17 @@ class ViewThingFragment : Fragment() {
         )
         binding.playButton.setOnClickListener {
             playerViewModel.playPause()
+        }
+        if (thing.videos == 0)
+            (binding.watchVideoButton.parent as LinearLayout).removeView(binding.watchVideoButton)
+        else {
+            binding.watchVideoButton.setOnClickListener {
+                val intent = Intent(requireContext(), ViewVideoActivity::class.java).apply {
+                    putExtra("thing", thing)
+                }
+                playerViewModel.pause()
+                startActivity(intent)
+            }
         }
 
         playerViewModel.playingMutableLiveData.observe(viewLifecycleOwner) {

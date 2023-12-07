@@ -109,8 +109,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        //const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
-        const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
+        const val fileServerURL = "https://muzik-files-server.000webhostapp.com/emuseum/"
+        //const val fileServerURL = "http://10.0.2.2:5500/emuseum/"
         //const val fileServerURL = "http://192.168.33.103:5500/emuseum/"
         lateinit var sqlConnection: SQLConnection
         lateinit var modelController: Model

@@ -18,11 +18,11 @@ import com.example.e_museum.entities.Collection
 import com.example.e_museum.entities.Museum
 
 class CollectionsListFragment : Fragment() {
-//    private lateinit var _binding: FragmentCollectionsListBinding? = null
     private lateinit var adapter: CollectionsListAdapter
     private var _binding: FragmentCollectionsListBinding? = null
 
     private val binding get() = _binding!!
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,13 +56,15 @@ class CollectionsListFragment : Fragment() {
         Thread {
             val list = Model.getInstance().collectionModel.getCollectionByMuseumID(museum.museumID)
             collections.clear()
-            collections.addAll(list)
+            if (list != null)
+                collections.addAll(list)
             activity?.runOnUiThread {
                 adapter.notifyDataSetChanged()
             }
         }.start()
 
-        binding.collectionSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.collectionSearchView.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 adapter.filter.filter(query)
                 return true

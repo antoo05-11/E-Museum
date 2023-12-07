@@ -1,15 +1,19 @@
 package com.example.e_museum.view_controller.fragments.fragments_inside_museum
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -38,6 +42,8 @@ class MapFragment : Fragment() {
     private lateinit var adapter: MapGuidesListAdapter
 
     private lateinit var bitmap: Bitmap
+    private var shortAnimationDuration: Int = 0
+
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -85,6 +91,19 @@ class MapFragment : Fragment() {
             }
         }
 
+        photoView.setOnViewDragListener { dx, dy ->
+            binding.locationIcon.animate()
+                .alpha(0f)
+                .setDuration(shortAnimationDuration.toLong())
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        binding.locationIcon.alpha = 1f
+                        binding.locationIcon.visibility = View.INVISIBLE
+                    }
+                })
+
+            binding.locationIcon.visibility = View.INVISIBLE
+        }
         Picasso.get().load(
             String.format(
                 MainActivity.fileServerURL + "map_images/%d_%d.png",
@@ -117,6 +136,7 @@ class MapFragment : Fragment() {
                             false
                         )
 
+                        binding.locationIcon.visibility = View.VISIBLE
                     }
                 })
             }
