@@ -16,9 +16,24 @@ E-Museum là ứng dụng di động được sử dụng để hỗ trợ trả
 **Architecture:** MVC 
 
 ## Demo
-
-
-
+<table style="width:100%">
+  <tr>
+    <th>Example 1</th>
+    <th>Example 2</th>
+  </tr>
+  <tr>
+    <td><img src="1.png"/></td>
+    <td><img src="2.png"/></td>
+  </tr>
+  <tr>
+    <th>Example 3</th>
+    <th>Example 4</th>
+  </tr>
+  <tr>
+    <td><img src="3.png"/></td>
+    <td><img src="4.png"/></td>
+  </tr>
+</table>
 
 ## Authors
 
