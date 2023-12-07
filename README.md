@@ -5,16 +5,19 @@
 
 E-Museum là ứng dụng di động được sử dụng để hỗ trợ trải nghiệm của người tham quan và hướng dẫn viên ở các bảo tàng trong nước.
 
-## Tech Stack
+## Technologies
 
 **Client:** Kotlin, Java
 
 **Server:** Direct Database Connections
 
+**IDE:** Android Studio JetBrains
+
+**Architecture:** MVC 
 
 ## Demo
 
-Insert gif or link to demo
+
 
 
 ## Authors
