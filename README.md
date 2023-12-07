@@ -4,8 +4,7 @@
 
 # E-Museum
 
-E-Museum là ứng dụng di động được sử dụng để hỗ trợ trải nghiệm của người tham quan ở các bảo tàng trong nước.
-
+E-Museum là ứng dụng di động được sử dụng để hỗ trợ trải nghiệm của người tham quan và hướng dẫn viên ở các bảo tàng trong nước.
 
 ## Installation
 
